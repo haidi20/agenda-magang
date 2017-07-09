@@ -1,5 +1,5 @@
-@extends('layouts.index')
-@section('tambah-agenda')
+{{-- @extends('layouts.index')
+@section('tambah-agenda') --}}
   <div id="tambah_agenda">
    <div class="row clearfix">
                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -59,4 +59,4 @@
            </div>
            <!-- #END# Exportable Table -->
        </div>
-@endsection
+{{-- @endsection --}}

@@ -18,27 +18,21 @@
   Route::post('/login' , 'AgendaController@login');
 // });
 
-Route::get('/logout', function(){
-  return 'logout' ;
+Route::get('/logout', 'AgendaController@logout');
+
+Route::group(['middleware' => 'user'],function(){
+  Route::get('/home/{id}', 'AgendaController@home');
+  Route::get('/agenda', function () {
+      return view('index.tambah_agenda');
+  });
+  Route::post('/tambah/agenda','AgendaController@tam_agen');
 });
 
-
-Route::get('/home', function () {
-  // if(Auth::user()->status == 1 || Auth::user()->status == 0){
-    return view('index.home');
-  // }else{
-    // return redirect('/');
-  // }
-});
-
-Route::get('/agenda', function () {
-    return view('index.tambah_agenda');
-});
-
-Route::get('/tambah/user', function () {
-    return view('index.tambah_user');
-});
-
-Route::get('/lihat/user', function () {
-    return view('index.table_user');
+Route::group(['middleware' => 'admin'],function(){
+  Route::get('/tambah/user', function () {
+      return view('index.tambah_user');
+  });
+  Route::get('/lihat/user', function () {
+      return view('index.table_user');
+  });
 });

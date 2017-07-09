@@ -90,7 +90,7 @@
                     <!-- Tasks -->
 
                     <!-- #END# Tasks -->
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                    {{-- <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li> --}}
                 </ul>
             </div>
         </div>
@@ -104,7 +104,7 @@
                 <div class="image">
                     <img src="{{asset('images/user.png')}}" width="48" height="48" alt="User" />
                 </div>
-                <div class="info-container">
+                {{-- <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
                     <div class="email">john.doe@example.com</div>
                     <div class="btn-group user-helper-dropdown">
@@ -116,10 +116,10 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a href="{{url('/')}}"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- #User Info -->
             <!-- Menu -->
@@ -139,27 +139,30 @@
                         </a>
                     </li>
 					<!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
-					<li id="menu_dftr_user">
-                        <a href="dftr_user" class="menu1">
-                            <i class="material-icons">text_fields</i>
-                            <span>Tambah User</span>
-                        </a>
-                    </li>
-					<!--------------------------------------------------->
-					<!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
-					<li id="menu_user">
-                        <a href="user" class="menu1">
-                            <i class="material-icons">text_fields</i>
-                            <span>User</span>
-                        </a>
-                    </li>
+          @if (Auth::user()->status == 1)
+            <li id="menu_dftr_user">
+                <a href="dftr_user" class="menu1">
+                    <i class="material-icons">text_fields</i>
+                    <span>Tambah User</span>
+                </a>
+            </li>
+  					<!--------------------------------------------------->
+  					<!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
+  					<li id="menu_user">
+                <a href="user" class="menu1">
+                    <i class="material-icons">text_fields</i>
+                    <span>User</span>
+                </a>
+            </li>
+          @endif
+
 					<!---------------------------------------------------->
-					<li>
-                        <a href="">
-                            <i class="material-icons">text_fields</i>
-                            <span>Logout</span>
-                        </a>
-                    </li>
+        					<li>
+                      <a href="{{url('/logout')}}">
+                          <i class="material-icons">text_fields</i>
+                          <span>Logout</span>
+                      </a>
+                  </li>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -192,13 +195,157 @@
 <!-------------------------------------------------------------------------------------------------------->
 <!-------------------------------PAGE Home --------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------->
-    @yield('home')
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>DASHBOARD</h2>
+    </div>
+    <div class="row clearfix">
+        <!-- Task Info -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Agenda</h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover dashboard-task-infos">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Hari/Tanggal</th>
+                                    <th>Jam</th>
+                                    <th>Kegiatan</th>
+                                    <th>Nama Project</th>
+              <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Senin, 3 Juli 2017</td>
+                                    <td>09.00 s/d 16.00</td>
+                                    <td>Mengurus E-Ktp</td>
+                                    <td> - </td>
+              <td>Belum Selesai</td>
+                                </tr>
+            <tr>
+                                    <td>1</td>
+                                    <td>Senin, 3 Juli 2017</td>
+                                    <td>09.00 s/d 16.00</td>
+                                    <td>Mengurus E-Ktp</td>
+                                    <td> - </td>
+              <td>Belum Selesai</td>
+                                </tr>
+            <tr>
+                                    <td>1</td>
+                                    <td>Senin, 3 Juli 2017</td>
+                                    <td>09.00 s/d 16.00</td>
+                                    <td>Mengurus E-Ktp</td>
+                                    <td> - </td>
+              <td>Belum Selesai</td>
+                                </tr>
+            <tr>
+                                    <td>1</td>
+                                    <td>Senin, 3 Juli 2017</td>
+                                    <td>09.00 s/d 16.00</td>
+                                    <td>Mengurus E-Ktp</td>
+                                    <td> - </td>
+              <td>Belum Selesai</td>
+                                </tr>
+            <tr>
+                                    <td>1</td>
+                                    <td>Senin, 3 Juli 2017</td>
+                                    <td>09.00 s/d 16.00</td>
+                                    <td>Mengurus E-Ktp</td>
+                                    <td> - </td>
+              <td>Belum Selesai</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Task Info -->
+
+    </div>
+</div>
 	 </div>
 
 <!-------------------------------------------------------------------------------------------------------->
 <!-------------------------------PAGE TAMBAH AGENDA --------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------->
-@yield('tambah-agenda')
+{{-- @yield('tambah-agenda') --}}
+<div id="tambah_agenda">
+ <div class="row clearfix">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                 <div class="card">
+         <div class="body">
+                     <h2 class="card-inside-title">Tambah Kegiatan</h2>
+                       <div class="row clearfix">
+                         <form action="{{url('/tambah/agenda')}}" method="POST">
+                          <div class="col-xs-12">
+                            <div class="form-group">
+                              {{ csrf_field() }}
+                                <div class="form-line">
+                                    <input type="hidden" name="id" value="{{$user->id}}">
+                                </div>
+                            </div>
+                               <div class="form-group">
+                                   <div class="form-line">
+                                       <input type="text" class="datepicker form-control" name="tanggal" placeholder="Tanggal Kegiatan">
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-sm-6">
+                               <div class="form-group">
+                                   <div class="form-line">
+                                       <input type="text" class="timepicker form-control" name="jam_start" placeholder="Jam Mulai">
+                                   </div>
+                               </div>
+                           </div>
+                            <div class="col-sm-6">
+                               <div class="form-group">
+                                   <div class="form-line">
+                                       <input type="text" class="timepicker form-control"  name="jam_end" placeholder="Jam Selesai">
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-sm-12">
+                               <div class="form-group">
+                                   <div class="form-line">
+                                       <input type="text" class="form-control"  name="nm_keg" placeholder="Nama Kegiatan" />
+                                   </div>
+                               </div>
+                           </div>
+                            <div class="col-sm-12">
+                               <div class="form-group">
+                                   <div class="form-line">
+                                       <input type="text" class="form-control"  name="nm_pro" placeholder="Nama Project" />
+                                   </div>
+                               </div>
+                           </div>
+                            <div class="col-sm-12">
+                               <div class="form-group">
+                                   <div class="form-line">
+                                       <input type="text" class="form-control" name="ket" placeholder="Keterangan" />
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-sm-12">
+                             <input type="submit" value="kirim">
+                             {{-- <button type="button" class="btn btn-primary waves-effect">Simpan</button> --}}
+                           </div>
+                           </form>
+                       </div>
+
+
+          </div>
+       </div>
+             </div>
+         </div>
+         <!-- #END# Exportable Table -->
+     </div>
 
 <!-------------------------------------------------------------------------------------------------------->
 <!-------------------------------PAGE TAMBAH USER --------------------------------------------------------------->
