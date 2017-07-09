@@ -24,10 +24,32 @@ class AgendaController extends Controller
       $nm_pro = $request->nm_pro ;
       $ket    = $request->ket ;
 
+      // $tanggals = explode(' ' , $tanggal) ;
+      // foreach ($tanggals as $key => $value) {
+      //   echo $key . ' = ' . $value . '<br>' ;
+      // }
+
       // return $id. ' ' . $tanggal. ' ' . $jam_start. ' ' . $jam_end. ' ' . $nm_keg. ' ' . $nm_pro. ' ' . $ket ;
+
+      $agenda = Agenda::insert([
+        'user_id'       => $id,
+        'nm_project'    => $nm_pro,
+        'kegiatan'      => $nm_keg,
+        'tanggal'       => $tanggal,
+        'jam_start'     => $jam_start,
+        'jam_end'       => $jam_end,
+        'keterangan'    => $ket
+      ]);
+
+      if($agenda){
+        return redirect('/home/'.Auth::id());
+      }else{
+        return redirect('/');
+      }
 
 
     }
+
     public function login(Request $request){
       $name = $request->name ;
       $pass = $request->pass ;

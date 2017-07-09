@@ -18,7 +18,7 @@ class CreateAgendaTable extends Migration
           $table->integer('user_id')->unsigned();
           $table->string('nm_project');
           $table->string('kegiatan');
-          $table->date('tanggal');
+          $table->string('tanggal');
           $table->time('jam_start');
           $table->time('jam_end');
           $table->string('keterangan');
