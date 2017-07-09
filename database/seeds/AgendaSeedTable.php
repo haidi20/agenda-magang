@@ -11,10 +11,10 @@ class AgendaSeedTable extends Seeder
      */
     public function run()
     {
-      
+
       DB::table('agenda')->insert([
         [
-          'user_id'     => 2,
+          'user_id'     => 9,
           'nm_project'  => '-',
           'kegiatan'    => 'cuti',
           'tanggal'     => Carbon::now()->format('Y-m-d'),
