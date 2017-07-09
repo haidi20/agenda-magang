@@ -29,9 +29,7 @@ Route::group(['middleware' => 'user'],function(){
 });
 
 Route::group(['middleware' => 'admin'],function(){
-  Route::get('/tambah/user', function () {
-      return view('index.tambah_user');
-  });
+  Route::post('/tambah/user', 'AgendaController@tam_user');
   Route::get('/lihat/user', function () {
       return view('index.table_user');
   });

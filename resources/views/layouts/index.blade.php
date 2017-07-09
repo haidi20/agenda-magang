@@ -211,7 +211,7 @@
                         <table class="table table-hover dashboard-task-infos">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>User</th>
                                     <th>Hari/Tanggal</th>
                                     <th>Jam</th>
                                     <th>Kegiatan</th>
@@ -220,46 +220,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                              @foreach ($agendaa as $agenda)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Senin, 3 Juli 2017</td>
-                                    <td>09.00 s/d 16.00</td>
-                                    <td>Mengurus E-Ktp</td>
-                                    <td> - </td>
-              <td>Belum Selesai</td>
+                                    {{-- <td>{{$agenda->id}}</td> --}}
+                                    <td>{{$agenda->user->name}}</td>
+                                    <td>{{$agenda->tanggal}}</td>
+                                    <td>{{$agenda->jam_start}} s/d {{$agenda->jam_end}}</td>
+                                    <td>{{$agenda->kegiatan}}</td>
+                                    <td> {{$agenda->nm_project}} </td>
+                                    <td>{{$agenda->keterangan}}</td>
                                 </tr>
-            <tr>
-                                    <td>1</td>
-                                    <td>Senin, 3 Juli 2017</td>
-                                    <td>09.00 s/d 16.00</td>
-                                    <td>Mengurus E-Ktp</td>
-                                    <td> - </td>
-              <td>Belum Selesai</td>
-                                </tr>
-            <tr>
-                                    <td>1</td>
-                                    <td>Senin, 3 Juli 2017</td>
-                                    <td>09.00 s/d 16.00</td>
-                                    <td>Mengurus E-Ktp</td>
-                                    <td> - </td>
-              <td>Belum Selesai</td>
-                                </tr>
-            <tr>
-                                    <td>1</td>
-                                    <td>Senin, 3 Juli 2017</td>
-                                    <td>09.00 s/d 16.00</td>
-                                    <td>Mengurus E-Ktp</td>
-                                    <td> - </td>
-              <td>Belum Selesai</td>
-                                </tr>
-            <tr>
-                                    <td>1</td>
-                                    <td>Senin, 3 Juli 2017</td>
-                                    <td>09.00 s/d 16.00</td>
-                                    <td>Mengurus E-Ktp</td>
-                                    <td> - </td>
-              <td>Belum Selesai</td>
-                                </tr>
+                              @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -288,7 +259,9 @@
                             <div class="form-group">
                               {{ csrf_field() }}
                                 <div class="form-line">
+                                  {{-- @if(Auth::user()->status == 0) --}}
                                     <input type="hidden" name="id" value="{{$user->id}}">
+                                  {{-- @endif --}}
                                 </div>
                             </div>
                                <div class="form-group">
@@ -352,15 +325,94 @@
 <!------------------------------------------------------------------------------------------------------->
 <!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
 
-  @yield('tambah-user')
+  {{-- @yield('tambah-user') --}}
+  <div id="tambah_user">
+  <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="card">
+          <div class="body">
+                      <h2 class="card-inside-title">Tambah User</h2>
+                          <div class="row clearfix">
+                            <form action="{{url('/tambah/user')}}" method="POST">
+                              {{ csrf_field() }}
+                              <div class="col-sm-12">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" name="name" placeholder="Nama" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" name="email" placeholder="Email" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="password" class="form-control" name="pass" placeholder="Password" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                <input type="submit" name="simpan" value="simpan">
+                                {{-- <button type="button" class="btn btn-primary waves-effect">Simpan</button> --}}
+                              </div>
+                              </form>
+                          </div>
+           </div>
+        </div>
+              </div>
+          </div>
+          <!-- #END# Exportable Table -->
+      </div>
 
 <!-------------------------------------------------------------------------------------------------------->
 <!-------------------------------PAGE USER --------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------->
 <!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
 
-    @yield('user')
+    {{-- @yield('user') --}}
+    @if(Auth::user()->status == 1)
+    <div id="page_user">
+      <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                BASIC EXAMPLE
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
 
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($users as $user_s)
+                                    <tr>
+                                        <td>{{$user_s->id}}</td>
+                                        <td>{{$user_s->name}}</td>
+                                        <td>{{$user_s->email}}</td>
+                                    </tr>
+                                  @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    @endif
     </section>
 
     <!-- Jquery Core Js -->
