@@ -20,6 +20,8 @@
 
 Route::get('/logout', 'AgendaController@logout');
 
+Route::get('/excel','AgendaController@excel');
+
 Route::group(['middleware' => 'user'],function(){
   Route::get('/home/{id}', 'AgendaController@home');
   Route::get('/agenda', function () {

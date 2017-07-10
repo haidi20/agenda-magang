@@ -7,6 +7,7 @@ use Auth ;
 use App\User ;
 use App\Agenda ;
 use DB ;
+use Excel ;
 
 class AgendaController extends Controller
 {
@@ -26,6 +27,15 @@ class AgendaController extends Controller
 
       // dd(DB::getQueryLog($agenda));
       return view('layouts.index',['agendaa'=>$agenda, 'users' => $user_s , 'user' => $user]);
+    }
+
+    public function excel(Request $request){
+      $agenda = Agenda::get()->toArray();
+      return Excel::create('fileBarang' , function($excel) use ($agenda){
+        $excel->sheet('mySheet' , function($sheet) use ($agenda){
+          $sheet->fromArray($agenda);
+        });
+      })->download('xlsx');
     }
 
     public function tam_agen(Request $request){

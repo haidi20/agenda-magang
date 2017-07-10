@@ -61,7 +61,7 @@
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
     <!-- Search Bar -->
-    <div class="search-bar">
+    {{-- <div class="search-bar">
         <div class="search-icon">
             <i class="material-icons">search</i>
         </div>
@@ -69,7 +69,7 @@
         <div class="close-search">
             <i class="material-icons">close</i>
         </div>
-    </div>
+    </div> --}}
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
@@ -82,7 +82,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    {{-- <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li> --}}
                     <!-- #END# Call Search -->
                     <!-- Notifications -->
 
@@ -104,10 +104,10 @@
                 <div class="image">
                     <img src="{{asset('images/user.png')}}" width="48" height="48" alt="User" />
                 </div>
-                {{-- <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
-                    <div class="btn-group user-helper-dropdown">
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$user->name}}</div>
+                    <div class="email">{{$user->email}}</div>
+                    {{-- <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
@@ -118,8 +118,8 @@
                             <li role="seperator" class="divider"></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
-                    </div>
-                </div> --}}
+                    </div> --}}
+                </div>
             </div>
             <!-- #User Info -->
             <!-- Menu -->
@@ -128,13 +128,13 @@
                     <li class="header">MAIN NAVIGATION</li>
                     <li id="menu_home" class="active">
                         <a href="home" class="menu1">
-                            <i class="material-icons">home</i>
+                            {{-- <i class="material-icons">home</i> --}}
                             <span>Home</span>
                         </a>
                     </li>
                     <li id="menu_tbh_agenda">
                         <a href="tbh_agenda" class="menu1">
-                            <i class="material-icons">text_fields</i>
+                            {{-- <i class="material-icons">text_fields</i> --}}
                             <span>Tambah Agenda</span>
                         </a>
                     </li>
@@ -142,7 +142,7 @@
           @if (Auth::user()->status == 1)
             <li id="menu_dftr_user">
                 <a href="dftr_user" class="menu1">
-                    <i class="material-icons">text_fields</i>
+                    {{-- <i class="material-icons">text_fields</i> --}}
                     <span>Tambah User</span>
                 </a>
             </li>
@@ -150,7 +150,7 @@
   					<!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
   					<li id="menu_user">
                 <a href="user" class="menu1">
-                    <i class="material-icons">text_fields</i>
+                    {{-- <i class="material-icons">text_fields</i> --}}
                     <span>User</span>
                 </a>
             </li>
@@ -159,7 +159,7 @@
 					<!---------------------------------------------------->
         					<li>
                       <a href="{{url('/logout')}}">
-                          <i class="material-icons">text_fields</i>
+                          {{-- <i class="material-icons">text_fields</i> --}}
                           <span>Logout</span>
                       </a>
                   </li>
@@ -205,25 +205,30 @@
             <div class="card">
                 <div class="header">
                     <h2>Agenda</h2>
+                    <a href="{{url('/excel')}}"><input type="submit" value="Convert Excel"></a>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
                         <table class="table table-hover dashboard-task-infos">
                             <thead>
                                 <tr>
+                                  @if (Auth::user()->status == 1)
                                     <th>User</th>
+                                  @endif
                                     <th>Hari/Tanggal</th>
                                     <th>Jam</th>
                                     <th>Kegiatan</th>
                                     <th>Nama Project</th>
-              <th>Keterangan</th>
+                                    <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
                               @foreach ($agendaa as $agenda)
                                 <tr>
                                     {{-- <td>{{$agenda->id}}</td> --}}
+                                    @if (Auth::user()->status == 1)
                                     <td>{{$agenda->user->name}}</td>
+                                    @endif
                                     <td>{{$agenda->tanggal}}</td>
                                     <td>{{$agenda->jam_start}} s/d {{$agenda->jam_end}}</td>
                                     <td>{{$agenda->kegiatan}}</td>
