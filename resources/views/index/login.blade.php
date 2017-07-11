@@ -3,7 +3,7 @@
   <body class="login-page">
       <div class="login-box">
           <div class="logo">
-              <a href="javascript:void(0);">Admin<b>BSB</b></a>
+              <a href="javascript:void(0);">Aplikasi Agenda</a>
               <small>Admin BootStrap Based - Material Design</small>
           </div>
           <div class="card">

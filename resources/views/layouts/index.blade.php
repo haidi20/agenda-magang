@@ -10,8 +10,8 @@
     <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css')}}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
     <link href="{{asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
@@ -61,7 +61,7 @@
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
     <!-- Search Bar -->
-    {{-- <div class="search-bar">
+    <div class="search-bar">
         <div class="search-icon">
             <i class="material-icons">search</i>
         </div>
@@ -69,7 +69,7 @@
         <div class="close-search">
             <i class="material-icons">close</i>
         </div>
-    </div> --}}
+    </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
@@ -128,21 +128,21 @@
                     <li class="header">MAIN NAVIGATION</li>
                     <li id="menu_home" class="active">
                         <a href="home" class="menu1">
-                            {{-- <i class="material-icons">home</i> --}}
+                            <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li id="menu_tbh_agenda">
                         <a href="tbh_agenda" class="menu1">
-                            {{-- <i class="material-icons">text_fields</i> --}}
+                            <i class="material-icons">text_fields</i>
                             <span>Tambah Agenda</span>
                         </a>
                     </li>
 					<!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
-          @if (Auth::user()->status == 1)
+          @if (Auth::user()->level == 'admin')
             <li id="menu_dftr_user">
                 <a href="dftr_user" class="menu1">
-                    {{-- <i class="material-icons">text_fields</i> --}}
+                    <i class="material-icons">text_fields</i>
                     <span>Tambah User</span>
                 </a>
             </li>
@@ -150,7 +150,7 @@
   					<!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
   					<li id="menu_user">
                 <a href="user" class="menu1">
-                    {{-- <i class="material-icons">text_fields</i> --}}
+                    <i class="material-icons">text_fields</i>
                     <span>User</span>
                 </a>
             </li>
@@ -159,7 +159,7 @@
 					<!---------------------------------------------------->
         					<li>
                       <a href="{{url('/logout')}}">
-                          {{-- <i class="material-icons">text_fields</i> --}}
+                          <i class="material-icons">text_fields</i>
                           <span>Logout</span>
                       </a>
                   </li>
@@ -204,15 +204,18 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="header">
-                    <h2>Agenda</h2>
-                    <a href="{{url('/excel')}}"><input type="submit" value="Convert Excel"></a>
+                    <h2>Agenda</h2><br>
+
+                    {{-- <a style="text-decoration : none;" href="{{url('/excel')}}"> --}}
+
+                    <button class="btn btn-danger" id="konvert" data="{{url('/excel/'.$user->id)}}" >Cetak EXCEL</a></button>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
                         <table class="table table-hover dashboard-task-infos">
                             <thead>
                                 <tr>
-                                  @if (Auth::user()->status == 1)
+                                  @if (Auth::user()->level == 'admin')
                                     <th>User</th>
                                   @endif
                                     <th>Hari/Tanggal</th>
@@ -226,7 +229,7 @@
                               @foreach ($agendaa as $agenda)
                                 <tr>
                                     {{-- <td>{{$agenda->id}}</td> --}}
-                                    @if (Auth::user()->status == 1)
+                                    @if (Auth::user()->level == 'admin')
                                     <td>{{$agenda->user->name}}</td>
                                     @endif
                                     <td>{{$agenda->tanggal}}</td>
@@ -264,7 +267,7 @@
                             <div class="form-group">
                               {{ csrf_field() }}
                                 <div class="form-line">
-                                  {{-- @if(Auth::user()->status == 0) --}}
+                                  {{-- @if(Auth::user()->level == 'admin') --}}
                                     <input type="hidden" name="id" value="{{$user->id}}">
                                   {{-- @endif --}}
                                 </div>
@@ -278,14 +281,14 @@
                            <div class="col-sm-6">
                                <div class="form-group">
                                    <div class="form-line">
-                                       <input type="text" class="timepicker form-control" name="jam_start" placeholder="Jam Mulai">
+                                       <input type="text" class="timepicker form-control" name="jam_mulai" placeholder="Jam Mulai">
                                    </div>
                                </div>
                            </div>
                             <div class="col-sm-6">
                                <div class="form-group">
                                    <div class="form-line">
-                                       <input type="text" class="timepicker form-control"  name="jam_end" placeholder="Jam Selesai">
+                                       <input type="text" class="timepicker form-control"  name="jam_selesai" placeholder="Jam Selesai">
                                    </div>
                                </div>
                            </div>
@@ -380,14 +383,14 @@
 <!----JIKA BUKAN ADMIN MAKA TIDAK USAH DI TAMPILKAN-->
 
     {{-- @yield('user') --}}
-    @if(Auth::user()->status == 1)
+    @if(Auth::user()->level == 'admin')
     <div id="page_user">
       <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                BASIC EXAMPLE
+                                TABLE USER
                             </h2>
                             <ul class="header-dropdown m-r--5">
 

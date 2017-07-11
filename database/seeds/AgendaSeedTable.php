@@ -15,11 +15,11 @@ class AgendaSeedTable extends Seeder
       DB::table('agenda')->insert([
         [
           'user_id'     => 2,
-          'nm_project'  => '-',
+          'nm_proyek'  => '-',
           'kegiatan'    => 'cuti',
           'tanggal'     => Carbon::now()->format('Y-M-d'),
-          'jam_start'   => Carbon::now()->toTimeString(),
-          'jam_end'     => Carbon::now()->toTimeString(),
+          'jam_mulai'   => Carbon::now()->toTimeString(),
+          'jam_selesai' => Carbon::now()->toTimeString(),
           'keterangan'  => 'mampu' ,
         ]
       ]);

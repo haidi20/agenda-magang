@@ -12,19 +12,21 @@ class UsersSeedTable extends Seeder
      */
     public function run()
     {
-      
+
       DB::table('users')->insert([
         [
           'name'      => 'admin',
           'email'     => 'admin@admin.com',
           'password'  => bcrypt('admin'),
-          'status'    => 1
+          'level'     => 'admin',
+          'jabatan'   => 'ketua',
         ],
         [
           'name'      => 'user',
           'email'     => 'user@user.com',
           'password'  => bcrypt('user'),
-          'status'    => 0
+          'level'     => 'admin',
+          'jabatan'   => 'anggota',
         ]
       ]);
     }

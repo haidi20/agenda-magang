@@ -13,14 +13,19 @@
 
 // Route::group(['middleware' => 'login'],function(){
   Route::get('/', function () {
-    return view('index.login');
+    // if(Auth::login()){
+    //   $id = Auth::id();
+    //   return redirect('/home/'.$id);
+    // }else{
+      return view('index.login');
+    // }
   });
   Route::post('/login' , 'AgendaController@login');
 // });
 
 Route::get('/logout', 'AgendaController@logout');
 
-Route::get('/excel','AgendaController@excel');
+Route::get('/excel/{id}','AgendaController@excel');
 
 Route::group(['middleware' => 'user'],function(){
   Route::get('/home/{id}', 'AgendaController@home');

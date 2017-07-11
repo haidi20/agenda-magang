@@ -16,11 +16,11 @@ class CreateAgendaTable extends Migration
       Schema::create('agenda', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('user_id')->unsigned();
-          $table->string('nm_project');
+          $table->string('nm_proyek');
           $table->string('kegiatan');
-          $table->string('tanggal');
-          $table->time('jam_start');
-          $table->time('jam_end');
+          $table->date('tanggal');
+          $table->time('jam_mulai');
+          $table->time('jam_selesai');
           $table->string('keterangan');
 
           $table->foreign('user_id')->references('id')

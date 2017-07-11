@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-      if(Auth::check() && Auth::user()->status == 1){
+      if(Auth::check() && Auth::user()->level == 'admin'){
         return $next($request);
       }else if(Auth::check()){
         return redirect('/home');

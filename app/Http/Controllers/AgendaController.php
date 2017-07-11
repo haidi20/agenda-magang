@@ -29,38 +29,59 @@ class AgendaController extends Controller
       return view('layouts.index',['agendaa'=>$agenda, 'users' => $user_s , 'user' => $user]);
     }
 
-    public function excel(Request $request){
-      $agenda = Agenda::get()->toArray();
-      return Excel::create('fileBarang' , function($excel) use ($agenda){
+    public function excel(Request $request, $id){
+      // \DB::enableQueryLog();
+      // dd($agenda);
+      // dd(DB::getQueryLog($agenda));
+      $field = ['users.name' ,
+                'agenda.nm_proyek' ,
+                'agenda.kegiatan' ,
+                'agenda.tanggal' ,
+                'agenda.jam_mulai' ,
+                'agenda.jam_selesai' ,
+                'agenda.keterangan'] ;
+      $agenda = Agenda::join('users' ,'agenda.user_id' , '=', 'users.id' )
+                      ->select($field)
+                      ->where('user_id' , $id)
+                      ->get()->toArray();
+      if(Auth::user()->status == 1){
+      $agenda = Agenda::join('users' ,'agenda.user_id' , '=', 'users.id' )
+                        ->select('users.name' , 'agenda.*')
+                        ->get()->toArray();
+      }
+      // return view('index.ExportClients', compact('agenda'));
+      Excel::create('fileAgenda' , function($excel) use ($agenda){
         $excel->sheet('mySheet' , function($sheet) use ($agenda){
+          // dd($agenda) ;
+          // $sheet->loadView('index.ExportClients')->with('agenda' , $agenda);
           $sheet->fromArray($agenda);
         });
       })->download('xlsx');
+      // dd($agenda) ;
     }
 
     public function tam_agen(Request $request){
-      $id = $request->id ;
-      $tanggal = $request->tanggal ;
-      $jam_start = $request->jam_start ;
-      $jam_end = $request->jam_end;
-      $nm_keg = $request->nm_keg ;
-      $nm_pro = $request->nm_pro ;
-      $ket    = $request->ket ;
+      $id   = $request->id ;
+      $tanggal_sebelum  = $request->tanggal ;
+      $jam_mulai  = $request->jam_mulai ;
+      $jam_selesai  = $request->jam_selesai;
+      $nm_keg   = $request->nm_keg ;
+      $nm_pro   = $request->nm_pro ;
+      $ket      = $request->ket ;
 
-      // $tanggals = explode(' ' , $tanggal) ;
-      // foreach ($tanggals as $key => $value) {
-      //   echo $key . ' = ' . $value . '<br>' ;
-      // }
+      $tanggal_array = explode(' ' , $tanggal_sebelum) ;
+      $tanggal_array1 = [$tanggal_array[3], $tanggal_array[2], $tanggal_array[1]] ;
+      $tanggal = implode(' ' , $tanggal_array1);
 
-      // return $id. ' ' . $tanggal. ' ' . $jam_start. ' ' . $jam_end. ' ' . $nm_keg. ' ' . $nm_pro. ' ' . $ket ;
+      // return $id. ' ' . $tanggal. ' ' . $jam_mulai. ' ' . $jam_selesai. ' ' . $nm_keg. ' ' . $nm_pro. ' ' . $ket ;
 
       $agenda = Agenda::insert([
         'user_id'       => $id,
-        'nm_project'    => $nm_pro,
+        'nm_proyek'     => $nm_pro,
         'kegiatan'      => $nm_keg,
         'tanggal'       => $tanggal,
-        'jam_start'     => $jam_start,
-        'jam_end'       => $jam_end,
+        'jam_mulai'     => $jam_mulai,
+        'jam_selesai'   => $jam_selesai,
         'keterangan'    => $ket
       ]);
 
@@ -99,7 +120,7 @@ class AgendaController extends Controller
       if(Auth::attempt(['name' => $name , 'password' => $pass])){
         return redirect('/home/'.Auth::id());
       }else{
-        return redirect('/');
+        return redirect('/')->with('note' , 'maaf, ada kesalahan pada username atau password anda');
       }
 
     }

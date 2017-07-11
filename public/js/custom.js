@@ -65,6 +65,14 @@ $(document).on('click','a.menu1', function(tambah)
 					alert('ada yang salah fah');
 				}
 		})
+
+		$(document).on('click','#konvert', function(tambah)
+				{
+						var id = $(this).attr('data');
+						var win = window.open(id, '_blank');
+  					win.focus();
+						//alert('berhasil'+id);
+				})
 /*
 $(document).on('click','button.tampil', function(tambah)
 		{
