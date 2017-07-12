@@ -1,3 +1,11 @@
+$(document).on('click' , '.edit_user' , function(){
+
+});
+
+
+
+// punya alfian
+
 //$('#tabel_home').hide();
 $('#tambah_agenda').hide();
 $('#tambah_user').hide(); //

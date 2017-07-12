@@ -360,6 +360,13 @@
                               <div class="col-sm-12">
                                   <div class="form-group">
                                       <div class="form-line">
+                                          <input type="text" class="form-control" name="jabatan" placeholder="Jabatan" />
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="form-group">
+                                      <div class="form-line">
                                           <input type="password" class="form-control" name="pass" placeholder="Password" />
                                       </div>
                                   </div>
@@ -400,17 +407,22 @@
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Name</th>
+                                        <th>Jabatan</th>
                                         <th>Email</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                   @foreach ($users as $user_s)
                                     <tr>
-                                        <td>{{$user_s->id}}</td>
                                         <td>{{$user_s->name}}</td>
+                                        <td>{{$user_s->jabatan}}</td>
                                         <td>{{$user_s->email}}</td>
+                                        <td id="user_{{$user_s->id}}">
+                                          <input type="submit" name="edit" class="edit_user"   data-id="{{$user_s->id}}" value="edit">
+                                          <input type="submit" name="delete" data-id="{{$user_s->id}}" value="delete">
+                                        </td>
                                     </tr>
                                   @endforeach
                                 </tbody>

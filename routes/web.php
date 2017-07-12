@@ -20,23 +20,22 @@
       return view('index.login');
     // }
   });
-  Route::post('/login' , 'AgendaController@login');
+  Route::post('/login' , 'LoginController@login');
+  Route::get('/logout', 'LoginController@logout');
 // });
 
-Route::get('/logout', 'AgendaController@logout');
-
-Route::get('/excel/{id}','AgendaController@excel');
+Route::get('/excel/{id}','ExcelController@store');
 
 Route::group(['middleware' => 'user'],function(){
-  Route::get('/home/{id}', 'AgendaController@home');
+  Route::get('/home/{id}', 'AgendaController@index');
   Route::get('/agenda', function () {
       return view('index.tambah_agenda');
   });
-  Route::post('/tambah/agenda','AgendaController@tam_agen');
+  Route::post('/tambah/agenda','AgendaController@store');
 });
 
 Route::group(['middleware' => 'admin'],function(){
-  Route::post('/tambah/user', 'AgendaController@tam_user');
+  Route::post('/tambah/user', 'UserController@store');
   Route::get('/lihat/user', function () {
       return view('index.table_user');
   });
