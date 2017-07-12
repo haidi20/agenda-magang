@@ -15,14 +15,12 @@ class AgendaController extends Controller
     public function index($id){
       // \DB::enableQueryLog();
 
-      if(Auth::user()->status == 1){
+      $user_s     = User::all();
+      $user       = User::find($id);
+      if(Auth::user()->level == 'admin'){
         $agenda     = Agenda::all();
-        $user_s     = User::all();
-        $user       = User::find($id);
       }else{
         $agenda     = Agenda::where('user_id' , $id)->get();
-        $user_s     = User::all();
-        $user       = User::find($id);
       }
 
       // dd(DB::getQueryLog($agenda));

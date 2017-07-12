@@ -1,5 +1,68 @@
-$(document).on('click' , '.edit_user' , function(){
+function ajax(){
+	$.ajaxSetup({
+				headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+		});
+}
 
+$(document).on('click' , '.hapus_user', function(){
+	ajax() ;
+	var id = $(this).attr('data-id');
+	$.ajax({
+		url			: '/delete/user',
+		method	: 'post',
+		data		:	{id:id},
+		success	: function(data){
+			// console.log(data);
+			$('#user_'+data).fadeOut();
+		}
+	});
+});
+
+// update data user
+$(document).on('click','#update-user', function(){
+	ajax() ;
+	var id 			= $('#id').val();
+	var name 		= $('#name').val();
+	var jabatan = $('#jabatan').val();
+	var email 	= $('#email').val();
+	// console.log(jabatan + 'jabatan');
+
+	$.ajax({
+			url			: '/update/user',
+			method	: 'post',
+			data		:	{id:id,name : name, jabatan:jabatan,email:email},
+			success	: function(data){
+				// console.log(data);
+				var text	= '<tr id="user_'+data.id+'">'+
+										'<td>'+data.name+'</td>'+
+										'<td>'+data.jabatan+'</td>'+
+										'<td>'+data.email+'</td>'+
+										'<td> <input type="submit" name="edit" class="edit_user"   data-id="'+data.id+'" value="edit" data-toggle="modal" data-target="#defaultModal">' +
+										'<input type="submit" name="delete" class="hapus_user" data-id="'+data.id+'" value="delete"></td>'+
+										'</tr>';
+				$('#user_'+data.id).replaceWith(text);
+			}
+	});
+});
+
+// edit data user
+$(document).on('click' , '.edit_user' , function(){
+	ajax() ;
+	var id = $(this).attr('data-id');
+	// console.log(id) ;
+	$.ajax({
+			url			: '/edit/user',
+			method 	: 'post',
+			data 		: {id : id},
+			success : function(data){
+				$('#id').val(data.id);
+				$('#name').val(data.name);
+				$('#jabatan').val(data.jabatan);
+				$('#email').val(data.email);
+			}
+	});
 });
 
 

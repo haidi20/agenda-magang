@@ -16,7 +16,7 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-      if(Auth::check()){
+      if(Auth::check() && Auth::user()->id == $request->id){
         return $next($request);
       }else{
         return redirect('/');

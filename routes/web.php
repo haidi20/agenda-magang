@@ -13,12 +13,10 @@
 
 // Route::group(['middleware' => 'login'],function(){
   Route::get('/', function () {
-    // if(Auth::login()){
-    //   $id = Auth::id();
-    //   return redirect('/home/'.$id);
-    // }else{
+    if(Auth::check()){
+      return redirect('home/' . Auth::id());
+    }
       return view('index.login');
-    // }
   });
   Route::post('/login' , 'LoginController@login');
   Route::get('/logout', 'LoginController@logout');
@@ -36,6 +34,9 @@ Route::group(['middleware' => 'user'],function(){
 
 Route::group(['middleware' => 'admin'],function(){
   Route::post('/tambah/user', 'UserController@store');
+  Route::post('/edit/user' , 'UserController@edit');
+  Route::post('/delete/user', 'UserController@destroy');
+  Route::post('/update/user' ,'UserController@update');
   Route::get('/lihat/user', function () {
       return view('index.table_user');
   });

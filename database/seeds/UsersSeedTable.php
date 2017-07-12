@@ -25,7 +25,7 @@ class UsersSeedTable extends Seeder
           'name'      => 'user',
           'email'     => 'user@user.com',
           'password'  => bcrypt('user'),
-          'level'     => 'admin',
+          'level'     => 'user',
           'jabatan'   => 'anggota',
         ]
       ]);

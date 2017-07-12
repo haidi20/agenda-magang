@@ -35,6 +35,7 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('css/themes/all-themes.css')}}" rel="stylesheet" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 
 </head>
@@ -205,9 +206,7 @@
             <div class="card">
                 <div class="header">
                     <h2>Agenda</h2><br>
-
                     {{-- <a style="text-decoration : none;" href="{{url('/excel')}}"> --}}
-
                     <button class="btn btn-danger" id="konvert" data="{{url('/excel/'.$user->id)}}" >Cetak EXCEL</a></button>
                 </div>
                 <div class="body">
@@ -233,9 +232,9 @@
                                     <td>{{$agenda->user->name}}</td>
                                     @endif
                                     <td>{{$agenda->tanggal}}</td>
-                                    <td>{{$agenda->jam_start}} s/d {{$agenda->jam_end}}</td>
+                                    <td>{{$agenda->jam_mulai}} s/d {{$agenda->jam_selesai}}</td>
                                     <td>{{$agenda->kegiatan}}</td>
-                                    <td> {{$agenda->nm_project}} </td>
+                                    <td>{{$agenda->nm_proyek}} </td>
                                     <td>{{$agenda->keterangan}}</td>
                                 </tr>
                               @endforeach
@@ -415,13 +414,13 @@
                                 </thead>
                                 <tbody>
                                   @foreach ($users as $user_s)
-                                    <tr>
+                                    <tr id="user_{{$user_s->id}}">
                                         <td>{{$user_s->name}}</td>
                                         <td>{{$user_s->jabatan}}</td>
                                         <td>{{$user_s->email}}</td>
-                                        <td id="user_{{$user_s->id}}">
-                                          <input type="submit" name="edit" class="edit_user"   data-id="{{$user_s->id}}" value="edit">
-                                          <input type="submit" name="delete" data-id="{{$user_s->id}}" value="delete">
+                                        <td>
+                                          <input type="submit" name="edit" class="edit_user" data-id="{{$user_s->id}}" value="edit" data-toggle="modal" data-target="#defaultModal">
+                                          <input type="submit" name="delete" class="hapus_user" data-id="{{$user_s->id}}" value="delete">
                                         </td>
                                     </tr>
                                   @endforeach
@@ -433,6 +432,43 @@
             </div>
     </div>
     @endif
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">Edit User</h4>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" id="id">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="Nama" />
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan" />
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="email" name="email" placeholder="Email" />
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link waves-effect" id="update-user" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
 
     <!-- Jquery Core Js -->
