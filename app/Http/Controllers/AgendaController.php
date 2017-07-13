@@ -12,7 +12,13 @@ use Excel ;
 class AgendaController extends Controller
 {
 
-    public function index($id){
+  public function coba(Request $request)
+  {
+    $nama = $request->name ;
+    return ('ini nama '.$nama) ;
+  }
+
+    public function index(Request $request, $id){
       // \DB::enableQueryLog();
 
       $user_s     = User::all();

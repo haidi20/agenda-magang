@@ -388,9 +388,35 @@
                             <h2>
                                 TABLE USER
                             </h2>
-                            <ul class="header-dropdown m-r--5">
+                            <br>
+                            <div class="row">
+        <div class="col-sm-4">
+         <select id="dropdown1" class="form-control show-tick">
+          <option value="">--Berdasarkan Tanggal--</option>
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+          <option value="keren">keren</option>
+         </select>
+        </div>
 
-                            </ul>
+        <div class="col-sm-4">
+         <select id="dropdown2" class="form-control show-tick">
+          <option value="">--Berdasarkan Bulan--</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+         </select>
+        </div>
+
+        <div class="col-sm-4">
+         <select id="dropdown3" class="form-control show-tick">
+          <option value="">--Berdasarkan Tahun--</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+         </select>
+        </div>
+       </div>
                         </div>
                         <div class="body">
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
@@ -408,12 +434,12 @@
                                         <td>{{$user_s->name}}</td>
                                         <td>{{$user_s->jabatan}}</td>
                                         <td>{{$user_s->email}}</td>
+                                        <td>
                                         @if ($user_s->level != 'admin')
-                                          <td>
                                             <input type="submit" name="edit" class="edit_user" data-id="{{$user_s->id}}" value="edit" data-toggle="modal" data-target="#defaultModal">
                                             <input type="submit" name="delete" class="hapus_user" data-id="{{$user_s->id}}" value="delete">
-                                          </td>
                                         @endif
+                                        </td>
                                     </tr>
                                   @endforeach
                                 </tbody>

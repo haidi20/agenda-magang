@@ -41,3 +41,10 @@ Route::group(['middleware' => 'admin'],function(){
       return view('index.table_user');
   });
 });
+
+Route::get('/coba/index', function(){
+  $kegiatan = ['ke rumah sakit','ke puskesmas','ke luar kota'];
+  for($i = 1; $i <= 10; $i++){
+    echo $i.' '.$kegiatan[rand(0,2)].'<br>';
+  }
+});
