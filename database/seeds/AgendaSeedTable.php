@@ -17,19 +17,28 @@ class AgendaSeedTable extends Seeder
           'user_id'     => 2,
           'nm_proyek'  => '-',
           'kegiatan'    => 'cuti',
-          'tanggal'     => Carbon::now()->format('Y-M-d'),
+          'tanggal'     => Carbon::now()->format('Y-m-d'),
           'jam_mulai'   => Carbon::now()->toTimeString(),
           'jam_selesai' => Carbon::now()->toTimeString(),
-          'keterangan'  => 'mampu' ,
+          'keterangan'  => 'mampu'
         ],
         [
           'user_id'     => 2,
           'nm_proyek'  => '-',
-          'kegiatan'    => 'istirahat',
-          'tanggal'     => Carbon::now()->format('Y-M-d'),
+          'kegiatan'    => 'cuti',
+          'tanggal'     => Carbon::now()->format('Y-m-d'),
           'jam_mulai'   => Carbon::now()->toTimeString(),
           'jam_selesai' => Carbon::now()->toTimeString(),
-          'keterangan'  => 'boleh' ,
+          'keterangan'  => 'mampu'
+        ],
+        [
+          'user_id'     => 3,
+          'nm_proyek'  => '-',
+          'kegiatan'    => 'ke rumah sakit',
+          'tanggal'     => Carbon::now()->format('Y-m-d'),
+          'jam_mulai'   => Carbon::now()->toTimeString(),
+          'jam_selesai' => Carbon::now()->toTimeString(),
+          'keterangan'  => 'boleh'
         ]
       ]);
     }
