@@ -13,6 +13,8 @@ class UsersSeedTable extends Seeder
     public function run()
     {
 
+      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      DB::table('users')->truncate();
       DB::table('users')->insert([
         [
           'name'      => 'admin',
@@ -26,6 +28,13 @@ class UsersSeedTable extends Seeder
           'email'     => 'user@user.com',
           'password'  => bcrypt('user'),
           'level'     => 'user',
+          'jabatan'   => 'anggota',
+        ],
+        [
+          'name'      => 'keren',
+          'email'     => 'keren@keren.com',
+          'password'  => bcrypt('keren'),
+          'level'     => 'keren',
           'jabatan'   => 'anggota',
         ]
       ]);

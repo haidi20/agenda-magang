@@ -9,6 +9,10 @@ use Excel ;
 
 class UserController extends Controller
 {
+  public function index()
+  {
+    return view('index.table_user');
+  }
   public function store(Request $request){
     $name     = $request->name ;
     $pass     = $request->pass ;

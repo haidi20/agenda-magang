@@ -12,7 +12,13 @@ use Excel ;
 class AgendaController extends Controller
 {
 
-    public function index($id){
+  public function coba(Request $request)
+  {
+    $nama = $request->name ;
+    return ('ini nama '.$nama) ;
+  }
+
+    public function index(Request $request, $id){
       // \DB::enableQueryLog();
 
       $user_s     = User::all();
@@ -37,8 +43,20 @@ class AgendaController extends Controller
       $ket              = $request->ket ;
 
       $tanggal_array    = explode(' ' , $tanggal_sebelum) ;
-      $tanggal_array1   = [$tanggal_array[3], $tanggal_array[2], $tanggal_array[1]] ;
-      $tanggal          = implode(' ' , $tanggal_array1);
+      if($tanggal_array[2] == 'January'){$bulan = 1;}
+  		else if($tanggal_array[2] == 'February'){$bulan = 2;}
+  		else if($tanggal_array[2] == 'March'){$bulan = 3;}
+  		else if($tanggal_array[2] == 'April'){$bulan = 4;}
+  		else if($tanggal_array[2] == 'May'){$bulan = 5;}
+  		else if($tanggal_array[2] == 'June'){$bulan = 6;}
+  		else if($tanggal_array[2] == 'July'){$bulan = 7;}
+  		else if($tanggal_array[2] == 'August'){$bulan = 8;}
+  		else if($tanggal_array[2] == 'September'){$bulan = 9;}
+  		else if($tanggal_array[2] == 'October'){$bulan = 10;}
+  		else if($tanggal_array[2] == 'November'){$bulan = 11;}
+  		else if($tanggal_array[2] == 'December'){$bulan = 12;}
+      $tanggal_array1   = [$tanggal_array[3],'-', $bulan,'-', $tanggal_array[1]] ;
+      $tanggal          = implode('' , $tanggal_array1);
 
       // return $id. ' ' . $tanggal. ' ' . $jam_mulai. ' ' . $jam_selesai. ' ' . $nm_keg. ' ' . $nm_pro. ' ' . $ket ;
 
