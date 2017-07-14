@@ -21,40 +21,37 @@ $(document).on('change','select', function(tambah)
 		var name = [name1, name2, name3];
 		var a =0;
 		var b='';
-		//name1 = 'name='+name1;
-
-		//while(name)
-		//{
-		//	console.log(name);
-		//}
 
 		$.each(name, function( index, value ) {
 		  if(value != '')
 			{
 				a = a+1;
 				if(a > 1)
-				{
-					 b = b+'&'+value;
-				}
+				{b = b+'&'+value;}
 				else
-				{
-					b = value;
-				}
-
+				{b = value;}
 			}
 			return b;
 		});
-
 		console.log(b);
-			//window.location.href = "http://localhost:8000/coba/index?"+b ;
-
-		//$.ajax({
-			//	url		: '/home/'.
-		//});
-
   });
 
-// hapus username
+// hapus data user
+$(document).on('click' , '.hapus_user', function(){
+ ajax() ;
+ var id = $(this).attr('data-id');
+ $.ajax({
+  url   : '/delete/user',
+  method : 'post',
+  data  : {id:id},
+  success : function(data){
+   // console.log(data);
+   $('#user_'+data).fadeOut();
+  }
+ });
+});
+
+
 // update data user
 $(document).on('click','#update-user', function(){
 	ajax() ;

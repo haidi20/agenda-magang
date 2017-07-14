@@ -196,12 +196,40 @@
             <div class="card">
                 <div class="header">
                     <h2>Agenda</h2><br>
+                    <div class="row">
+                      <div class="col-sm-4">
+                       <select id="dropdown3" class="form-control show-tick">
+                        <option value="">--Berdasarkan Tahun--</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                       </select>
+                      </div>
+                      <div class="col-sm-4">
+                       <select id="dropdown2" class="form-control show-tick">
+                        <option value="">--Berdasarkan Bulan--</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                       </select>
+                      </div>
+                      <div class="col-sm-4">
+                       <select id="dropdown1" class="form-control show-tick">
+                        <option value="">--Berdasarkan Tanggal--</option>
+                        @php
+                          for($i = 2 ; $i <= 11; $i++){
+                            echo '<option value="'.$i.'">'.$i.'</option>' ;
+                          }
+                        @endphp
+                       </select>
+                      </div>
+                    </div><br>
                     {{-- <a style="text-decoration : none;" href="{{url('/excel')}}"> --}}
                     <button class="btn btn-danger" id="konvert" data="{{url('/excel/'.$user->id)}}" >Cetak EXCEL</a></button>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
-                        <table class="table table-hover dashboard-task-infos">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>
                                   @if (Auth::user()->level == 'admin')
@@ -390,33 +418,33 @@
                             </h2>
                             <br>
                             <div class="row">
-        <div class="col-sm-4">
-         <select id="dropdown1" class="form-control show-tick">
-          <option value="">--Berdasarkan Tanggal--</option>
-          <option value="user">user</option>
-          <option value="admin">admin</option>
-          <option value="keren">keren</option>
-         </select>
-        </div>
+                              <div class="col-sm-4">
+                               <select id="dropdown1" class="form-control show-tick">
+                                <option value="">--Berdasarkan Tanggal--</option>
+                                <option value="user">user</option>
+                                <option value="admin">admin</option>
+                                <option value="keren">keren</option>
+                               </select>
+                              </div>
 
-        <div class="col-sm-4">
-         <select id="dropdown2" class="form-control show-tick">
-          <option value="">--Berdasarkan Bulan--</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-         </select>
-        </div>
+                              <div class="col-sm-4">
+                               <select id="dropdown2" class="form-control show-tick">
+                                <option value="">--Berdasarkan Bulan--</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                               </select>
+                              </div>
 
-        <div class="col-sm-4">
-         <select id="dropdown3" class="form-control show-tick">
-          <option value="">--Berdasarkan Tahun--</option>
-          <option value="31">31</option>
-          <option value="32">32</option>
-          <option value="33">33</option>
-         </select>
-        </div>
-       </div>
+                              <div class="col-sm-4">
+                               <select id="dropdown3" class="form-control show-tick">
+                                <option value="">--Berdasarkan Tahun--</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                               </select>
+                              </div>
+                             </div>
                         </div>
                         <div class="body">
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
