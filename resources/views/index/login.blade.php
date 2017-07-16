@@ -8,8 +8,8 @@
           </div>
           <div class="card">
               <div class="body">
-                  <form id="sign_in" method="POST" action="{{Request::secure()?secure_url('/login'):url('/login')}}">
-                  {{-- {{dd(Request::secure())}} --}}
+                  {{-- <form id="sign_in" method="POST" action="{{Request::secure()?secure_url('/login'):url('/login')}}"> --}}
+                  {{dd(Request::secure())}}
                       <div class="msg">{{Session::get('note')}}</div>
                       <div class="input-group">
                           <span class="input-group-addon">
