@@ -25,7 +25,7 @@ class ExcelController extends Controller
                     ->select($field)
                     ->where('user_id' , $id)
                     ->get()->toArray();
-    if(Auth::user()->status == 1){
+    if(Auth::user()->level == 'admin'){
     $agenda = Agenda::join('users' ,'agenda.user_id' , '=', 'users.id' )
                       ->select('users.name' , 'agenda.*')
                       ->get()->toArray();

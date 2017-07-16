@@ -6,19 +6,51 @@ function ajax(){
 		});
 }
 
+$(document).on('change','select', function(tambah)
+  {
+		ajax() ;
+    //tambah.preventDefault();
+
+    var name1 =$('#dropdown1').find(":selected").val();
+    var name2 =$('#dropdown2').find(":selected").val();
+    var name3 =$('#dropdown3').find(":selected").val();
+
+		if(name1 != '') { name1 = 'tanggal='+name1; }
+		if(name2 != '') { name2 = 'bulan='+name2; }
+		if(name3 != '') { name3 = 'tahun='+name3; }
+		var name = [name1, name2, name3];
+		var a =0;
+		var b='';
+
+		$.each(name, function( index, value ) {
+		  if(value != '')
+			{
+				a = a+1;
+				if(a > 1)
+				{b = b+'&'+value;}
+				else
+				{b = value;}
+			}
+			return b;
+		});
+		console.log(b);
+  });
+
+// hapus data user
 $(document).on('click' , '.hapus_user', function(){
-	ajax() ;
-	var id = $(this).attr('data-id');
-	$.ajax({
-		url			: '/delete/user',
-		method	: 'post',
-		data		:	{id:id},
-		success	: function(data){
-			// console.log(data);
-			$('#user_'+data).fadeOut();
-		}
-	});
+ ajax() ;
+ var id = $(this).attr('data-id');
+ $.ajax({
+  url   : '/delete/user',
+  method : 'post',
+  data  : {id:id},
+  success : function(data){
+   // console.log(data);
+   $('#user_'+data).fadeOut();
+  }
+ });
 });
+
 
 // update data user
 $(document).on('click','#update-user', function(){
