@@ -8,7 +8,7 @@
           </div>
           <div class="card">
               <div class="body">
-                  <form id="sign_in" method="POST" action="{{secure_url('/login')}}">
+                  <form id="sign_in" method="POST" action="{{secure_ur('/login')}}">
                       <div class="msg">{{Session::get('note')}}</div>
                       <div class="input-group">
                           <span class="input-group-addon">
