@@ -13,8 +13,11 @@ class UsersSeedTable extends Seeder
     public function run()
     {
 
-      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      // DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      // DB::table('users')->truncate();
+      Schema::disableForeignKeyConstraints();
       DB::table('users')->truncate();
+      Schema::enableForeignKeyConstraints();
       // DB::statement("TRUNCATE TABLE agenda");
       // DB::statement("TRUNCATE TABLE users CASCADE");
       DB::table('users')->insert([
