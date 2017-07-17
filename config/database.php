@@ -1,5 +1,6 @@
 <?php
-if(\App::environment('local')){
+$a = 1 ;
+if($a == 1){
   return [
     'default' => 'pgsql',
     'connections' => [
