@@ -7,24 +7,24 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
 
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
-  <link href="{{!\App::environment('local')?secure_asset('favicon.ico'):asset('favicon.ico')}}" type="image/x-icon"  rel="icon">
+  <link href="{{asset('favicon.ico')}}" type="image/x-icon"  rel="icon">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
-  <link href="{{!\App::environment('local')?secure_asset('plugins/bootstrap/css/bootstrap.css'):asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('plugins/node-waves/waves.css'):asset('plugins/node-waves/waves.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('plugins/animate-css/animate.css'):asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css'):asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('css/style.css'):asset('css/style.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('css/themes/all-themes.css'):asset('css/themes/all-themes.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css'):asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('plugins/waitme/waitMe.css'):asset('plugins/waitme/waitMe.css')}}" rel="stylesheet" />
-  <link href="{{!\App::environment('local')?secure_asset('plugins/bootstrap-select/css/bootstrap-select.css'):asset('plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
-  <link href="{{!\App::environment('local')?secure_asset('plugins/bootstrap-select/css/bootstrap-select.css'):asset('plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
+  <link href="{{asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet" />
+  <link href="{{asset('plugins/node-waves/waves.css')}}" rel="stylesheet" />
+  <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
+  <link href="{{asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet" />
+  <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+  <link href="{{asset('css/themes/all-themes.css')}}" rel="stylesheet" />
+  <link href="{{asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet" />
+  <link href="{{asset('plugins/waitme/waitMe.css')}}" rel="stylesheet" />
+  <link href="{{asset('plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
+  <link href="{{asset('plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 
@@ -93,7 +93,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="{{!\App::environment('local')?secure_asset('images/user.png'):asset('images/user.png')}}" width="48" height="48" alt="User" />
+                    <img src="{{asset('images/user.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$user->name}}</div>
@@ -149,7 +149,7 @@
 
 					<!---------------------------------------------------->
         					<li>
-                      <a href="{{!\App::environment('local')?secure_url('/logout'):url('/logout')}}">
+                      <a href="{{url('/logout')}}">
                           <i class="material-icons">text_fields</i>
                           <span>Logout</span>
                       </a>
@@ -358,7 +358,7 @@
           <div class="body">
                       <h2 class="card-inside-title">Tambah User</h2>
                           <div class="row clearfix">
-                            <form action="{{!\App::environment('local')?secure_url('/tambah/user'):url('/tambah/user')}}" method="POST">
+                            <form action="{{url('/tambah/user')}}" method="POST">
                               {{ csrf_field() }}
                               <div class="col-sm-12">
                                   <div class="form-group">
@@ -517,29 +517,29 @@
     </div>
     </section>
 
-    <script src="{{!\App::environment('local')?secure_asset('plugins/jquery/jquery.min.js'):asset('plugins/jquery/jquery.min.js')}}"></script>
-  	<script src="{{!\App::environment('local')?secure_asset('js/custom.js'):asset('js/custom.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/bootstrap/js/bootstrap.js'):asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/jquery.dataTables.js'):asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/bootstrap-select/js/bootstrap-select.js'):asset('plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-slimscroll/jquery.slimscroll.js'):asset('plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/node-waves/waves.js'):asset('plugins/node-waves/waves.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/jquery.dataTables.js'):asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js'):asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js'):asset('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/extensions/export/buttons.flash.min.js'):asset('plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/extensions/export/jszip.min.js'):asset('plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/extensions/export/pdfmake.min.js'):asset('plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/extensions/export/vfs_fonts.js'):asset('plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/extensions/export/buttons.html5.min.js'):asset('plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('plugins/jquery-datatable/extensions/export/buttons.print.min.js'):asset('plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('js/admin.js'):asset('js/admin.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('js/pages/tables/jquery-datatable.js'):asset('js/pages/tables/jquery-datatable.js')}}"></script>
-      <script src="{{!\App::environment('local')?secure_asset('js/demo.js'):asset('js/demo.js')}}"></script>
-  	<script src="{{!\App::environment('local')?secure_asset('js/pages/forms/basic-form-elements.js'):asset('js/pages/forms/basic-form-elements.js')}}"></script>
-  	<script src="{{!\App::environment('local')?secure_asset('plugins/momentjs/moment.js'):asset('plugins/momentjs/moment.js')}}"></script>
-  	<script src="{{!\App::environment('local')?secure_asset('plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js'):asset('plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
-  	<script src="{{!\App::environment('local')?secure_asset('plugins/autosize/autosize.js'):asset('plugins/autosize/autosize.js')}}"></script>
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+  	<script src="{{asset('js/custom.js')}}"></script>
+      <script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
+      <script src="{{asset('plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
+      <script src="{{asset('plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
+      <script src="{{asset('plugins/node-waves/waves.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
+      <script src="{{asset('plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+      <script src="{{asset('js/admin.js')}}"></script>
+      <script src="{{asset('js/pages/tables/jquery-datatable.js')}}"></script>
+      <script src="{{asset('js/demo.js')}}"></script>
+  	<script src="{{asset('js/pages/forms/basic-form-elements.js')}}"></script>
+  	<script src="{{asset('plugins/momentjs/moment.js')}}"></script>
+  	<script src="{{asset('plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+  	<script src="{{asset('plugins/autosize/autosize.js')}}"></script>
 </body>
 
 </html>
