@@ -463,11 +463,11 @@
                                         <td>{{$user_s->jabatan}}</td>
                                         <td>{{$user_s->email}}</td>
                                         <td>
-                                        {{-- @if ($user_s->level != 'admin')
+                                        @if ($user_s->level != 'admin')
                                             <input type="submit" name="edit" class="edit_user" data-id="{{$user_s->id}}" value="edit" data-toggle="modal" data-target="#defaultModal">
                                             <input type="submit" name="delete" class="hapus_user" data-id="{{$user_s->id}}" value="delete">
-                                        @endif --}}
-                                        <input type="hidden" name="" value="">
+                                        @endif
+                                        {{-- <input type="hidden" name="" value=""> --}}
                                         </td>
                                     </tr>
                                   @endforeach
