@@ -13,6 +13,8 @@ class UsersSeedTable extends Seeder
     public function run()
     {
 
+      DB::statement("TRUNCATE TABLE agenda");
+      DB::statement("TRUNCATE TABLE users CASCADE");
       DB::statement('SET FOREIGN_KEY_CHECKS=0');
       DB::table('users')->truncate();
       DB::table('users')->insert([
@@ -38,7 +40,5 @@ class UsersSeedTable extends Seeder
           'jabatan'   => 'anggota',
         ]
       ]);
-      DB::statement("TRUNCATE TABLE agenda");
-      DB::statement("TRUNCATE TABLE users CASCADE");
     }
 }
