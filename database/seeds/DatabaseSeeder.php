@@ -11,17 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      $this->command->info('Unguarding models');
-      Model::unguard();
-
-      $tables = [
-          'users',
-          'agenda',
-      ];
-
-      $this->command->info('Truncating existing tables');
-      DB::statement('TRUNCATE TABLE ' . implode(',', $tables). ';');
         $this->call(UsersSeedTable::class);
-        $this->call(AgendaSeedTable::class);
+        // $this->call(AgendaSeedTable::class);
     }
 }
