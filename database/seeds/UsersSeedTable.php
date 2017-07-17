@@ -38,7 +38,5 @@ class UsersSeedTable extends Seeder
           'jabatan'   => 'anggota',
         ]
       ]);
-      DB::statement("TRUNCATE TABLE agenda");
-      DB::statement("TRUNCATE TABLE users CASCADE");
     }
 }
