@@ -13,16 +13,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="{{!\App::environment('local')?secure_asset('plugins/bootstrap/css/bootstrap.css'):asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="{{!\App::environment('local')?secure_asset('plugins/node-waves/waves.css'):asset('plugins/node-waves/waves.css')}}" rel="stylesheet" />
+    <link href="{{asset('plugins/node-waves/waves.css')}}" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="{{!\App::environment('local')?secure_asset('plugins/animate-css/animate.css'):asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
+    <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="{{!\App::environment('local')?secure_asset('css/style.css'):asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
 @yield('body')
 </html>
