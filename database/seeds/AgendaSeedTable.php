@@ -30,37 +30,6 @@ class AgendaSeedTable extends Seeder
           'keterangan'  => 'boleh'
         ];
       }
-
       DB::table('agenda')->insert($agenda);
-
-      // DB::table('agenda')->insert([
-      //   [
-      //     'user_id'     => 2,
-      //     'nm_proyek'  => '-',
-      //     'kegiatan'    => 'cuti',
-      //     'tanggal'     => Carbon::now()->format('Y-m-d'),
-      //     'jam_mulai'   => Carbon::now()->toTimeString(),
-      //     'jam_selesai' => Carbon::now()->toTimeString(),
-      //     'keterangan'  => 'mampu'
-      //   ],
-      //   [
-      //     'user_id'     => 2,
-      //     'nm_proyek'  => '-',
-      //     'kegiatan'    => 'cuti',
-      //     'tanggal'     => Carbon::now()->format('Y-m-d'),
-      //     'jam_mulai'   => Carbon::now()->toTimeString(),
-      //     'jam_selesai' => Carbon::now()->toTimeString(),
-      //     'keterangan'  => 'mampu'
-      //   ],
-      //   [
-      //     'user_id'     => 3,
-      //     'nm_proyek'  => '-',
-      //     'kegiatan'    => 'ke rumah sakit',
-      //     'tanggal'     => Carbon::now()->format('Y-m-d'),
-      //     'jam_mulai'   => Carbon::now()->toTimeString(),
-      //     'jam_selesai' => Carbon::now()->toTimeString(),
-      //     'keterangan'  => 'boleh'
-      //   ]
-      // ]);
     }
 }
