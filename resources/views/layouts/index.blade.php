@@ -7,7 +7,9 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
 
-
+  {{header('Access-Control-Allow-Origin: *')}}
+  {{header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS')}}
+  {{header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token')}} // all
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">

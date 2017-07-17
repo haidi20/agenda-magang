@@ -1,5 +1,5 @@
 <?php
-$a = 1 ;
+$a = 1 ; // untuk settingan postgreSQL
 if($a == 1){
   return [
     'default' => 'pgsql',
