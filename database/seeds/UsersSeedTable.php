@@ -15,6 +15,8 @@ class UsersSeedTable extends Seeder
 
       DB::statement('SET FOREIGN_KEY_CHECKS=0');
       DB::table('users')->truncate();
+      // DB::statement("TRUNCATE TABLE agenda");
+      // DB::statement("TRUNCATE TABLE users CASCADE");
       DB::table('users')->insert([
         [
           'name'      => 'admin',

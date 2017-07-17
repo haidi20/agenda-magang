@@ -1,5 +1,5 @@
 <?php
-$a = 1 ;
+$a = 0 ;
 if($a == 1){
   return [
     'default' => 'pgsql',
