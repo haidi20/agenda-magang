@@ -26,9 +26,7 @@ Route::get('/excel/{id}','ExcelController@store');
 
 Route::group(['middleware' => 'user'],function(){
   Route::get('/home/{id}', 'AgendaController@index');
-  Route::get('/agenda', function () {
-      return view('index.tambah_agenda');
-  });
+  route::post('/filter/{id}','AgendaController@index');
   Route::post('/tambah/agenda','AgendaController@store');
 });
 

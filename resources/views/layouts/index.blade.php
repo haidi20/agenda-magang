@@ -196,25 +196,27 @@
             <div class="card">
                 <div class="header">
                     <h2>Agenda</h2><br>
+                    <form action="{{url('/filter/'.$user->id)}}" method="post">
+                      {{ csrf_field() }}
                     <div class="row">
-                      <div class="col-sm-4">
-                       <select id="dropdown3" class="form-control show-tick">
+                      <div class="col-md-3">
+                       <select id="dropdown1" class="form-control show-tick" name="tahun">
                         <option value="">--Berdasarkan Tahun--</option>
-                        <option value="31">31</option>
-                        <option value="32">32</option>
-                        <option value="33">33</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
                        </select>
                       </div>
-                      <div class="col-sm-4">
-                       <select id="dropdown2" class="form-control show-tick">
+                      <div class="col-md-3">
+                       <select id="dropdown2" class="form-control show-tick" name="bulan">
                         <option value="">--Berdasarkan Bulan--</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="04">04</option>
                        </select>
                       </div>
-                      <div class="col-sm-4">
-                       <select id="dropdown1" class="form-control show-tick">
+                      <div class="col-md-3">
+                       <select id="dropdown3" class="form-control show-tick" name="tanggal">
                         <option value="">--Berdasarkan Tanggal--</option>
                         @php
                           for($i = 2 ; $i <= 11; $i++){
@@ -223,7 +225,12 @@
                         @endphp
                        </select>
                       </div>
-                    </div><br>
+                      <div class="col-md-3">
+                       <input type="submit" id="kirim" data-user="{{$user->id}}" value="kirim">
+                      </div>
+                    </div>
+                    </form>
+                    <br>
                     {{-- <a style="text-decoration : none;" href="{{url('/excel')}}"> --}}
                     <button class="btn btn-danger" id="konvert" data="{{url('/excel/'.$user->id)}}" >Cetak EXCEL</a></button>
                 </div>
@@ -242,7 +249,7 @@
                                     <th>Keterangan</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="body">
                               @foreach ($agendaa as $agenda)
                                 <tr>
                                     {{-- <td>{{$agenda->id}}</td> --}}

@@ -6,34 +6,21 @@ function ajax(){
 		});
 }
 
-$(document).on('change','select', function(tambah)
-  {
+$(document).on('click','#kirim', function(){
 		ajax() ;
-    //tambah.preventDefault();
 
+		var id = $(this).attr('data-user');
     var name1 =$('#dropdown1').find(":selected").val();
     var name2 =$('#dropdown2').find(":selected").val();
     var name3 =$('#dropdown3').find(":selected").val();
-
-		if(name1 != '') { name1 = 'tanggal='+name1; }
-		if(name2 != '') { name2 = 'bulan='+name2; }
-		if(name3 != '') { name3 = 'tahun='+name3; }
-		var name = [name1, name2, name3];
-		var a =0;
-		var b='';
-
-		$.each(name, function( index, value ) {
-		  if(value != '')
-			{
-				a = a+1;
-				if(a > 1)
-				{b = b+'&'+value;}
-				else
-				{b = value;}
-			}
-			return b;
+		$.ajax({
+				url			: '/home/'+id ,
+				method	: 'get',
+				data		: {data1 : name1, data2:name2, data3:name3},
+				success	: function(data){
+					console.log(data);
+				}
 		});
-		console.log(b);
   });
 
 // hapus data user
