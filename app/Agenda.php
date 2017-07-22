@@ -20,9 +20,12 @@ class Agenda extends Model
     {
       return $this->belongsTo('App\User');
     }
-    public function scopeFilter($query, $tahun, $bulan)
+    public function scopeFilterDate($query,$tahun,$bulan,$tanggal)
     {
-      return $query->whereYear('tanggal', $tahun)
-                   ->whereMonth('tanggal','') ;
+      $date = $query ;
+      if ($tahun) {$date->whereYear('tanggal', $tahun);}
+      if ($bulan) {$date->whereMonth('tanggal',$bulan) ;}
+      if ($tanggal) {$date->whereDay('tanggal',$tanggal);}
+      return $date ;
     }
 }

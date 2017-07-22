@@ -8,26 +8,50 @@ use App\User ;
 use App\Agenda ;
 use DB ;
 use Excel ;
+use App\custome\Custome ;
 
 class AgendaController extends Controller
 {
+
   public function index(Request $request, $id){
     // \DB::enableQueryLog();
     $tahun      = $request->tahun ;
     $bulan      = $request->bulan ;
     $tanggal    = $request->tanggal;
 
-    $user_s     = User::all();
-    $user       = User::find($id);
-    
+    // $user       = User::find($id);  // untuk identifikasi user
     // hak akses
     if(Auth::user()->level == 'admin'){
-      $agenda   = Agenda::all();
+      $agenda   = Agenda::FilterDate($tahun,$bulan,$tanggal)
+                          ->join('users','agenda.user_id','=','users.id')
+                          ->select('users.name' , 'agenda.*')
+                          ->get();
     }else{
-      $agenda    = Agenda::where('user_id' , $id)->get();
+      $agenda   = Agenda::FilterDate($tahun,$bulan,$tanggal)
+                          ->join('users','agenda.user_id','=','users.id')
+                          ->select('users.name' , 'agenda.*')
+                          ->where('user_id' , $id)
+                          ->get();
+    }
+
+    // dd($agenda);
+    foreach ($agenda as $key) {
+      $name = '' ;
+      if(Auth::user()->level == 'admin') {
+        $name = '<td>'.$key->name.'</td>' ;
+      }
+      $data = '<tr>'
+                . $name
+                .'<td>'.$key->tanggal.'</td>'
+                .'<td>'.$key->jam_mulai.'s/d'.$key->jam_selesai.'</td>'
+                .'<td>'.$key->kegiatan.'</td>'
+                .'<td>'.$key->nm_proyek.'</td>'
+                .'<td>'.$key->keterangan.'</td>'
+              .'</tr>';
+    echo $data. '<br>' ;
     }
     // dd(DB::getQueryLog($agenda));
-    return view('layouts.index',['agendaa'=>$agenda, 'users' => $user_s , 'user' => $user]);
+    // return view('index.agenda',['agendaa'=>$agenda, 'user' => $user]);
   }
 
   public function store(Request $request){
