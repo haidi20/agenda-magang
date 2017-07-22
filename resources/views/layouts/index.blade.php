@@ -48,9 +48,9 @@
 
 			<div class="collapse " id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="href" href="#">&nbsp; Home</a></li>
-					<li><a class="href" href="user.html">&nbsp; User</a></li>
-          <li><a class="href" href="logout">&nbsp; Logout</a></li>
+					<li><a class="href" href="{{url('/agenda/'.$user->id)}}">&nbsp; Home</a></li>
+					<li><a class="href" href="{{url('/user/'.$user->id)}}">&nbsp; User</a></li>
+          <li><a class="href" href="{{url('/logout')}}">&nbsp; Logout</a></li>
 				</ul>
 			</div>
 		</div>
