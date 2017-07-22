@@ -11,7 +11,6 @@
 |
 */
 
-
   Route::get('/', function () {
     if(Auth::check()){
       return redirect('home/' . Auth::id());
@@ -20,24 +19,13 @@
   });
   Route::post('/login' , 'LoginController@login');
   Route::get('/logout', 'LoginController@logout');
-// });
 
-Route::get('/excel/{id}','ExcelController@store');
+Route::get('/excel/{id}','ExcelController@store'); // convert to excel
 
 Route::group(['middleware' => 'user'],function(){
-  Route::get('/home/{id}', 'AgendaController@index');
-  Route::get('/agenda', function () {
-      return view('index.tambah_agenda');
-  });
-  Route::post('/tambah/agenda','AgendaController@store');
-});
+  Route::get('/agenda/{id}','AgendaController@index');
 
-Route::group(['middleware' => 'admin'],function(){
-  Route::post('/tambah/user', 'UserController@store');
-  Route::post('/edit/user' , 'UserController@edit');
-  Route::post('/delete/user', 'UserController@destroy');
-  Route::post('/update/user' ,'UserController@update');
-  Route::get('/lihat/user', function () {
-      return view('index.table_user');
+  Route::group(['middleware' => 'admin'],function(){
+    Route::get('/user/{id}', 'UserController@index');
   });
 });

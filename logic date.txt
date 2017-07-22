@@ -1,0 +1,7 @@
+tahun
+tahun->bulan
+tahun->	    ->tanggal
+tahun->bulan->tanggal
+     ->bulan
+     ->bulan->tanggal
+     ->tanggal

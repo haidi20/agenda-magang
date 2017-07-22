@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "algolia/algoliasearch-client-php": "^1.18",
         "laravel/framework": "5.3.*",
+        "laravel/scout": "1.1.*",
         "maatwebsite/excel": "^2.1"
     },
     "require-dev": {
