@@ -19,7 +19,7 @@ class AgendaController extends Controller
     $bulan      = $request->bulan ;
     $tanggal    = $request->tanggal;
 
-    // $user       = User::find($id);  // untuk identifikasi user
+    $user       = User::find($id);  // untuk identifikasi user
     // hak akses
     if(Auth::user()->level == 'admin'){
       $agenda   = Agenda::FilterDate($tahun,$bulan,$tanggal)
