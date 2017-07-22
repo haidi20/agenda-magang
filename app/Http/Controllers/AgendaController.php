@@ -35,23 +35,23 @@ class AgendaController extends Controller
     }
 
     // dd($agenda);
-    foreach ($agenda as $key) {
-      $name = '' ;
-      if(Auth::user()->level == 'admin') {
-        $name = '<td>'.$key->name.'</td>' ;
-      }
-      $data = '<tr>'
-                . $name
-                .'<td>'.$key->tanggal.'</td>'
-                .'<td>'.$key->jam_mulai.'s/d'.$key->jam_selesai.'</td>'
-                .'<td>'.$key->kegiatan.'</td>'
-                .'<td>'.$key->nm_proyek.'</td>'
-                .'<td>'.$key->keterangan.'</td>'
-              .'</tr>';
-    echo $data. '<br>' ;
-    }
+    // foreach ($agenda as $key) {
+    //   $name = '' ;
+    //   if(Auth::user()->level == 'admin') {
+    //     $name = '<td>'.$key->name.'</td>' ;
+    //   }
+    //   $data = '<tr>'
+    //             . $name
+    //             .'<td>'.$key->tanggal.'</td>'
+    //             .'<td>'.$key->jam_mulai.'s/d'.$key->jam_selesai.'</td>'
+    //             .'<td>'.$key->kegiatan.'</td>'
+    //             .'<td>'.$key->nm_proyek.'</td>'
+    //             .'<td>'.$key->keterangan.'</td>'
+    //           .'</tr>';
+    // echo $data. '<br>' ;
+    // }
     // dd(DB::getQueryLog($agenda));
-    // return view('index.agenda',['agendaa'=>$agenda, 'user' => $user]);
+    return view('index.agenda',['agendaa'=>$agenda, 'user' => $user]);
   }
 
   public function store(Request $request){
