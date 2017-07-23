@@ -19,7 +19,7 @@ class AdminMiddleware
       if( Auth::user()->level == 'admin'){
         return $next($request);
       }else if(Auth::check()){
-        return redirect('/agenda/'.Auth::id());
+        return redirect('/agenda');
       }else{
         return redirect('/');
       }

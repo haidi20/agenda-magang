@@ -48,8 +48,8 @@
 
 			<div class="collapse " id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="href" href="{{url('/agenda/'.$user->id)}}">&nbsp; Home</a></li>
-					<li><a class="href" href="{{url('/user/'.$user->id)}}">&nbsp; User</a></li>
+					<li><a class="href" href="{{url('/agenda')}}">&nbsp; Home</a></li>
+					<li><a class="href" href="{{url('/user')}}">&nbsp; User</a></li>
           <li><a class="href" href="{{url('/logout')}}">&nbsp; Logout</a></li>
 				</ul>
 			</div>
@@ -68,9 +68,9 @@
   </div>
   <!-- MENU SAMPING -->
   <div class="row">
-    <a id="menu_home" class="list-group-item href" href="{{url('/agenda/'.$user->id)}}"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Home</a>
+    <a id="menu_home" class="list-group-item href" href="{{url('/agenda')}}"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Home</a>
     @if (Auth::user()->level == 'admin')
-    <a id="menu_user" class="list-group-item href" href="{{url('/user/'.$user->id)}}"><i class="fa fa-user-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; User</a>
+    <a id="menu_user" class="list-group-item href" href="{{url('/user')}}"><i class="fa fa-user-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; User</a>
     @endif
     <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Settings</a>
     <a class="list-group-item" href="{{url('/logout')}}"><i class="fa fa-sign-out fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Log Out</a>

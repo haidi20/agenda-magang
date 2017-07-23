@@ -11,21 +11,14 @@
 |
 */
 
-  Route::get('/', function () {
-    if(Auth::check()){
-      return redirect('home/' . Auth::id());
-    }
-      return view('index.login');
-  });
-  Route::post('/login' , 'LoginController@login');
-  Route::get('/logout', 'LoginController@logout');
-
-Route::get('/excel/{id}','ExcelController@store'); // convert to excel
-
+Route::group(['middleware' => 'login'], function(){
+  Route::get('/',function(){ return view('index.login'); });
+});
+Route::post('/login' , 'LoginController@login');
+Route::get('/logout', 'LoginController@logout');
 Route::group(['middleware' => 'user'],function(){
-  Route::get('/agenda/{id}','AgendaController@index');
-
+  Route::resource('/agenda','AgendaController');
   Route::group(['middleware' => 'admin'],function(){
-    Route::get('/user/{id}', 'UserController@index');
+    Route::resource('/user', 'UserController');
   });
 });

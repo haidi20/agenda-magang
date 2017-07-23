@@ -9,7 +9,8 @@ use Excel ;
 
 class UserController extends Controller
 {
-  public function index($id){
+  public function index(){
+    $id        = Auth::id();
     $users     = User::all();      // untuk menampilkan semua user pada admin
     $user      = User::find($id);  // untuk identifikasi user
     return view('index.user',['users' => $users, 'user'=>$user]);

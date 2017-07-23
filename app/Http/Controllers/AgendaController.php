@@ -13,8 +13,9 @@ use App\custome\Custome ;
 class AgendaController extends Controller
 {
 
-  public function index(Request $request, $id){
+  public function index(Request $request){
     // \DB::enableQueryLog();
+    $id         = Auth::id() ;
     $tahun      = $request->tahun ;
     $bulan      = $request->bulan ;
     $tanggal    = $request->tanggal;
