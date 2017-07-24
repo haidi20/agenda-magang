@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable ;
+use Auth;
 
 class Agenda extends Model
 {
@@ -12,20 +13,36 @@ class Agenda extends Model
     protected $hidden = [
       'id' , 'user_id'
     ] ;
-    public function searchableAs()
+
+    public function scopeFilterDate($query)
     {
-      return 'kegiatan' ;
+      $mulai = request('date1');
+      $akhir = request('date2');
+
+      if(!empty($mulai)){
+        if(!empty($mulai) && !empty($akhir)){
+          $agenda = $query->whereBetween('tanggal', compact('mulai','akhir'));
+        }else{
+          $agenda = $query->whereDate('tanggal' , $mulai);
+        }
+      }
+    }
+    public function scopeFilterUser($query,$id)
+    {
+      $user = request('user');
+      if(!empty($user)){
+        $agenda = $query->where('users.name' , $user);
+      }elseif(Auth::user()->level == 'user'){
+        $agenda = $query->where('user_id' , $id);
+      }
+    }
+    public function scopeQueryAgenda($query)
+    {
+      $agenda = $query->join('users','agenda.user_id','=','users.id')
+                      ->select('users.name' , 'agenda.*') ;
     }
     public function user()
     {
       return $this->belongsTo('App\User');
-    }
-    public function scopeFilterDate($query,$tahun,$bulan,$tanggal)
-    {
-      $date = $query ;
-      if ($tahun) {$date->whereYear('tanggal', $tahun);}
-      if ($bulan) {$date->whereMonth('tanggal',$bulan) ;}
-      if ($tanggal) {$date->whereDay('tanggal',$tanggal);}
-      return $date ;
     }
 }

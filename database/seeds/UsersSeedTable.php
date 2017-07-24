@@ -34,7 +34,7 @@ class UsersSeedTable extends Seeder
           'name'      => 'keren',
           'email'     => 'keren@keren.com',
           'password'  => bcrypt('keren'),
-          'level'     => 'keren',
+          'level'     => 'user',
           'jabatan'   => 'anggota',
         ]
       ]);

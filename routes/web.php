@@ -15,6 +15,10 @@ Route::get('/',['middleware' => 'login' , function(){ return view('index.login')
 Route::post('/login' , 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 Route::group(['middleware' => 'user'],function(){
-  Route::resource('/agenda','AgendaController');
-  Route::group(['middleware' => 'admin'],function(){ Route::resource('/user', 'UserController'); });
+  Route::get('agenda',function(){ return redirect()->to('/agenda'); });
+  Route::resource('agenda' , 'AgendaController');
+  Route::group(['middleware' => 'admin'],function(){
+    Route::get('user',function(){ return redirect()->to('/user'); });
+    Route::resource('/user', 'UserController');
+  });
 });

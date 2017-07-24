@@ -15,44 +15,47 @@
                       <div class="card">
                           <div class="header">
                               <h2>
-                                  BASIC EXAMPLE
-                              </h2><br>
-                              <form action="{{url('/agenda/'.$user->id)}}" method="get">
-                                {{ csrf_field() }}
+                                  Agenda
+                              </h2>
+                              <form action="{{route('agenda.index')}}" method="get">
                               <div class="row">
                                 <div class="col-md-3">
-                                 <select id="dropdown1" class="form-control show-tick" name="tahun">
-                                  <option value="">--Berdasarkan Tahun--</option>
-                                  <option value="2017">2017</option>
-                                  <option value="2016">2016</option>
-                                  <option value="2015">2015</option>
+                                 <select class="form-control show-tick" name="date1">
+                                  <option value="">-- Semua Tanggal --</option>
+                                  <option value="2016-01-10">2016-01-10</option>
+                                  <option value="2016-05-11">2016-05-11</option>
+                                  <option value="2017-01-07">2017-01- 07</option>
                                  </select>
                                 </div>
                                 <div class="col-md-3">
-                                 <select id="dropdown2" class="form-control show-tick" name="bulan">
-                                  <option value="">--Berdasarkan Bulan--</option>
-                                  <option value="01">01</option>
-                                  <option value="02">02</option>
-                                  <option value="03">03</option>
-                                  <option value="04">04</option>
+                                 <select class="form-control show-tick" name="date2">
+                                  <option value="">-- Semua Tanggal --</option>
+                                  <option value="2016-01-10">2016-01-10</option>
+                                  <option value="2016-05-11">2016-05-11</option>
+                                  <option value="2017-01-07">2017-01-07</option>
                                  </select>
                                 </div>
-                                <div class="col-md-3">
-                                 <select id="dropdown3" class="form-control show-tick" name="tanggal">
-                                  <option value="">--Berdasarkan Tanggal--</option>
-                                  @php
-                                    for($i = 2 ; $i <= 11; $i++){
-                                      echo '<option value="'.$i.'">'.$i.'</option>' ;
-                                    }
-                                  @endphp
-                                 </select>
-                                </div>
-                                <div class="col-md-3">
-                                 <input type="submit" id="kirim" value="kirim">
+                                @if (Auth::user()->level == 'admin')
+                                  <div class="col-md-2">
+                                    <select class="form-control show-tick" name="user">
+                                      <option value="">-- Semua User --</option>
+                                      @foreach ($users as $users)
+                                        <option value="{{$users->name}}">{{$users->name}}</option>
+                                      @endforeach
+                                    </select>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <select class="form-control show-tick" name="proyek">
+                                      <option value="">-- Semua Proyek --</option>
+                                    </select>
+                                  </div>
+                                @endif
+                                <div class="col-md-1">
+                                 <input type="submit" id="kirim" value="filter">
                                 </div>
                               </div>
                               </form>
-                          </div>
+                          </div><br>
                           <div class="body">
 
           <table id="example" class="display nowrap" cellspacing="0" width="100%">
@@ -69,7 +72,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($agendaa as $agenda)
+            @foreach ($agenda as $agenda)
               <tr>
                   {{-- <td>{{$agenda->id}}</td> --}}
                   @if (Auth::user()->level == 'admin')
