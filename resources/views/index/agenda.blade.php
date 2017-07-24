@@ -50,7 +50,7 @@
                                   <div class="col-md-3">
                                     <select class="form-control show-tick" name="proyek">
                                       <option value="">-- Semua Proyek --</option>
-                                      @foreach ($proyek as $proyek)
+                                      @foreach ($proyekk as $proyek)
                                         <option value="{{$proyek->nm_proyek}}">{{$proyek->nm_proyek}}</option>
                                       @endforeach
                                     </select>

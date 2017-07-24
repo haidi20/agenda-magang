@@ -28,7 +28,7 @@ class AgendaController extends Controller
                 ->get();
     // return $agenda ;
     // dd(DB::getQueryLog());
-    return view('index.agenda',['agendaa'=>$agenda, 'user' => $user, 'users' => $users, 'proyek'=>$proyek]);
+    return view('index.agenda',['agendaa'=>$agenda, 'user' => $user, 'users' => $users, 'proyekk'=>$proyek]);
   }
 
   public function store(Request $request){
