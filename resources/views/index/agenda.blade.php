@@ -22,17 +22,20 @@
                                 <div class="col-md-3">
                                  <select class="form-control show-tick" name="date1">
                                   <option value="">-- Semua Tanggal --</option>
-                                  <option value="2016-01-10">2016-01-10</option>
-                                  <option value="2016-05-11">2016-05-11</option>
-                                  <option value="2017-01-07">2017-01- 07</option>
+                                  @foreach ($agendaa as $agenda)
+                                    <option value="{{$agenda->tanggal}}">{{$agenda->tanggal}}</option>
+                                  @endforeach
                                  </select>
                                 </div>
-                                <div class="col-md-3">
-                                 <select class="form-control show-tick" name="date2">
-                                  <option value="">-- Semua Tanggal --</option>
-                                  <option value="2016-01-10">2016-01-10</option>
-                                  <option value="2016-05-11">2016-05-11</option>
-                                  <option value="2017-01-07">2017-01-07</option>
+                                <div class="col-md-3" id="range">
+                                  <input type="button" id="tambah_range" value="Add Range">
+                                </div>
+                                <div class="col-md-3" style="display:none;" id="tanggal2">
+                                 <select class="form-control show-tick" name="date2" >
+                                   <option value="">-- Semua Tanggal --</option>
+                                   @foreach ($agendaa as $agenda)
+                                     <option value="{{$agenda->tanggal}}">{{$agenda->tanggal}}</option>
+                                   @endforeach
                                  </select>
                                 </div>
                                 @if (Auth::user()->level == 'admin')
@@ -47,6 +50,9 @@
                                   <div class="col-md-3">
                                     <select class="form-control show-tick" name="proyek">
                                       <option value="">-- Semua Proyek --</option>
+                                      @foreach ($proyek as $proyek)
+                                        <option value="{{$proyek->nm_proyek}}">{{$proyek->nm_proyek}}</option>
+                                      @endforeach
                                     </select>
                                   </div>
                                 @endif
@@ -67,12 +73,12 @@
                 <th>Hari/Tanggal</th>
                 <th>Jam</th>
                 <th>Kegiatan</th>
-                <th>Nama Project</th>
+                <th>Nama Proyek</th>
                 <th>Keterangan</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($agenda as $agenda)
+            @foreach ($agendaa as $agenda)
               <tr>
                   {{-- <td>{{$agenda->id}}</td> --}}
                   @if (Auth::user()->level == 'admin')

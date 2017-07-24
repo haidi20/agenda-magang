@@ -2,7 +2,10 @@ $(document).ready(function()
 {
 	//$('#home').hide();
 	//$('#user').hide();
-
+	$('#tambah_range').click(function(){
+		$('#range').hide();
+		$('#tanggal2').show();
+	});
 	var  lebar = $(window).width();
 	f_lebar(lebar);
 

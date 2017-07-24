@@ -13,7 +13,13 @@ class Agenda extends Model
     protected $hidden = [
       'id' , 'user_id'
     ] ;
-
+    public function scopeFilterProyek($query)
+    {
+      $proyek = request('proyek');
+      if (!empty($proyek)) {
+        $agenda = $query->where('nm_proyek',$proyek);
+      }
+    }
     public function scopeFilterDate($query)
     {
       $mulai = request('date1');

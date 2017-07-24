@@ -19,14 +19,16 @@ class AgendaController extends Controller
     // untuk identifikasi user
     $user       = User::find($id);
     $users      = User::select('name')->groupBy('name')->get(); // masih bingung ??
+    $proyek     = Agenda::select('nm_proyek')->groupBy('nm_proyek')->get(); // masih bingung ??
     //filtering data berdasarkan hak akses
     $agenda = Agenda::FilterDate()
                 ->FilterUser($id)
+                ->FilterProyek()
                 ->QueryAgenda()
                 ->get();
     // return $agenda ;
     // dd(DB::getQueryLog());
-    return view('index.agenda',['agenda'=>$agenda, 'user' => $user, 'users' => $users]);
+    return view('index.agenda',['agendaa'=>$agenda, 'user' => $user, 'users' => $users, 'proyek'=>$proyek]);
   }
 
   public function store(Request $request){

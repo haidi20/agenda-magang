@@ -58,44 +58,33 @@
 
  <!---------------- INI MENU -------------------------------->
   <div id="kiri">
-	<div class="row" id="ungu">
-		<div id="ungu"></div>
-	</div>
-  <div class="row">
-    <div id="menu">
-      <a id="menu-utama"class="list-group-item"><b>DASHBOARD</b></a>
+  	<div class="row" id="ungu">
+  		<div id="ungu"></div>
+  	</div>
+    <div class="row">
+      <div id="menu">
+        <a id="menu-utama"class="list-group-item"><b>DASHBOARD</b></a>
+      </div>
+    </div>
+    <!-- MENU SAMPING -->
+    <div class="row">
+      <a id="menu_home" class="list-group-item href" href="{{route('agenda.index')}}"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Home</a>
+      @if (Auth::user()->level == 'admin')
+      <a id="menu_user" class="list-group-item href" href="{{route('user.index')}}"><i class="fa fa-user-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; User</a>
+      @endif
+      <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Settings</a>
+      <a class="list-group-item" href="{{url('/logout')}}"><i class="fa fa-sign-out fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Log Out</a>
     </div>
   </div>
-  <!-- MENU SAMPING -->
-  <div class="row">
-    <a id="menu_home" class="list-group-item href" href="{{url('/agenda')}}"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Home</a>
-    @if (Auth::user()->level == 'admin')
-    <a id="menu_user" class="list-group-item href" href="{{url('/user')}}"><i class="fa fa-user-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; User</a>
-    @endif
-    <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Settings</a>
-    <a class="list-group-item" href="{{url('/logout')}}"><i class="fa fa-sign-out fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Log Out</a>
-  </div>
-  <!--  -->
-
-
-  </div>
-
-
-   <!---------------- INI BAGIAN Content -------------------------------->
-
-   @yield('body')
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{asset('js/jquery.js')}}"></script>
+  <!---------------- INI BAGIAN Content -------------------------------->
+    @yield('body')
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="{{asset('js/jquery.js')}}"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('js/custom.js')}}"></script>
-
-
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/rowreorder/1.2.0/js/dataTables.rowReorder.min.js"></script>
 	<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
-
   </body>
 </html>
