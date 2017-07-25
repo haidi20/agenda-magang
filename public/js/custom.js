@@ -1,15 +1,19 @@
+
 $(document).ready(function()
 {
-	//$('#home').hide();
-	//$('#user').hide();
-	$('#tambah_range').click(function(){
-		$('#range').hide();
-		$('#tanggal2').show();
+	$(document).on('change','#date1',function(){
+		console.log($(this).val());
+		if($(this).val() != 0){
+			$('#date2').show();
+		}else{
+			$('#date2').hide();
+		}
+
 	});
 	var  lebar = $(window).width();
 	f_lebar(lebar);
 
-	 var table = $('#example').DataTable( {
+	 var table = $('#example').DataTable({
         rowReorder: {
             selector: 'td:nth-child(2)'
         },

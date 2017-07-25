@@ -19,22 +19,19 @@
                               </h2>
                               <form action="{{route('agenda.index')}}" method="get">
                               <div class="row">
-                                <div class="col-md-3">
-                                 <select class="form-control show-tick" name="date1">
-                                  <option value="">-- Semua Tanggal --</option>
-                                  @foreach ($agendaa as $agenda)
-                                    <option value="{{$agenda->tanggal}}">{{$agenda->tanggal}}</option>
+                                <div class="col-md-offset-1 col-md-3">
+                                 <select class="form-control show-tick" id="date1" name="date1">
+                                  <option value="0">-- Semua Tanggal --</option>
+                                  @foreach ($datee as $date)
+                                    <option value="{{$date->tanggal}}">{{$date->tanggal}}</option>
                                   @endforeach
                                  </select>
                                 </div>
-                                <div class="col-md-3" id="range">
-                                  <input type="button" id="tambah_range" value="Add Range">
-                                </div>
-                                <div class="col-md-3" style="display:none;" id="tanggal2">
+                                <div class="col-md-3" style="display:none;" id="date2">
                                  <select class="form-control show-tick" name="date2" >
                                    <option value="">-- Semua Tanggal --</option>
-                                   @foreach ($agendaa as $agenda)
-                                     <option value="{{$agenda->tanggal}}">{{$agenda->tanggal}}</option>
+                                   @foreach ($datee as $date)
+                                     <option value="{{$date->tanggal}}">{{$date->tanggal}}</option>
                                    @endforeach
                                  </select>
                                 </div>
@@ -47,7 +44,7 @@
                                       @endforeach
                                     </select>
                                   </div>
-                                  <div class="col-md-3">
+                                  <div class="col-md-2">
                                     <select class="form-control show-tick" name="proyek">
                                       <option value="">-- Semua Proyek --</option>
                                       @foreach ($proyekk as $proyek)
@@ -57,7 +54,8 @@
                                   </div>
                                 @endif
                                 <div class="col-md-1">
-                                 <input type="submit" id="kirim" value="filter">
+                                 <input type="submit" value="filter">
+                                 {{-- <a href="{{route('agenda.show' , 'coba')}}"><button type="button" name="EXCEL">Excel</button></a> --}}
                                 </div>
                               </div>
                               </form>

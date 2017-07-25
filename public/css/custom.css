@@ -50,6 +50,46 @@ label{
 		padding: 20px;
 		margin:20px;
 }
+.input-group{
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+/*halaman login*/
+.kartu{
+	position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 40px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.logo a {
+    font-size: 36px;
+    display: block;
+    width: 100%;
+    text-align: center;
+		text-decoration: none;
+    color: #fff;
+		margin-bottom: 30px;
+		margin-top: 40px;
+}
+small{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin-top: -70px;
+}
+/*akhir halaman login*/
+.btn{
+	margin-left: -6px;
+}
+/*panel*/
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #4ab9dc;
+}
 /*javascript table*/
 table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
 		font-weight: lighter;

@@ -16,19 +16,21 @@ class AgendaController extends Controller
   public function index(Request $request){
     \DB::enableQueryLog();
     $id         = Auth::id() ;
-    // untuk identifikasi user
+    // filtering pada table
     $user       = User::find($id);
-    $users      = User::select('name')->groupBy('name')->get(); // masih bingung ??
-    $proyek     = Agenda::select('nm_proyek')->groupBy('nm_proyek')->get(); // masih bingung ??
+    $users      = User::select('name')->groupBy('name')->get();
+    $proyek     = Agenda::select('nm_proyek')->groupBy('nm_proyek')->get();
+    $date       = Agenda::select('tanggal')->groupBy('tanggal')->get();
     //filtering data berdasarkan hak akses
     $agenda = Agenda::FilterDate()
                 ->FilterUser($id)
                 ->FilterProyek()
                 ->QueryAgenda()
+                ->orderBy('tanggal','asc')
                 ->get();
     // return $agenda ;
     // dd(DB::getQueryLog());
-    return view('index.agenda',['agendaa'=>$agenda, 'user' => $user, 'users' => $users, 'proyekk'=>$proyek]);
+    return view('index.agenda',['agendaa'=>$agenda, 'user' => $user, 'users' => $users, 'proyekk'=>$proyek , 'datee'=>$date]);
   }
 
   public function store(Request $request){
