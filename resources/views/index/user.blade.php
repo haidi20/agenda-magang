@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.header')
 @section('body')
   <div id="kanan">
 	  <section class="content">
