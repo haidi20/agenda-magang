@@ -1,6 +1,13 @@
+$(document).on('click','#tombol_filter3',function(){
+	$('#method').attr('action','excel');
+});
+$(document).on('click','#tombol_filter2, #tombol_filter1',function(){
+	$('#method').attr('action' , 'agenda');
+});
 
 $(document).ready(function()
 {
+
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
 		time: false,
@@ -15,7 +22,17 @@ $(document).ready(function()
 		}else{
 			$('#date2').hide();
 		}
-
+	});
+	$(document).on('change','#user,#proyek',function(){
+		var user = $('#user').val();
+		var proyek = $('#proyek').val();
+		if((user != 0) || (proyek != 0)){
+			$('#tombol_filter1').show();
+			$('#tombol_filter2').hide();
+		}else{
+			$('#tombol_filter2').show();
+			$('#tombol_filter1').hide();
+		}
 	});
 	var  lebar = $(window).width();
 	f_lebar(lebar);

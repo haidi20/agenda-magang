@@ -7,40 +7,34 @@ use Auth ;
 use App\User ;
 use App\Agenda ;
 use Excel ;
+use App\custome\FilterDropdown ;
 
 class ExcelController extends Controller
 {
-  public function show(Request $request){
-    Excel::create('fileAgenda' , function($excel){
-     $excel->sheet('mySheet' , function($sheet){
-       $sheet->fromArray([$agenda]);
-     });
-   })->download('xlsx');
-    // \DB::enableQueryLog();
-    // dd($agenda);
-    // dd(DB::getQueryLog($agenda));
-    // $field = ['users.name' ,
-    //           'agenda.nm_proyek' ,
-    //           'agenda.kegiatan' ,
-    //           'agenda.tanggal' ,
-    //           'agenda.jam_mulai' ,
-    //           'agenda.jam_selesai' ,
-    //           'agenda.keterangan'] ;
-    // $agenda = Agenda::join('users' ,'agenda.user_id' , '=', 'users.id' )
-    //                 ->select($field)
-    //                 ->where('user_id' , $id)
-    //                 ->get()->toArray();
-    // if(Auth::user()->level == 'admin'){
-    // $agenda = Agenda::join('users' ,'agenda.user_id' , '=', 'users.id' )
-    //                   ->select('users.name' , 'agenda.*')
-    //                   ->get()->toArray();
-    // }
-    // // return view('index.ExportClients', compact('agenda'));
-    // Excel::create('fileAgenda' , function($excel) use ($agenda){
-    //   $excel->sheet('mySheet' , function($sheet) use ($agenda){
-    //     $sheet->fromArray($agenda);
-    //   });
-    // })->download('xlsx');
-    // dd($agenda) ;
+  public function index(Request $request){
+    //filter dropdown untuk value
+    $changeUser   = FilterDropdown::user($request) ;
+    $changeProyek = FilterDropdown::proyek($request) ;
+    $changeDate1  = FilterDropdown::date1(request($request));
+    $changeDate2  = FilterDropdown::date2(request($request));
+    // id user
+    $id         = Auth::id() ;
+    // menampilkan data di per'dropdown
+    $user       = User::find($id);
+    $users      = User::select('name')->groupBy('name')->get();
+    $proyek     = Agenda::select('nm_proyek')->groupBy('nm_proyek')->get();
+    $date       = Agenda::select('tanggal')->groupBy('tanggal')->get();
+    //filtering data
+    $agenda = Agenda::FilterDate()
+                ->FilterUser($id)
+                ->FilterProyek()
+                ->QueryAgenda()
+                ->get();
+                
+    Excel::create('fileAgenda_'.$user->name , function($excel) use ($agenda){
+      $excel->sheet('mySheet' , function($sheet) use ($agenda){
+        $sheet->fromArray($agenda);
+      });
+    })->download('xlsx');
   }
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable ;
+use App\custome\FilterDropdown ;
 use Auth;
 
 class Agenda extends Model
@@ -15,15 +16,26 @@ class Agenda extends Model
     ] ;
     public function scopeFilterProyek($query)
     {
-      $proyek = request('proyek');
+      $proyek = FilterDropdown::proyek(request('proyek'));
+
       if (!empty($proyek)) {
         $agenda = $query->where('nm_proyek',$proyek);
       }
     }
+    public function scopeFilterUser($query,$id)
+    {
+      $user = FilterDropdown::user(request('user'));
+
+      if(!empty($user)){
+        $agenda = $query->where('users.name' , $user);
+      }elseif(Auth::user()->level == 'user'){
+        $agenda = $query->where('user_id' , $id);
+      }
+    }
     public function scopeFilterDate($query)
     {
-      $mulai = request('date1');
-      $akhir = request('date2');
+      $mulai = FilterDropdown::date1(request('date1'));
+      $akhir = FilterDropdown::date2(request('date2'));
 
       if(!empty($mulai)){
         if(!empty($mulai) && !empty($akhir)){
@@ -31,15 +43,6 @@ class Agenda extends Model
         }else{
           $agenda = $query->whereDate('tanggal' , $mulai);
         }
-      }
-    }
-    public function scopeFilterUser($query,$id)
-    {
-      $user = request('user');
-      if(!empty($user)){
-        $agenda = $query->where('users.name' , $user);
-      }elseif(Auth::user()->level == 'user'){
-        $agenda = $query->where('user_id' , $id);
       }
     }
     public function scopeQueryAgenda($query)

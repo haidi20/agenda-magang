@@ -17,11 +17,11 @@
                               <h2>
                                   TABLE AGENDA
                               </h2>
-                              <form action="{{route('agenda.index')}}" method="get">
+                              <form id="method" method="get">
                               <div class="row">
                                 <div class="col-md-offset-1 col-md-3">
                                   <div class="form-control-wrapper">
-                        						<input type="text" id="date1" name="date1" class="form-control floating-label" placeholder="Date">
+                        						<input type="text" id="date1" value="{{$changeDate1}}" name="date1" class="form-control floating-label" placeholder="Date" >
                         					</div>
                                 </div>
                                 <div class="col-md-3" style="display:none;" id="date2">
@@ -31,25 +31,26 @@
                                 </div>
                                 @if (Auth::user()->level == 'admin')
                                   <div class="col-md-2">
-                                    <select class="form-control show-tick" name="user">
-                                      <option value="">-- Semua User --</option>
+                                    <select class="form-control show-tick" id="user" name="user">
+                                      <option value="0">-- Semua User --</option>
                                       @foreach ($users as $users)
-                                        <option value="{{$users->name}}">{{$users->name}}</option>
+                                        <option value="{{$users->name}}" {{$changeUser == $users->name?'selected="select"':''}}>{{$users->name}}</option>
                                       @endforeach
                                     </select>
                                   </div>
                                   <div class="col-md-2">
-                                    <select class="form-control show-tick" name="proyek">
-                                      <option value="">-- Semua Proyek --</option>
+                                    <select class="form-control show-tick" id="proyek" name="proyek">
+                                      <option value="0">-- Semua Proyek --</option>
                                       @foreach ($proyekk as $proyek)
-                                        <option value="{{$proyek->nm_proyek}}">{{$proyek->nm_proyek}}</option>
+                                        <option value="{{$proyek->nm_proyek}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
                                       @endforeach
                                     </select>
                                   </div>
                                 @endif
-                                <div class="col-md-1">
-                                 <input type="submit" value="filter" id="tombol_filter1" style="display:none">
-                                 <input type="submit" id="tombol_filter2" value="All">
+                                <div class="col-md-2">
+                                 <input type="submit" name="filter" value="filter" id="tombol_filter1" style="display:none">
+                                 <input type="submit" name="all" id="tombol_filter2" value="All">
+                                 <input type="submit" name="excel" id="tombol_filter3" value="Export Excel">
                                  {{-- <a href="{{route('agenda.show' , 'coba')}}"><button type="button" name="EXCEL">Excel</button></a> --}}
                                 </div>
                               </div>

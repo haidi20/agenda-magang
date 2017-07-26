@@ -8,13 +8,18 @@ use App\User ;
 use App\Agenda ;
 use DB ;
 use Excel ;
-use App\custome\Custome ;
+use App\custome\FilterDropdown ;
 
 class AgendaController extends Controller
 {
-
   public function index(Request $request){
     \DB::enableQueryLog();
+    //filter dropdown untuk value
+    $changeUser   = FilterDropdown::user($request) ;
+    $changeProyek = FilterDropdown::proyek($request) ;
+    $changeDate1  = FilterDropdown::date1(request($request));
+    $changeDate2  = FilterDropdown::date2(request($request));
+    // id user
     $id         = Auth::id() ;
     // menampilkan data di per'dropdown
     $user       = User::find($id);
@@ -29,7 +34,16 @@ class AgendaController extends Controller
                 ->get();
     // return $agenda ;
     // dd(DB::getQueryLog());
-    return view('index.agenda',['agendaa'=>$agenda, 'user' => $user, 'users' => $users, 'proyekk'=>$proyek , 'datee'=>$date]);
+    return view('index.agenda',[
+                                'agendaa'       =>$agenda,
+                                'user'          =>$user,
+                                'users'         =>$users,
+                                'proyekk'       =>$proyek ,
+                                'datee'         =>$date,
+                                'changeUser'    =>$changeUser,
+                                'changeProyek'  =>$changeProyek,
+                                'changeDate1'   =>$changeDate1,
+                              ]);
   }
 
   public function store(Request $request){
