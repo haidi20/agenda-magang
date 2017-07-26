@@ -15,25 +15,19 @@
                       <div class="card">
                           <div class="header">
                               <h2>
-                                  Agenda
+                                  TABLE AGENDA
                               </h2>
                               <form action="{{route('agenda.index')}}" method="get">
                               <div class="row">
                                 <div class="col-md-offset-1 col-md-3">
-                                 <select class="form-control show-tick" id="date1" name="date1">
-                                  <option value="0">-- Semua Tanggal --</option>
-                                  @foreach ($datee as $date)
-                                    <option value="{{$date->tanggal}}">{{$date->tanggal}}</option>
-                                  @endforeach
-                                 </select>
+                                  <div class="form-control-wrapper">
+                        						<input type="text" id="date1" name="date1" class="form-control floating-label" placeholder="Date">
+                        					</div>
                                 </div>
                                 <div class="col-md-3" style="display:none;" id="date2">
-                                 <select class="form-control show-tick" name="date2" >
-                                   <option value="">-- Semua Tanggal --</option>
-                                   @foreach ($datee as $date)
-                                     <option value="{{$date->tanggal}}">{{$date->tanggal}}</option>
-                                   @endforeach
-                                 </select>
+                                  <div class="form-control-wrapper">
+                                    <input type="text" id="date2" name="date2" class="form-control floating-label" placeholder="Date">
+                                  </div>
                                 </div>
                                 @if (Auth::user()->level == 'admin')
                                   <div class="col-md-2">
@@ -54,7 +48,8 @@
                                   </div>
                                 @endif
                                 <div class="col-md-1">
-                                 <input type="submit" value="filter">
+                                 <input type="submit" value="filter" id="tombol_filter1" style="display:none">
+                                 <input type="submit" id="tombol_filter2" value="All">
                                  {{-- <a href="{{route('agenda.show' , 'coba')}}"><button type="button" name="EXCEL">Excel</button></a> --}}
                                 </div>
                               </div>

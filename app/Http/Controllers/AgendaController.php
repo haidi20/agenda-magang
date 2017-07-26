@@ -16,17 +16,16 @@ class AgendaController extends Controller
   public function index(Request $request){
     \DB::enableQueryLog();
     $id         = Auth::id() ;
-    // filtering pada table
+    // menampilkan data di per'dropdown
     $user       = User::find($id);
     $users      = User::select('name')->groupBy('name')->get();
     $proyek     = Agenda::select('nm_proyek')->groupBy('nm_proyek')->get();
     $date       = Agenda::select('tanggal')->groupBy('tanggal')->get();
-    //filtering data berdasarkan hak akses
+    //filtering data
     $agenda = Agenda::FilterDate()
                 ->FilterUser($id)
                 ->FilterProyek()
                 ->QueryAgenda()
-                ->orderBy('tanggal','asc')
                 ->get();
     // return $agenda ;
     // dd(DB::getQueryLog());

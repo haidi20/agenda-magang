@@ -52,6 +52,10 @@
     <script src="{{asset('js/jquery.js')}}"></script>
   	<!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- datepicker -->
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+		<script type="text/javascript" src="{{asset('js/bootstrap-material-datetimepicker.js')}}"></script>
+    <!-- end datepicker -->
   	<script src="{{asset('js/custom.js')}}"></script>
   	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
   	<script src="https://cdn.datatables.net/rowreorder/1.2.0/js/dataTables.rowReorder.min.js"></script>

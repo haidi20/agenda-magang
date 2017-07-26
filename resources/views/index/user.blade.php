@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="header">
                               <h2>
-                                  BASIC EXAMPLE
+                                  TABLE USER
                               </h2>
                           </div>
                           <div class="body">

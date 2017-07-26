@@ -8,9 +8,14 @@
     <title>Aplikasi Agenda</title>
 
     <!-- Bootstrap -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-	  <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+	  <link href="{{asset('css/custom.css')}}" rel="stylesheet"> <!-- bentroknya di sini -->
     <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+
+    <!-- bagian datepicker -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap-material-datetimepicker.css')}}" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin" rel="stylesheet">
@@ -26,6 +31,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
   </head>
   @yield('tubuh')
 </html>

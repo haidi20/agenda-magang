@@ -1,10 +1,17 @@
 
 $(document).ready(function()
 {
+	$('#date1,#date2').bootstrapMaterialDatePicker
+	({
+		time: false,
+		clearButton: true
+	});
 	$(document).on('change','#date1',function(){
 		console.log($(this).val());
 		if($(this).val() != 0){
 			$('#date2').show();
+			$('#tombol_filter1').show();
+			$('#tombol_filter2').hide();
 		}else{
 			$('#date2').hide();
 		}
