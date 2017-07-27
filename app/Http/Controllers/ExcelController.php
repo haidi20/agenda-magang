@@ -33,7 +33,7 @@ class ExcelController extends Controller
                     ->QueryAgenda()
                     ->orderBy('tanggal','desc')
                     ->get();
-    dd($agenda);
+    // dd($agenda);
     //export ke excel
     Excel::create('fileAgenda_'.$user->name , function($excel) use ($id,$agenda,$nama){
       $excel->sheet('mySheet' , function($sheet) use ($id,$agenda,$nama){
