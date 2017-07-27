@@ -8,15 +8,16 @@
     <table>
       <thead>
         <tr>
-          <th>No</th>
           <th>Nama</th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($agenda as $index => $item)
+        @foreach ($agenda as $agendaa)
           <tr>
-            <td>{{ $index + 1}}</td>
-            <td>{{ array_get($item, 'name') }}</td>
+            @if (Auth::user()->level == 'admin')
+              <td>{{$agendaa->user->name}}</td>
+            @endif
+            <td>{{$agendaa->kegiatan}}</td>
           </tr>
         @endforeach
       </tbody>
