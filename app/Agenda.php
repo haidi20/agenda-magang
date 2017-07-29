@@ -3,8 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable ;
 use App\custome\FilterDropdown ;
+use Laravel\Scout\Searchable ;
 use Auth;
 
 class Agenda extends Model
@@ -24,7 +24,7 @@ class Agenda extends Model
   public function scopeFilterUser($query,$id)
   {
     $user = FilterDropdown::user(request('user'));
-
+    // dd($user) ;
     if(!empty($user)){
       $agenda = $query->where('users.name' , $user);
     }elseif(Auth::user()->level == 'user'){

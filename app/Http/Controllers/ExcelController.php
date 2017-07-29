@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\custome\FilterDropdown ;
 use PHPExcel_Worksheet_Drawing;
 use Illuminate\Http\Request;
-use Auth ;
-use App\User ;
-use App\Agenda ;
-use Excel ;
-use App\custome\FilterDropdown ;
+use App\Agenda;
+use App\User;
+use Excel;
+use Auth;
+
 
 class ExcelController extends Controller
 {
@@ -18,7 +19,7 @@ class ExcelController extends Controller
     $changeProyek = FilterDropdown::proyek($request) ;
     $changeDate1  = FilterDropdown::date1(request($request));
     $changeDate2  = FilterDropdown::date2(request($request));
-    // id user
+    // id dan name user
     $id         = Auth::id() ;
     $nama       = Auth::user()->name ;
     // menampilkan data di per'dropdown
@@ -43,7 +44,7 @@ class ExcelController extends Controller
 				$objDrawing->setWorksheet($sheet);
 
 				$sheet->setFontFamily('Times New Roman');
-        $sheet->loadView('index.exportExcel2')->with('item',$agenda)->with('id',$id)->with('nama',$nama);
+        $sheet->loadView('index.exportExcel')->with('item',$agenda)->with('id',$id)->with('nama',$nama);
       });
     })->download('xlsx');
   }

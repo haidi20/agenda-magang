@@ -7,7 +7,7 @@ $(document).on('click','#tombol_filter2, #tombol_filter1',function(){
 
 $(document).ready(function()
 {
-
+	$('#tombol_filter1').css('display' , 'none') ;
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
 		time: false,

@@ -21,6 +21,7 @@
   					<li><a class="href" href="{{route('agenda.index')}}">&nbsp; Home</a></li>
   					<li><a class="href" href="{{route('user.index')}}">&nbsp; User</a></li>
             <li><a class="href" href="{{url('/logout')}}">&nbsp; Logout</a></li>
+            <li><a class="href" href="{{route('setting.index')}}">&nbsp;Setting</a></li>
   				</ul>
   			</div>
   		</div>
@@ -42,7 +43,7 @@
         @if (Auth::user()->level == 'admin')
         <a id="menu_user" class="list-group-item href" href="{{route('user.index')}}"><i class="fa fa-user-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; User</a>
         @endif
-        <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Settings</a>
+        <a class="list-group-item" href="{{route('setting.index')}}"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Settings</a>
         <a class="list-group-item" href="{{url('/logout')}}"><i class="fa fa-sign-out fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Log Out</a>
       </div>
     </div>
