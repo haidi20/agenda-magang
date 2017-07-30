@@ -1,3 +1,11 @@
+function ajax() {
+	$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}
+
 $(document).on('click','#tombol_filter3',function(){
 	$('#method').attr('action','excel');
 });
@@ -7,30 +15,17 @@ $(document).on('click','#tombol_filter2, #tombol_filter1',function(){
 
 $(document).ready(function()
 {
-	// $('#tombol_filter1').css('display' , 'none') ;
+
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
 		time: false,
 		clearButton: true
 	});
+	if ($('#date2').val()) {
+		$('#date2').removeAttr('disabled');
+	}
 	$(document).on('change','#date1',function(){
-		console.log($(this).val());
-		if($(this).val() != 0){
-			$('#date2').show();
-		}else{
-
-		}
-	});
-	$(document).on('change','#user,#proyek',function(){
-		var user = $('#user').val();
-		var proyek = $('#proyek').val();
-		if((user != 0) || (proyek != 0)){
-			$('#tombol_filter1').show();
-			// $('#tombol_filter2').hide();
-		}else{
-			$('#tombol_filter2').show();
-			$('#tombol_filter1').hide();
-		}
+		$('#date2').removeAttr('disabled');
 	});
 	var  lebar = $(window).width();
 	f_lebar(lebar);
@@ -51,37 +46,6 @@ $(window).resize(function()
     f_lebar(lebar);
 });
 
-/*
-$(document).on('click','a.href', function(e)
-{
-	e.preventDefault();
-	var href = $(this).attr('href');
-
-	if(href == "home")
-	{
-		//mengganti content
-		//$('#home').show();
-		//$('#user').hide();
-
-		//mengganti menu yg aktif
-		$('#menu_home').addClass('active');
-		$('#menu_user').removeClass('active');
-
-	}
-	else
-	{
-		//mengganti content
-		//$('#home').hide();
-		//$('#user').show();
-
-		//mengganti menu yg aktif
-		$('#menu_home').removeClass('active');
-		$('#menu_user').addClass('active');
-	}
-
-});
-*/
-
 function f_lebar(lebar)
 {
 	if(lebar < 768 )
@@ -95,3 +59,33 @@ function f_lebar(lebar)
 		$('#kanan').css({'width' : '85%'});
 	}
 }
+
+$(document).on('click','.edit_user', function(e)
+{
+	e.preventDefault();
+	var id = $(this).attr('data-id');
+	var name = $(this).attr('data-name');
+	var jabatan = $(this).attr('data-jabatan');
+	var email = $(this).attr('data-email');
+
+	//alert("sayang email = "+email+"\n jabatan = "+jabatan+"\n name = "+name+"\n ini id = "+id);
+	$('#id_edit_modal').val(id);
+	$('#nama_edit_modal').val(name);
+	$('#jabatan_edit_modal').val(jabatan);
+	$('#email_edit_modal').val(email);
+
+
+
+});
+
+$(document).on('click','.hapus_user', function(e)
+{
+	e.preventDefault();
+	var id = $(this).attr('data-id');
+	var name = $(this).attr('data-name');
+
+	//alert("sayang email = "+email+"\n jabatan = "+jabatan+"\n name = "+name+"\n ini id = "+id);
+	$('#id_delete_modal').val(id);
+	$('#nama_delete_modal').html(name);
+
+});

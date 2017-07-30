@@ -25,10 +25,10 @@
                                 <input style="margin:5px 0px;" type="text" value="{{$changeDate1}}" id="date1" name="date1" class="form-control floating-label" placeholder="Hari/Tanggal">
                               </div>
                             </div>
-                            <div class="col-md-3" style="display:none;" id="date2">
+                            <div class="col-md-3" id="date2_tempat">
                               <div class="form-control-wrapper">
                                 <label for="tgl">S/D</label>
-                                <input style="margin:5px 0px;" type="text" id="date2" value="{{$changeDate2}}" name="date2" class="form-control floating-label" placeholder="Hari/Tanggal">
+                                <input style="margin:5px 0px;" type="text" id="date2" value="{{$changeDate2}}" name="date2" class="form-control floating-label" placeholder="Hari/Tanggal" disabled>
                               </div>
                             </div>
                             @if (Auth::user()->level == 'admin')
@@ -41,16 +41,16 @@
                                   @endforeach
                                 </select>
                               </div>
-                              <div class="col-md-2">
-                                <label for="usr">Proyek</label>
-                                <select style="margin:5px 0px;" id="proyek" class="form-control show-tick" name="proyek">
-                                  <option value=""> Semua Proyek </option>
-                                  @foreach ($proyekk as $proyek)
-                                    <option value="{{$proyek->nm_proyek}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
-                                  @endforeach
-                                </select>
-                              </div>
                             @endif
+                            <div class="col-md-2">
+                              <label for="usr">Proyek</label>
+                              <select style="margin:5px 0px;" id="proyek" class="form-control show-tick" name="proyek">
+                                <option value=""> Semua Proyek </option>
+                                @foreach ($proyekk as $proyek)
+                                  <option value="{{$proyek->nm_proyek}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
+                                @endforeach
+                              </select>
+                            </div>
                             <div class="col-md-1">
                              <!-- <input style="margin:5px 0px;" class="btn btn-info" type="submit" value="Filter" id="tombol_filter1" style="display:none"> -->
                              <button style="margin:5px 0px;" id="tombol_filter1" name="filter" value="1" type="submit" class="btn btn-info"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp Filter</button>

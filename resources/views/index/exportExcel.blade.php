@@ -97,10 +97,10 @@
       @if (Auth::user()->level == 'admin')
         <th class="thead">Nama</th>
       @endif
-			<th id="hari" 	class="thead">Hari/Tanggal</th>
+			<th id="hari" class="thead">Hari/Tanggal</th>
 			<th id="jam" 	class="thead">Jam</th>
 			<th id="keg"	class="thead">Kegiatan</th>
-			<th id="nm" 	class="thead">Nama Project</th>
+			<th id="nm" 	class="thead">Nama Proyek</th>
 			<th id="ket"	class="thead">keterangan</th>
 		</tr>
 
@@ -117,7 +117,7 @@
 			<td align="right">{{$a=$value->tanggal }}</td>
 			<td align="center">{{ $value->jam_mulai }} - {{ $value->jam_selesai }}</td>
 			<td>{{ $value->kegiatan }}</td>
-			<td>{{ $value->nm_proyek }}</td>
+			<td align="center">{{ $value->nm_proyek }}</td>
 			<td>{{ $value->keterangan }}</td>
 		</tr>
 <?php

@@ -16,62 +16,37 @@ class UserController extends Controller
     return view('index.user',['users' => $users, 'user'=>$user]);
   }
 
-  // public function store(Request $request){
-  //   $name     = $request->name ;
-  //   $pass     = $request->pass ;
-  //   $email    = $request->email ;
-  //   $jabatan  = $request->jabatan;
-  //
-  //   $input = User::insert([
-  //     'name'    => $name,
-  //     'email'   => $email,
-  //     'password'=> bcrypt($pass),
-  //     'level'   => 'user',
-  //     'jabatan' => $jabatan
-  //   ]);
-  //
-  //   if($input){
-  //     return redirect('/home/'.Auth::id());
-  //   }else{
-  //     return redirect('/');
-  //   }
-  // }
-  //
-  // public function edit(Request $request){
-  //   $id = $request->id ;
-  //   $user = User::find($id);
-  //   return response()->json($user);
-  // }
-  //
-  // public function update(Request $request){
-  //   $id       = $request->id;
-  //   $name     = $request->name;
-  //   $jabatan  = $request->jabatan ;
-  //   $email    = $request->email ;
-  //
-  //   // return $id . $name . $jabatan. $email ;
-  //
-  //   $user_input = User::where('id' , $id)->update([
-  //       'name'      => $name,
-  //       'jabatan'   => $jabatan,
-  //       'email'     => $email,
-  //   ]);
-  //   if($user_input){
-  //     $user = User::find($id);
-  //     return response()->json($user);
-  //   }else{
-  //     return 'gagal';
-  //   }
-  // }
-  //
-  // public function destroy(Request $request){
-  //   $id = $request->id ;
-  //   $user = User::where('id',$id);
-  //   $user->delete();
-  //
-  //   if($user){
-  //     return $id ;
-  //   }
-  //   return 'gagal' ;
-  // }
+  public function store(Request $request){
+    $input = User::insert([
+      'name'    => request('nama'),
+      'email'   => request('email'),
+      'password'=> bcrypt(request('password')),
+      'level'   => 'user',
+      'jabatan' => request('jabatan'),
+    ]);
+
+    if($input){
+      return redirect('user');
+    }
+  }
+
+  public function update(Request $request){
+    $update = User::where('id' , request('id'))->update([
+      'name'    => request('nama'),
+      'email'   => request('email'),
+      'jabatan' => request('jabatan'),
+    ]);
+    if($update){
+      return redirect('user');
+    }
+  }
+
+  public function destroy(Request $request , $id){
+    // return request('id');
+    $user = User::where('id',request('id'));
+    $user->delete();
+    if($user){
+      return redirect('user');
+    }
+  }
 }
