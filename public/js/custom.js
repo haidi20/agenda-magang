@@ -7,7 +7,7 @@ $(document).on('click','#tombol_filter2, #tombol_filter1',function(){
 
 $(document).ready(function()
 {
-	$('#tombol_filter1').css('display' , 'none') ;
+	// $('#tombol_filter1').css('display' , 'none') ;
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
 		time: false,
@@ -17,10 +17,8 @@ $(document).ready(function()
 		console.log($(this).val());
 		if($(this).val() != 0){
 			$('#date2').show();
-			$('#tombol_filter1').show();
-			$('#tombol_filter2').hide();
 		}else{
-			$('#date2').hide();
+
 		}
 	});
 	$(document).on('change','#user,#proyek',function(){
@@ -28,7 +26,7 @@ $(document).ready(function()
 		var proyek = $('#proyek').val();
 		if((user != 0) || (proyek != 0)){
 			$('#tombol_filter1').show();
-			$('#tombol_filter2').hide();
+			// $('#tombol_filter2').hide();
 		}else{
 			$('#tombol_filter2').show();
 			$('#tombol_filter1').hide();

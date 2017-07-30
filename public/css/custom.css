@@ -44,11 +44,13 @@ a.list-group-item, button.list-group-item {
 }
 label{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: lighter;
 }
 .card{
-		background-color: #d8e4e8;
+		background-color: white;
 		padding: 20px;
 		margin:20px;
+		box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .input-group{
 	padding-bottom: 10px;
@@ -82,14 +84,33 @@ small{
     margin-top: -70px;
 }
 /*akhir halaman login*/
-.btn{
+#kartu .btn {
 	margin-left: -6px;
 }
 /*panel*/
+.panel-default {
+    margin: 20px;
+}
 .panel-default>.panel-heading {
     color: #fff;
-    background-color: #4ab9dc;
+    background-color: #565c63;
+		border-bottom: 0px ;
+ 		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
 }
+.panel{
+	border-radius: 0px;
+	border: 0px;
+}
+.col-md-1{
+     width: inherit;
+    margin-top: 25px;
+}
+/*MODAL*/
+.modal{
+	background: rgba(0, 0, 0, 0.4);
+}
+
 /*javascript table*/
 table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
 		font-weight: lighter;
@@ -103,7 +124,7 @@ table.dataTable thead th, table.dataTable thead td {
 		background-color: #FC6E51;
 }
 th{
-	background-color: #79868F;
+	background-color: #565c63;
 	color: white;
 	font-family:sans-serif;
 }
