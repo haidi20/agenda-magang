@@ -26,7 +26,9 @@ class UserController extends Controller
     ]);
 
     if($input){
-      return redirect('user');
+      return redirect('user')->with('note' , 'Add User Berhasil');
+    }else{
+      return redirect('user')->with('note' , 'Maaf, Add User Gagal');
     }
   }
 
@@ -37,7 +39,9 @@ class UserController extends Controller
       'jabatan' => request('jabatan'),
     ]);
     if($update){
-      return redirect('user');
+      return redirect('user')->with('note' , 'Update User Berhasil');
+    }else{
+      return redirect('user')->with('note' , 'Maaf, Update User Gagal');
     }
   }
 
@@ -46,7 +50,9 @@ class UserController extends Controller
     $user = User::where('id',request('id'));
     $user->delete();
     if($user){
-      return redirect('user');
+      return redirect('user')->with('note' , 'Delete User Berhasil');
+    }else{
+      return redirect('user')->with('note' , 'Maaf, Delete User Gagal');
     }
   }
 }

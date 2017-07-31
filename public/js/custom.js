@@ -89,3 +89,54 @@ $(document).on('click','.hapus_user', function(e)
 	$('#nama_delete_modal').html(name);
 
 });
+
+$(document).on('click','.simpan', function(e)
+{
+	//e.preventDefault();
+	var password = $('#password').val();
+	var pass = $('#pass').val();
+	var repass = $('#repass').val();
+
+	if(password == '')
+	{
+		$('#error_password').html('<div class="alert-danger">*Password Tidak Boleh Kosong</div>');
+		e.preventDefault();
+	}
+
+
+	if(pass == '')
+	{
+		$('#error_pass').html('<div class="alert-danger">*Password Tidak Boleh Kosong</div>');
+		e.preventDefault();
+	}
+
+	if(repass == '')
+	{
+		$('#error_repass').html('<div class="alert-danger">*Password Tidak Boleh Kosong</div>');
+		e.preventDefault();
+	}
+
+	if(pass != repass)
+	{
+		$('.error_pass').html('<div class="alert-danger">*Password Tidak Sama</div>');
+		e.preventDefault();
+	}
+
+
+});
+
+$(document).on('click','#menu_burger', function(e)
+{
+
+	if(a == 0)
+	{
+		a=1;
+	}
+	else if(a ==1)
+	{
+		$('#bs-example-navbar-collapse-1').removeClass('.in');
+		a=0;
+	}
+
+
+});

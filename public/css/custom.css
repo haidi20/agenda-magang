@@ -1,3 +1,20 @@
+/*tambahan dropdown mobile*/
+.navbar-default .navbar-toggle {
+    border-color: #575c63;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+default .navbar-toggle:hover {
+     background-color: #575c63;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+     background-color: #575c63;
+  }
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+/*akhir dropdown mobile*/
 li
 {
 	list-style:none;

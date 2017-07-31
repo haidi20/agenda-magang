@@ -4,14 +4,14 @@
   	<nav class="navbar navbar-default">
   		<div class="container-fluid">
   			<div class="navbar-header">
-  				<button id="menu_burger" type="button" class="pull-left navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  				<button id="menu_burger" type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
   					<span class="sr-only">Toggle navigation</span>
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   				  </button>
 
-  					<a href="#home" class="navbar-brand page-scroll">
+  					<a href="{{route('agenda.index')}}" class="navbar-brand page-scroll">
   						DEKA Web and IT Solution
   					</a>
   			</div>
@@ -50,16 +50,16 @@
   <!---------------- INI BAGIAN Content -------------------------------->
     @yield('body')
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{asset('js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
   	<!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
     <!-- datepicker -->
     <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
 		<script type="text/javascript" src="{{asset('js/bootstrap-material-datetimepicker.js')}}"></script>
     <!-- end datepicker -->
-  	<script src="{{asset('js/custom.js')}}"></script>
-  	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-  	<script src="https://cdn.datatables.net/rowreorder/1.2.0/js/dataTables.rowReorder.min.js"></script>
-  	<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+  	<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+  	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  	<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.0/js/dataTables.rowReorder.min.js"></script>
+  	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
   </body>
 @endsection

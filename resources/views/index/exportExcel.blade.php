@@ -29,7 +29,7 @@
 	}
 	#jam
 	{
-		width : 14;
+		width : 16;
 	}
 	#keg
 	{
@@ -128,8 +128,9 @@ else
 		{
 ?>
 			<tr>
+			 <td></td>
         @if (Auth::user()->level == 'admin')
-          <td align="center">{{$value->user->name}}</td>
+          <td align="center">{{$value->name}}</td>
         @endif
 				<td></td>
 				<td align="center">{{ $value->jam_mulai }} - {{ $value->jam_selesai }}</td>
@@ -145,6 +146,9 @@ else
 			$b=$b+1;
 			?>
 				<tr>
+					@if (Auth::user()->level == 'admin')
+					<td></td>
+				  @endif
 					<td></td>
 					<td></td>
 					<td></td>

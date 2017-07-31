@@ -56,7 +56,6 @@
                              <button style="margin:5px 0px;" id="tombol_filter1" name="filter" value="1" type="submit" class="btn btn-info"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp Filter</button>
                              <!-- <input style="margin:5px 0px;" class="btn btn-success" type="submit" id="tombol_filter2" value="Semua"> -->
                              <button style="margin:5px 0px;" id="tombol_filter2" name="all" value="1" type="submit" class="btn btn-success btn-md" style="display:none"><i class="fa fa-database" aria-hidden="true"></i>&nbsp Semua</button>
-
                              <!-- Trigger the modal with a button -->
                              <button style="margin:5px 0px;" type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp Agenda</button>
                              <!-- Export excel -->
@@ -77,7 +76,7 @@
                                 </div>
                                 <form action="{{route('agenda.store')}}" method="post">
                                   {{ csrf_field() }}
-                                <div style="padding: 50px;" class="modal-body">
+                                <div style="padding: 10px 40px 10px 40px;" class="modal-body">
                                   <div class="form-group row">
                                     <div class="form-control-wrapper">
                                       <label for="tgl">Tanggal</label>
@@ -109,16 +108,14 @@
                                       <input class="form-control" type="text" value="" name="proyek" id="example-text-input">
                                     </div>
                                   </div>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                       <label for="comment">Keterangan</label>
-                                      <textarea class="form-control" rows="5" name="keterangan" id="comment"></textarea>
+                                      <input class="form-control" name="keterangan" id="comment"></input>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
+                                  <a class="btn btn-danger" data-dismiss="modal">Kembali</a>
                                   <input type="submit" class="btn btn-success" value="kirim"></input>
-                                  {{-- <i class="fa fa-check fa-fw fa-lg"></i> --}}
-                                  <a class="btn btn-danger" data-dismiss="modal">
-                                  <i class="fa fa-times fa-fw fa-lg"></i>Kembali</a>
                                 </div>
                                 </form>
                               </div>
