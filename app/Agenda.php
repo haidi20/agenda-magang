@@ -5,14 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\custome\FilterDropdown ;
 use Laravel\Scout\Searchable ;
+use Carbon\Carbon ;
 use Auth;
 
 class Agenda extends Model
 {
   protected $table = 'agenda' ;
-  protected $hidden = [
-    'id' , 'user_id'
-  ] ;
+  protected $hidden = ['id' , 'user_id'] ;
+  protected $dates = ['jam_mulai','jam_selesai'];
   public function scopeFilterProyek($query)
   {
     $proyek = FilterDropdown::proyek(request('proyek'));
@@ -47,10 +47,15 @@ class Agenda extends Model
   public function scopeQueryAgenda($query)
   {
     $agenda = $query->join('users','agenda.user_id','=','users.id')
-                    ->select('users.name' , 'agenda.*') ;
+                    ->join('proyek','agenda.proyek_id','=','proyek.id')
+                    ->select('*');
   }
   public function user()
   {
     return $this->belongsTo('App\User');
+  }
+  public function proyek()
+  {
+    return $this->belongsTo('App\Proyek');
   }
 }

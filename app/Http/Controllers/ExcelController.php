@@ -6,6 +6,7 @@ use App\custome\FilterDropdown ;
 use PHPExcel_Worksheet_Drawing;
 use Illuminate\Http\Request;
 use App\Agenda;
+use App\Proyek;
 use App\User;
 use Excel;
 use Auth;
@@ -25,7 +26,7 @@ class ExcelController extends Controller
     // menampilkan data di per'dropdown
     $user       = User::find($id);
     $users      = User::select('name')->groupBy('name')->get();
-    $proyek     = Agenda::select('nm_proyek')->groupBy('nm_proyek')->get();
+    $proyek     = Proyek::select('nm_proyek')->groupBy('nm_proyek')->get();
     $date       = Agenda::select('tanggal')->groupBy('tanggal')->get();
     //filtering data
     $agenda = Agenda::FilterDate()

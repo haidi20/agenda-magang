@@ -117,7 +117,7 @@
 			<td align="right">{{$a=$value->tanggal }}</td>
 			<td align="center">{{ $value->jam_mulai }} - {{ $value->jam_selesai }}</td>
 			<td>{{ $value->kegiatan }}</td>
-			<td align="center">{{ $value->nm_proyek }}</td>
+			<td align="center">{{ $value->proyek->nm_proyek }}</td>
 			<td>{{ $value->keterangan }}</td>
 		</tr>
 <?php

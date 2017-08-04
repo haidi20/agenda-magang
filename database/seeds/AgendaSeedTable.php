@@ -12,22 +12,20 @@ class AgendaSeedTable extends Seeder
     public function run()
     {
 
-      // DB::statement('SET FOREIGN_KEY_CHECKS=0');
-      // DB::table('agenda')->truncate();
+      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      DB::table('agenda')->truncate();
       $agenda   = [] ;
       $kegiatan = ['ke luar kota' , 'meeting bersama client' , 'pergi ke lapangan untuk menganalisa' ];
-      $proyek   = ['aplikasi rumah sakit' , 'aplikasi kependudukan' , 'aplikasi apoteker' , 'aplikasi kepegawaian'];
       for($i = 1; $i <= 15; $i++){
         $tahun = rand(0,1) ? 2016 : 2017 ;
         $bulan = rand(0,1) ? rand(01,03) : rand(04,05) ;
         $date = date('Y-m-d',strtotime("{$tahun}-{$bulan}-01 + {$i} days")) ;
         $agenda[] = [
           'user_id'     => rand(1,3),
-          'nm_proyek'   => $proyek[rand(0,2)],
+          'proyek_id'   => rand(1,4),
           'kegiatan'    => $kegiatan[rand(0,2)],
-          'tanggal'     => $date,
-          'jam_mulai'   => Carbon::now()->toTimeString(),
-          'jam_selesai' => Carbon::now()->toTimeString(),
+          'jam_mulai'   => $date .' '. Carbon::now()->format('h:i:s'),
+          'jam_selesai' => $date .' '. Carbon::now()->format('h:i:s'),
           'keterangan'  => 'boleh'
         ];
       }

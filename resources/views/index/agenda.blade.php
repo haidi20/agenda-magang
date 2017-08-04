@@ -56,8 +56,10 @@
                              <button style="margin:5px 0px;" id="tombol_filter1" name="filter" value="1" type="submit" class="btn btn-info"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp Filter</button>
                              <!-- <input style="margin:5px 0px;" class="btn btn-success" type="submit" id="tombol_filter2" value="Semua"> -->
                              <button style="margin:5px 0px;" id="tombol_filter2" name="all" value="1" type="submit" class="btn btn-success btn-md" style="display:none"><i class="fa fa-database" aria-hidden="true"></i>&nbsp Semua</button>
-                             <!-- Trigger the modal with a button -->
-                             <button style="margin:5px 0px;" type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp Agenda</button>
+                             @if (Auth::user()->level == 'user')
+                               <!-- Trigger the modal with a button -->
+                               <button style="margin:5px 0px;" type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp Agenda</button>
+                             @endif
                              <!-- Export excel -->
                              <button style="margin:5px 0px;" id="tombol_filter3" name="excel" value="1" type="submit" class="btn btn-secondary" name="excel"><i class="fa fa-print fa-sm " aria-hidden="true"></i>&nbsp Excel</button>
                             </div>
@@ -156,9 +158,9 @@
                   <td>{{$agenda->user->name}}</td>
                   @endif
                   <td>{{$agenda->tanggal}}</td>
-                  <td>{{$agenda->jam_mulai}} s/d {{$agenda->jam_selesai}}</td>
+                  <td>{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}</td>
                   <td>{{$agenda->kegiatan}}</td>
-                  <td>{{$agenda->nm_proyek}} </td>
+                  <td>{{$agenda->proyek->nm_proyek}}</td>
                   <td>{{$agenda->keterangan}}</td>
               </tr>
             @endforeach
