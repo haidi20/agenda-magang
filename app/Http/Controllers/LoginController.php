@@ -15,7 +15,7 @@ class LoginController extends Controller
     $pass = $request->pass ;
 
     if(Auth::attempt(['name' => $name , 'password' => $pass])){
-      return redirect('/agenda/'.Auth::id());
+      return redirect('/agenda');
     }else{
       return redirect('/')->with('note' , 'maaf, ada kesalahan pada username atau password anda');
     }

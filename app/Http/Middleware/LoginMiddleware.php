@@ -17,7 +17,7 @@ class LoginMiddleware
     public function handle($request, Closure $next)
     {
       if(Auth::check()){
-        return redirect('home/' . Auth::id());
+        return redirect('/agenda');
       }
       return $next($request);
     }

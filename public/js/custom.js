@@ -1,12 +1,36 @@
+function ajax() {
+	$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}
+
+$(document).on('click','#tombol_filter3',function(){
+	$('#method').attr('action','excel');
+});
+$(document).on('click','#tombol_filter2, #tombol_filter1',function(){
+	$('#method').attr('action' , 'agenda');
+});
+
 $(document).ready(function()
 {
-	//$('#home').hide();
-	//$('#user').hide();
 
+	$('#date1,#date2').bootstrapMaterialDatePicker
+	({
+		time: false,
+		clearButton: true
+	});
+	if ($('#date2').val()) {
+		$('#date2').removeAttr('disabled');
+	}
+	$(document).on('change','#date1',function(){
+		$('#date2').removeAttr('disabled');
+	});
 	var  lebar = $(window).width();
 	f_lebar(lebar);
 
-	 var table = $('#example').DataTable( {
+	 var table = $('#example').DataTable({
         rowReorder: {
             selector: 'td:nth-child(2)'
         },
@@ -22,37 +46,6 @@ $(window).resize(function()
     f_lebar(lebar);
 });
 
-/*
-$(document).on('click','a.href', function(e)
-{
-	e.preventDefault();
-	var href = $(this).attr('href');
-
-	if(href == "home")
-	{
-		//mengganti content
-		//$('#home').show();
-		//$('#user').hide();
-
-		//mengganti menu yg aktif
-		$('#menu_home').addClass('active');
-		$('#menu_user').removeClass('active');
-
-	}
-	else
-	{
-		//mengganti content
-		//$('#home').hide();
-		//$('#user').show();
-
-		//mengganti menu yg aktif
-		$('#menu_home').removeClass('active');
-		$('#menu_user').addClass('active');
-	}
-
-});
-*/
-
 function f_lebar(lebar)
 {
 	if(lebar < 768 )
@@ -66,3 +59,84 @@ function f_lebar(lebar)
 		$('#kanan').css({'width' : '85%'});
 	}
 }
+
+$(document).on('click','.edit_user', function(e)
+{
+	e.preventDefault();
+	var id = $(this).attr('data-id');
+	var name = $(this).attr('data-name');
+	var jabatan = $(this).attr('data-jabatan');
+	var email = $(this).attr('data-email');
+
+	//alert("sayang email = "+email+"\n jabatan = "+jabatan+"\n name = "+name+"\n ini id = "+id);
+	$('#id_edit_modal').val(id);
+	$('#nama_edit_modal').val(name);
+	$('#jabatan_edit_modal').val(jabatan);
+	$('#email_edit_modal').val(email);
+
+
+
+});
+
+$(document).on('click','.hapus_user', function(e)
+{
+	e.preventDefault();
+	var id = $(this).attr('data-id');
+	var name = $(this).attr('data-name');
+
+	//alert("sayang email = "+email+"\n jabatan = "+jabatan+"\n name = "+name+"\n ini id = "+id);
+	$('#id_delete_modal').val(id);
+	$('#nama_delete_modal').html(name);
+
+});
+
+$(document).on('click','.simpan', function(e)
+{
+	//e.preventDefault();
+	var password = $('#password').val();
+	var pass = $('#pass').val();
+	var repass = $('#repass').val();
+
+	if(password == '')
+	{
+		$('#error_password').html('<div class="alert-danger">*Password Tidak Boleh Kosong</div>');
+		e.preventDefault();
+	}
+
+
+	if(pass == '')
+	{
+		$('#error_pass').html('<div class="alert-danger">*Password Tidak Boleh Kosong</div>');
+		e.preventDefault();
+	}
+
+	if(repass == '')
+	{
+		$('#error_repass').html('<div class="alert-danger">*Password Tidak Boleh Kosong</div>');
+		e.preventDefault();
+	}
+
+	if(pass != repass)
+	{
+		$('.error_pass').html('<div class="alert-danger">*Password Tidak Sama</div>');
+		e.preventDefault();
+	}
+
+
+});
+
+$(document).on('click','#menu_burger', function(e)
+{
+
+	if(a == 0)
+	{
+		a=1;
+	}
+	else if(a ==1)
+	{
+		$('#bs-example-navbar-collapse-1').removeClass('.in');
+		a=0;
+	}
+
+
+});

@@ -2,42 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\custome\FilterDropdown ;
+use PHPExcel_Worksheet_Drawing;
 use Illuminate\Http\Request;
-use Auth ;
-use App\User ;
-use App\Agenda ;
-use Excel ;
+use App\Agenda;
+use App\Proyek;
+use App\User;
+use Excel;
+use Auth;
+
 
 class ExcelController extends Controller
 {
-  public function store(Request $request, $id){
-    // \DB::enableQueryLog();
+  public function index(Request $request){
+    //filter dropdown untuk value
+    $changeUser   = FilterDropdown::user($request) ;
+    $changeProyek = FilterDropdown::proyek($request) ;
+    $changeDate1  = FilterDropdown::date1(request($request));
+    $changeDate2  = FilterDropdown::date2(request($request));
+    // id dan name user
+    $id         = Auth::id() ;
+    $nama       = Auth::user()->name ;
+    // menampilkan data di per'dropdown
+    $user       = User::find($id);
+    $users      = User::select('name')->groupBy('name')->get();
+    $proyek     = Proyek::select('nm_proyek')->groupBy('nm_proyek')->get();
+    $date       = Agenda::select('tanggal')->groupBy('tanggal')->get();
+    //filtering data
+    $agenda = Agenda::FilterDate()
+                    ->FilterUser($id)
+                    ->FilterProyek()
+                    ->QueryAgenda()
+                    ->orderBy('tanggal','desc')
+                    ->get();
     // dd($agenda);
-    // dd(DB::getQueryLog($agenda));
-    $field = ['users.name' ,
-              'agenda.nm_proyek' ,
-              'agenda.kegiatan' ,
-              'agenda.tanggal' ,
-              'agenda.jam_mulai' ,
-              'agenda.jam_selesai' ,
-              'agenda.keterangan'] ;
-    $agenda = Agenda::join('users' ,'agenda.user_id' , '=', 'users.id' )
-                    ->select($field)
-                    ->where('user_id' , $id)
-                    ->get()->toArray();
-    if(Auth::user()->level == 'admin'){
-    $agenda = Agenda::join('users' ,'agenda.user_id' , '=', 'users.id' )
-                      ->select('users.name' , 'agenda.*')
-                      ->get()->toArray();
-    }
-    // return view('index.ExportClients', compact('agenda'));
-    Excel::create('fileAgenda' , function($excel) use ($agenda){
-      $excel->sheet('mySheet' , function($sheet) use ($agenda){
-        // dd($agenda) ;
-        // $sheet->loadView('index.ExportClients')->with('agenda' , $agenda);
-        $sheet->fromArray($agenda);
+    //export ke excel
+    Excel::create('fileAgenda_'.$user->name , function($excel) use ($id,$agenda,$nama){
+      $excel->sheet('mySheet' , function($sheet) use ($id,$agenda,$nama){
+        $objDrawing = new PHPExcel_Worksheet_Drawing;
+				$tes = $objDrawing->setPath(public_path('img/DEKA.png')); //your image path
+				$objDrawing->setCoordinates('F1');
+				$objDrawing->setWorksheet($sheet);
+
+				$sheet->setFontFamily('Times New Roman');
+        $sheet->loadView('index.exportExcel')->with('item',$agenda)->with('id',$id)->with('nama',$nama);
       });
     })->download('xlsx');
-    // dd($agenda) ;
   }
 }
