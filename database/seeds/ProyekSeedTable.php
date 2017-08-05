@@ -14,9 +14,9 @@ class ProyekSeedTable extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         DB::table('proyek')->truncate();
-        $namaProyek = ['aplikasi rumah sakit','aplikasi kependudukan','aplikasi apoteker','aplikasi kepegawaian'];
+        $namaProyek = ['tidak ada','aplikasi rumah sakit','aplikasi kependudukan','aplikasi apoteker','aplikasi kepegawaian'];
         $proyek = [] ;
-        for ($i=1; $i<=4 ; $i++){
+        for ($i=1; $i<=5 ; $i++){
           $proyek[]=[
             'kode_proyek'  => 'PR'.$i,
             'nm_proyek'    => $namaProyek[$i-1],

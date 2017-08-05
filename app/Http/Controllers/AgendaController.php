@@ -25,9 +25,8 @@ class AgendaController extends Controller
     $id             = Auth::id();
     // menampilkan data di per'dropdown
     $user           = User::find($id);
-    $users          = User::select('name')->groupBy('name')->get();
-    $proyek         = Proyek::select('nm_proyek')->groupBy('nm_proyek')->get();
-    $date           = Agenda::select('tanggal')->groupBy('tanggal')->get();
+    $users          = User::select('name')->where('level' , '!=' , 'admin')->get();
+    $proyek         = Proyek::all();
     //filtering data
     $agenda = Agenda::FilterDate()
                     ->FilterUser($id)
@@ -35,12 +34,12 @@ class AgendaController extends Controller
                     ->QueryAgenda()
                     ->get();
     // dd(DB::getQueryLog());
+    // dd($agenda);
     return view('index.agenda',[
                     'agendaa'       =>$agenda,
                     'user'          =>$user,
                     'users'         =>$users,
                     'proyekk'       =>$proyek ,
-                    'datee'         =>$date,
                     'changeUser'    =>$changeUser,
                     'changeProyek'  =>$changeProyek,
                     'changeDate1'   =>$changeDate1,
@@ -58,12 +57,47 @@ class AgendaController extends Controller
       'jam_mulai'     => $jam_mulai,
       'jam_selesai'   => $jam_selesai,
       'keterangan'    => request('keterangan'),
+      'updated_at'   =>Carbon::now(),
+      'created_at'   =>Carbon::now(),
     ]);
 
     if($agenda){
       return redirect('agenda');
     }else{
       return redirect('/');
+    }
+  }
+
+  public function update(Request $request, $id)
+  {
+    \DB::enableQueryLog();
+    // dd($request->all());
+    $agenda = Agenda::where('id',request('id_agenda'))->update([
+      'jam_mulai'    =>request('tanggal').' '.request('jam_mulai'),
+      'jam_selesai'  =>request('tanggal').' '.request('jam_selesai'),
+      'kegiatan'     =>request('kegiatan'),
+      'proyek_id'    =>request('proyek'),
+      'keterangan'   =>request('keterangan'),
+      'updated_at'   =>Carbon::now(),
+      'created_at'   =>Carbon::now(),
+    ]);
+    // dd(DB::getQueryLog());
+    if($agenda){
+      return redirect('agenda');
+      // return 'berhasil';
+    }else{
+      return redirect('agenda');
+      // return 'gagal';
+    }
+  }
+
+  public function destroy($id)
+  {
+    $agenda = Agenda::destroy($id);
+    if($agenda){
+      return redirect('agenda');
+    }else{
+      return redirect('agenda');
     }
   }
 }

@@ -21,7 +21,7 @@ class AgendaSeedTable extends Seeder
         $bulan = rand(0,1) ? rand(01,03) : rand(04,05) ;
         $date = date('Y-m-d',strtotime("{$tahun}-{$bulan}-01 + {$i} days")) ;
         $agenda[] = [
-          'user_id'     => rand(1,3),
+          'user_id'     => rand(2,4),
           'proyek_id'   => rand(1,4),
           'kegiatan'    => $kegiatan[rand(0,2)],
           'jam_mulai'   => $date .' '. Carbon::now()->format('h:i:s'),
