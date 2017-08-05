@@ -54,9 +54,9 @@
                              <button style="margin:5px 0px;" id="tombol_filter1" name="filter" value="1" type="submit" class="btn btn-info"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp Filter</button>
                              <!-- <input style="margin:5px 0px;" class="btn btn-success" type="submit" id="tombol_filter2" value="Semua"> -->
                              @if (Auth::user()->level == 'admin')
-                               <button style="margin:5px 0px;" id="tombol_filter2" name="proyek" value="1" type="submit" class="btn btn-success btn-md" style="display:none"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp Proyek</button>
+                               <button style="margin:5px 0px;" data-toggle="modal" data-target="#myModalAddProyek" name="proyek" value="1" type="button" class="btn btn-success btn-md" style="display:none"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp Proyek</button>
                              @endif
-                             <button style="margin:5px 0px;" id="tombol_filter2"   name="all" value="1" type="submit" class="btn btn-warning btn-md" style="display:none"> Reset</button>
+                             {{-- <button style="margin:5px 0px;" id="tombol_filter2"   name="all" value="1" type="submit" class="btn btn-warning btn-md" style="display:none"> Reset</button> --}}
                              @if (Auth::user()->level == 'user')
                                <!-- Trigger the modal with a button -->
                                <button style="margin:5px 0px;" type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModalAdd"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp Agenda</button>
@@ -101,7 +101,7 @@
                   <td>{{$agenda->proyek->nm_proyek}}</td>
                   <td>{{$agenda->keterangan}}</td>
                   <td>
-                  @if ($agenda->user->name == Auth::user()->name)
+                  @if ($agenda->user->id == Auth::id())
                       <input type="submit" name="edit" class="btn btn-success edit_agenda" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-idProyek="{{$agenda->proyek_id}}" data-keterangan="{{$agenda->keterangan}}" value="edit" data-toggle="modal" data-target="#myModalEdit">
                       <input type="submit" name="delete" class="btn btn-danger hapus_agenda" data-id="{{$agenda->id}}" data-kegiatan="{{$agenda->kegiatan}}" value="delete" data-toggle="modal" data-target="#myModaldelete">
                       {{ csrf_field() }}
@@ -117,6 +117,10 @@
       @include('index.edit_agenda')
       <!-- Modal delete agenda -->
       @include('index.delete_agenda')
+      @if (Auth::user()->level == 'admin')
+        <!-- Modal add agenda -->
+        @include('index.add_proyek')
+      @endif
                           </div>
                       </div>
                   </div>

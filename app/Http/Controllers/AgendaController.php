@@ -64,7 +64,7 @@ class AgendaController extends Controller
     if($agenda){
       return redirect('agenda');
     }else{
-      return redirect('/');
+      return redirect('agenda');
     }
   }
 

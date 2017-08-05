@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit Agenda</h4>
+        <h4 class="modal-title">Add Agenda</h4>
       </div>
       <form action="{{route('agenda.store')}}" method="post">
         {{ csrf_field() }}
@@ -23,7 +23,7 @@
           <div class="form-group row">
             <label for="example-time-input" class="col-2 col-form-label">Waktu Selesai</label>
             <div class="col-10">
-              <input class="form-control" type="time" value="13:45:00" name="jam_selesai" id="example-time-input">
+              <input class="form-control" type="time" name="jam_selesai" id="example-time-input">
             </div>
           </div>
           <div class="form-group row">
@@ -33,11 +33,13 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">Proyek</label>
-            <div class="col-10">
-              <input class="form-control nm_proyek_agenda" type="text" value="" name="proyek" id="example-text-input">
-              <input type="hidden" class="id_nm_proyek_agenda" name="proyek_id">
-            </div>
+            <label for="usr">Proyek</label>
+            <select style="margin:5px 0px;" class="form-control show-tick proyek_agenda" name="proyek">
+              <option value=""></option>
+              @foreach ($proyekk as $proyek)
+                <option value="{{$proyek->id}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
+              @endforeach
+            </select>
           </div>
             <div class="form-group row">
               <label for="comment">Keterangan</label>

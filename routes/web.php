@@ -9,5 +9,6 @@ Route::group(['middleware' => 'user'],function(){
   Route::resource('setting','SettingController');
   Route::group(['middleware' => 'admin'],function(){
     Route::resource('user', 'UserController');
+    Route::resource('proyek','ProyekController');
   });
 });
