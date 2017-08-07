@@ -6,6 +6,32 @@ function ajax() {
     });
 }
 
+// untuk menampilkan data pada edit agenda
+$(document).on('click','.edit_agenda',function(){
+	var id 					= $(this).attr('data-id');
+	var tanggal			= $(this).attr('data-tanggal');
+	var jam_mulai		= $(this).attr('data-jamMulai');
+	var jam_selesai = $(this).attr('data-jamSelesai');
+	var kegiatan		= $(this).attr('data-kegiatan');
+	var id_proyek		= $(this).attr('data-idProyek');
+	var keterangan	= $(this).attr('data-keterangan');
+	$('.id_agenda').val(id);
+	$('.tanggal_agenda').val(tanggal);
+	$('.jam_mulai_agenda').val(jam_mulai);
+	$('.jam_selesai_agenda').val(jam_selesai);
+	$('.kegiatan_agenda').val(kegiatan);
+	$('.keterangan_agenda').val(keterangan);
+	$('.proyek_agenda').val(id_proyek);
+	$('#form_agenda_edit').attr('action','agenda/'+id);
+});
+// untuk menampilkan data pada delete agenda
+$(document).on('click','.hapus_agenda',function(){
+	var id 					= $(this).attr('data-id');
+	var kegiatan 		= $(this).attr('data-kegiatan');
+	$('#agenda_delete_modal').html('"'+kegiatan+'"');
+	$('#form_agenda_delete').attr('action','agenda/'+id);
+});
+
 $(document).on('click','#tombol_filter3',function(){
 	$('#method').attr('action','excel');
 });
@@ -29,13 +55,6 @@ $(document).ready(function()
 	});
 	var  lebar = $(window).width();
 	f_lebar(lebar);
-
-	 var table = $('#example').DataTable({
-        rowReorder: {
-            selector: 'td:nth-child(2)'
-        },
-        responsive: true
-    } );
 
 });
 
@@ -73,9 +92,6 @@ $(document).on('click','.edit_user', function(e)
 	$('#nama_edit_modal').val(name);
 	$('#jabatan_edit_modal').val(jabatan);
 	$('#email_edit_modal').val(email);
-
-
-
 });
 
 $(document).on('click','.hapus_user', function(e)

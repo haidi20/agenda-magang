@@ -11,7 +11,7 @@ use Auth;
 class Agenda extends Model
 {
   protected $table = 'agenda' ;
-  protected $hidden = ['id' , 'user_id'] ;
+  // protected $hidden = ['id' , 'user_id'] ;
   protected $dates = ['jam_mulai','jam_selesai'];
   public function scopeFilterProyek($query)
   {
@@ -24,11 +24,8 @@ class Agenda extends Model
   public function scopeFilterUser($query,$id)
   {
     $user = FilterDropdown::user(request('user'));
-    // dd($user) ;
     if(!empty($user)){
       $agenda = $query->where('users.name' , $user);
-    }elseif(Auth::user()->level == 'user'){
-      $agenda = $query->where('user_id' , $id);
     }
   }
   public function scopeFilterDate($query)
@@ -38,9 +35,9 @@ class Agenda extends Model
 
     if(!empty($mulai)){
       if(!empty($mulai) && !empty($akhir)){
-        $agenda = $query->whereBetween('tanggal', compact('mulai','akhir'));
+        $agenda = $query->whereBetween('jam_mulai', compact('mulai','akhir'));
       }else{
-        $agenda = $query->whereDate('tanggal' , $mulai);
+        $agenda = $query->whereDate('jam_mulai' , $mulai);
       }
     }
   }
@@ -48,7 +45,8 @@ class Agenda extends Model
   {
     $agenda = $query->join('users','agenda.user_id','=','users.id')
                     ->join('proyek','agenda.proyek_id','=','proyek.id')
-                    ->select('*');
+                    ->select('agenda.*')
+                    ->orderBy('jam_mulai' , 'desc');
   }
   public function user()
   {

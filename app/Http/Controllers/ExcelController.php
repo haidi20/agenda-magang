@@ -15,25 +15,24 @@ use Auth;
 class ExcelController extends Controller
 {
   public function index(Request $request){
+    \DB::enableQueryLog();
     //filter dropdown untuk value
-    $changeUser   = FilterDropdown::user($request) ;
-    $changeProyek = FilterDropdown::proyek($request) ;
-    $changeDate1  = FilterDropdown::date1(request($request));
-    $changeDate2  = FilterDropdown::date2(request($request));
+    $changeUser     = FilterDropdown::user($request);
+    $changeProyek   = FilterDropdown::proyek($request);
+    $changeDate1    = FilterDropdown::date1(request($request));
+    $changeDate2    = FilterDropdown::date2(request($request));
     // id dan name user
-    $id         = Auth::id() ;
-    $nama       = Auth::user()->name ;
+    $id             = Auth::id();
+    $nama           = request('user') ;
     // menampilkan data di per'dropdown
-    $user       = User::find($id);
-    $users      = User::select('name')->groupBy('name')->get();
-    $proyek     = Proyek::select('nm_proyek')->groupBy('nm_proyek')->get();
-    $date       = Agenda::select('tanggal')->groupBy('tanggal')->get();
+    $user           = User::find($id);
+    $users          = User::select('name')->where('level' , '!=' , 'admin')->get();
+    $proyek         = Proyek::all();
     //filtering data
     $agenda = Agenda::FilterDate()
                     ->FilterUser($id)
                     ->FilterProyek()
                     ->QueryAgenda()
-                    ->orderBy('tanggal','desc')
                     ->get();
     // dd($agenda);
     //export ke excel

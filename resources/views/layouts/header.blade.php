@@ -58,8 +58,8 @@
 		<script type="text/javascript" src="{{asset('js/bootstrap-material-datetimepicker.js')}}"></script>
     <!-- end datepicker -->
   	<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
-  	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-  	<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.0/js/dataTables.rowReorder.min.js"></script>
-  	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+    <!-- Datatable -->
+    {{-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> --}}
+    {{-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> --}}
   </body>
 @endsection

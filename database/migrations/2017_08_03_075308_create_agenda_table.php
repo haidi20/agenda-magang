@@ -21,6 +21,7 @@ class CreateAgendaTable extends Migration
         $table->dateTime('jam_mulai');
         $table->dateTime('jam_selesai');
         $table->string('keterangan');
+        $table->timestamps();
 
         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         $table->foreign('proyek_id')->references('id')->on('proyek')->onDelete('cascade');

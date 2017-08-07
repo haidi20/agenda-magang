@@ -86,7 +86,9 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td colspan="5" id="nama"> Nama : {{$nama}}</td>
+      @if ($nama)
+        <td colspan="5" id="nama"> Nama : {{$nama}}</td>
+      @endif
 			<td></td>
 		</tr>
 	</table>
@@ -94,7 +96,7 @@
 	<table border="1" class="table">
 		<tr>
 			<th id="no" 	class="thead">No</th>
-      @if (Auth::user()->level == 'admin')
+      @if (!$nama)
         <th class="thead">Nama</th>
       @endif
 			<th id="hari" class="thead">Hari/Tanggal</th>
@@ -111,11 +113,11 @@
 	?>
 		<tr>
 			<td align="center"><?php $b=1; echo $b; ?></td>
-      @if (Auth::user()->level == 'admin')
+      @if (!$nama)
         <td align="center">{{$value->user->name}}</td>
       @endif
-			<td align="right">{{$a=$value->tanggal }}</td>
-			<td align="center">{{ $value->jam_mulai }} - {{ $value->jam_selesai }}</td>
+			<td align="right">{{$a=$value->jam_mulai->format('Y-m-d') }}</td>
+			<td align="center">{{ $value->jam_mulai->format('h:i') }} - {{ $value->jam_selesai->format('h:i') }}</td>
 			<td>{{ $value->kegiatan }}</td>
 			<td align="center">{{ $value->proyek->nm_proyek }}</td>
 			<td>{{ $value->keterangan }}</td>
@@ -124,29 +126,29 @@
 }
 else
 {
-		if ($a == $value->tanggal)
+		if ($a == $value->jam_mulai->format('Y-m-d'))
 		{
 ?>
 			<tr>
 			 <td></td>
-        @if (Auth::user()->level == 'admin')
+        @if (!$nama)
           <td align="center">{{$value->name}}</td>
         @endif
 				<td></td>
-				<td align="center">{{ $value->jam_mulai }} - {{ $value->jam_selesai }}</td>
+				<td align="center">{{ $value->jam_mulai->format('h:i') }} - {{ $value->jam_selesai->format('h:i') }}</td>
 				<td>{{ $value->kegiatan }}</td>
-				<td align="center">{{ $value->nm_proyek }}</td>
+				<td align="center">{{ $value->proyek->nm_proyek }}</td>
 				<td>{{ $value->keterangan }}</td>
 			</tr>
 <?php
 		}
 		else
 		{
-			$a = $value->tanggal;
+			$a = $value->jam_mulai->format('Y-m-d');
 			$b=$b+1;
 			?>
 				<tr>
-					@if (Auth::user()->level == 'admin')
+					 @if (!$nama)
 					<td></td>
 				  @endif
 					<td></td>
@@ -158,13 +160,13 @@ else
 				</tr>
 				<tr>
 					<td align="center"><?php echo $b; ?></td>
-          @if (Auth::user()->level == 'admin')
+          @if (!$nama)
             <td align="center">{{$value->user->name}}</td>
           @endif
-					<td align="right">{{ $value->tanggal }}</td>
-					<td align="center">{{ $value->jam_mulai }} - {{ $value->jam_selesai }}</td>
+					<td align="right">{{ $value->jam_mulai->format('Y-m-d') }}</td>
+					<td align="center">{{ $value->jam_mulai->format('h:i') }} - {{ $value->jam_selesai->format('h:i') }}</td>
 					<td>{{ $value->kegiatan }}</td>
-					<td align="center">{{ $value->nm_proyek }}</td>
+					<td align="center">{{ $value->proyek->nm_proyek }}</td>
 					<td>{{ $value->keterangan }}</td>
 				</tr>
 			<?php

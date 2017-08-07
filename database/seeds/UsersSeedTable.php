@@ -36,6 +36,13 @@ class UsersSeedTable extends Seeder
           'password'  => bcrypt('keren'),
           'level'     => 'user',
           'jabatan'   => 'anggota',
+        ],
+        [
+          'name'      => 'mantab',
+          'email'     => 'mantab@mantab.com',
+          'password'  => bcrypt('mantab'),
+          'level'     => 'user',
+          'jabatan'   => 'anggota',
         ]
       ]);
     }
