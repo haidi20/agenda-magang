@@ -111,6 +111,7 @@
             @endforeach
           </tbody>
       </table>
+      {{$agendaa->links()}}
       <!-- Modal add agenda -->
       @include('index.add_agenda')
       <!-- Modal edit agenda -->

@@ -29,11 +29,7 @@ class ExcelController extends Controller
     $users          = User::select('name')->where('level' , '!=' , 'admin')->get();
     $proyek         = Proyek::all();
     //filtering data
-    $agenda = Agenda::FilterDate()
-                    ->FilterUser($id)
-                    ->FilterProyek()
-                    ->QueryAgenda()
-                    ->get();
+    $agenda = Agenda::FilterDate()->FilterUser($id)->FilterProyek()->QueryAgenda()->get();
     // dd($agenda);
     //export ke excel
     Excel::create('fileAgenda_'.$user->name , function($excel) use ($id,$agenda,$nama){

@@ -11,7 +11,7 @@
           <div class="form-group row">
             <div class="form-control-wrapper">
               <label for="tgl">Tanggal</label>
-              <input style="margin:5px 0px;" type="text" id="date1_agenda" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
+              <input style="margin:5px 0px;" type="text" id="date1" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
             </div>
           </div>
           <div class="form-group row">
@@ -35,7 +35,6 @@
           <div class="form-group row">
             <label for="usr">Proyek</label>
             <select style="margin:5px 0px;" class="form-control show-tick proyek_agenda" name="proyek">
-              <option value=""></option>
               @foreach ($proyekk as $proyek)
                 <option value="{{$proyek->id}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
               @endforeach

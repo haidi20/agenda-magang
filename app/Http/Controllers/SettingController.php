@@ -39,14 +39,16 @@ class SettingController extends Controller
       if(Auth::attempt(['password' => request('pass_lama')])){
         if(request('pass_baru1') == request('pass_baru2')){
           $setting = User::find(Auth::id())->update([
-            'password'  => bcrypt(request('pass_baru1')) ,
+            'password'  => bcrypt(request('pass_baru1')),
           ]);
           if($setting){
             return redirect('setting')->with('note' , 'password berhasil update');
           }
+        }else{
+          return redirect('setting')->with('note' , 'password tidak sama');
         }
       }
-      return redirect('setting')->with('note' , 'password gagal di update');;
+      return redirect('setting')->with('note' , 'password gagal di update');
     }
 
     /**
