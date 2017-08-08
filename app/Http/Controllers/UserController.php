@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth ;
 use App\User ;
 use Excel ;
+use Auth ;
+
 
 class UserController extends Controller
 {

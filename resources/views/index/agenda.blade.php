@@ -114,10 +114,13 @@
             @endforeach
           </tbody>
       </table>
+<<<<<<< HEAD
 	  
 	  <div class="jumlah_data_tabel" id="{{ $a-1 }}">
 	 
 	  </div>
+=======
+>>>>>>> 603c47bb87a278ac7d4ee33e3afa6cb7cf46bf5d
       {{$agendaa->links()}}
       <!-- Modal add agenda -->
       @include('index.add_agenda')
