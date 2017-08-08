@@ -21,20 +21,20 @@
                           <div class="row">
                             <div class="col-md-3">
                               <div class="form-control-wrapper">
-                                <label for="tgl">Rentang Waktu</label>
+                                <label for="tgl">Dari</label>
                                 <input style="margin:5px 0px;" type="text" value="{{$changeDate1}}" id="date1" name="date1" class="form-control floating-label" placeholder="Hari/Tanggal">
                               </div>
                             </div>
                             <div class="col-md-3" id="date2_tempat">
                               <div class="form-control-wrapper">
-                                <label for="tgl">S/D</label>
+                                <label for="tgl">Sampai</label>
                                 <input style="margin:5px 0px;" type="text" id="date2" value="{{$changeDate2}}" name="date2" class="form-control floating-label" placeholder="Hari/Tanggal" disabled>
                               </div>
                             </div>
                             <div class="col-md-2">
-                              <label for="usr">User</label>
+                              <label for="usr">Staf</label>
                               <select style="margin:5px 0px;" id="user" class="form-control show-tick" name="user">
-                                <option value=""> Semua User </option>
+                                <option value=""> Semua Staf </option>
                                 @foreach ($users as $users)
                                   <option value="{{$users->name}}" {{$changeUser == $users->name?'selected="select"':''}}>{{$users->name}}</option>
                                 @endforeach
@@ -78,8 +78,9 @@
 
                           </div><br>
                           <div class="body">
-
-          <table class="display nowrap" id='agenda' cellspacing="0" width="100%">
+<!-- BAGIAN TABEL -->
+<!-- tambahan faizal -->
+          <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
           <thead>
             <tr>
               <th>Staf</th>
@@ -94,7 +95,7 @@
           <tbody>
 		  @php $a=1 @endphp
             @foreach ($agendaa as $agenda)
-			
+
               <tr>
                   <td id="nama_{{$a}}" data-idProyek="{{$agenda->proyek_id}}" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jam="{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-proyek="{{$agenda->proyek->nm_proyek}}" data-ket="{{$agenda->keterangan}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}">{{$agenda->user->name}}</td>
                   <td class="tabel">{{$agenda->jam_mulai->format('Y-m-d')}}</td>
@@ -110,13 +111,13 @@
                   @endif
                   </td>
               </tr>
-		   @php $a++ @endphp  
+		   @php $a++ @endphp
             @endforeach
           </tbody>
       </table>
-	  
+
 	  <div class="jumlah_data_tabel" id="{{ $a-1 }}">
-	 
+
 	  </div>
       {{$agendaa->links()}}
       <!-- Modal add agenda -->

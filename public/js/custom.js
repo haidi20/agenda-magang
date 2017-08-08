@@ -44,7 +44,7 @@ $(document).on('click','#tombol_filter2, #tombol_filter1',function(){
 
 $(document).ready(function()
 {
-	
+
 	$('#error_modal_proyek').hide();
 	$('#error_modal_tanggal').hide();
 	$('#error_modal_jamm').hide();
@@ -80,16 +80,16 @@ $(window).resize(function()
 function f_lebar(lebar)
 {
 	var id = $('.jumlah_data_tabel').attr('id');
-	
+
 	if(lebar < 768 )
 	{
 		//tampila mobile
 		$('#kiri').css({'width' : '0%'});
 		$('#kanan').css({'width' : '100%'});
-		
+
 		$('.tabel').hide();
-				
-			
+
+
 		if(a==0)
 		{
 			for(var i=1; i<=id; i++)
@@ -105,39 +105,39 @@ function f_lebar(lebar)
 				proyek = $('#nama_'+i).attr('data-proyek');
 				ket = $('#nama_'+i).attr('data-ket');
 				action = $('#action_'+i).attr('data-status');
-				
+
 				if(action == '')
 				{
-					$('#nama_'+i).html('<div class="row"><div class="col-xs-4">Nama :</div><div class="col-xs-8">'+nama+'</div></div><div class="row"><div class="col-xs-4">Tanggal : </div><div class="col-xs-8">'+tanggal+'</div></div><div class="row"><div class="col-xs-12"><button class="tampil_data" id="'+i+'">Tampilkan</button></div></div><div id="nama_tabel_'+i+'"><div>Jam : '+jam+'</div><div>Kegiatan : '+kegiatan+'</div><div>Nama Proyek: '+proyek+'</div><div>Keterangan : '+ket+'</div><div>Action '+action+' </div></div><button class="sembunyi_data" id="'+i+'">Sembunyikan</button>');
+					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Tanggal</b></td><td style="padding:10px">'+tanggal+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+ket+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
 					//console.log('kosong');
 				}
 				else
 				{
 					html_action =  $('#action_'+i).html();
-					$('#nama_'+i).html('<div class="row"><div class="col-xs-4">Nama :</div><div class="col-xs-8">'+nama+'</div></div><div class="row"><div class="col-xs-4">Tanggal : </div><div class="col-xs-8">'+tanggal+'</div></div><div class="row"><div class="col-xs-12"><button class="tampil_data" id="'+i+'">Tampilkan</button></div></div><div id="nama_tabel_'+i+'"><div>Jam : '+jam+'</div><div>Kegiatan : '+kegiatan+'</div><div>Nama Proyek: '+proyek+'</div><div>Keterangan : '+ket+'</div><div>Action '+html_action+' </div></div><button class="sembunyi_data" id="'+i+'">Sembunyikan</button>');
+					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Tanggal</b></td><td style="padding:10px">'+tanggal+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+ket+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+html_action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
 				}
-				
+
 				//token = $
 				$('#nama_tabel_'+i).hide();
 				$('.sembunyi_data').hide();
-	
+
 			}
 		}
-		
+
 		a=1;
 	}
 	else
 	{
 		$('#kiri').css({'width' : '15%'});
 		$('#kanan').css({'width' : '85%'});
-		
+
 		$('.tabel').show();
 		for(var i=1; i<=id; i++)
 		{
 			nama = $('#nama_'+i).attr('data-name');
 			$('#nama_tabel_'+i).remove();
-			$('#nama_'+i).text(nama);					
-		}				
+			$('#nama_'+i).text(nama);
+		}
 		a=0;
 	}
 }
@@ -229,8 +229,8 @@ $(document).on('click','.kirim_agenda', function(e)
 	var kegiatan = $('#kegiatan').val();
 	var nama_proyek = $('#nama_proyek').val();
 	var comment = $('#comment').val();
-	
-	
+
+
 	if(tanggal == ''){$('#error_modal_tanggal').show();e.preventDefault();}else{$('#error_modal_tanggal').hide();}
 	if(jam_mulai == ''){$('#error_modal_jamm').show();e.preventDefault();}else{$('#error_modal_jamm').hide();}
 	if(jam_selesai == ''){$('#error_modal_jams').show();e.preventDefault();}else{$('#error_modal_jams').hide();}
@@ -242,7 +242,7 @@ $(document).on('click','.kirim_agenda', function(e)
 $(document).on('click','.kirim_proyek', function(e)
 {
 	var nama = $('#nama_proyek_modal').val();
-	
+
 	if(nama == '')
 	{
 		$('#error_modal_proyek').show();
@@ -257,18 +257,18 @@ $(document).on('click','.kirim_proyek', function(e)
 $(document).on('click','.tampil_data',function()
 {
 	var id 	= $(this).attr('id');
-			
+
 	$('#nama_tabel_'+id).show();
 	$('button#'+id+'.sembunyi_data').show();
 	$(this).hide();
 });
-		
+
 $(document).on('click','.sembunyi_data',function()
 {
 	var id 	= $(this).attr('id');
-			
+
 	$('#nama_tabel_'+id).hide();
 	$('button.tampil_data#'+id).show();
 	$(this).hide();
-			
+
 });
