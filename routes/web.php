@@ -1,6 +1,5 @@
 <?php
 
-// catatan
 Route::get('/',['middleware' => 'login' , function(){ return view('index.login'); }]);
 Route::post('login' , 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
