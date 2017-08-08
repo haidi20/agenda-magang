@@ -12,8 +12,8 @@ class AgendaSeedTable extends Seeder
     public function run()
     {
 
-      // DB::statement('SET FOREIGN_KEY_CHECKS=0');
-      // DB::table('agenda')->truncate();
+      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      DB::table('agenda')->truncate();
       $agenda   = [] ;
       $kegiatan = ['ke luar kota' , 'meeting bersama client' , 'pergi ke lapangan untuk menganalisa' ];
       for($i = 1; $i <= 15; $i++){
