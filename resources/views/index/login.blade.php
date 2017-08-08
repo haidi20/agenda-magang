@@ -1,48 +1,28 @@
-@extends('layouts.layout')
-@section('body')
-  <body class="login-page">
-      <div class="login-box">
-          <div class="logo">
-              <a href="javascript:void(0);">Aplikasi Agenda</a>
-              <small>Admin BootStrap Based - Material Design</small>
-          </div>
-          <div class="card">
-              <div class="body">
-                  <form id="sign_in" method="POST" action="{{url('/login')}}">
-                      <div class="msg">{{Session::get('note')}}</div>
-                      <div class="input-group">
-                          <span class="input-group-addon">
-                              <i class="material-icons">person</i>
-                          </span>
-                          <div class="form-line">
-                              <input type="text" class="form-control" name="name" placeholder="Username" required autofocus>
-                          </div>
-                      </div>
-                      <div class="input-group">
-                          <span class="input-group-addon">
-                              <i class="material-icons">lock</i>
-                          </span>
-                          <div class="form-line">
-                              <input type="password" class="form-control" name="pass" placeholder="Password" required>
-                          </div>
-                      </div>
-                      {{ csrf_field() }}
-                      <div class="row">
-                          <div class="col-xs-8 p-t-5">
-
-                          </div>
-                          <div class="col-xs-4">
-                              <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
-                          </div>
-                      </div>
-                      <div class="row m-t-15 m-b--20">
-
-                      </div>
-                  </form>
-              </div>
-          </div>
+@extends('layouts.source')
+@section('tubuh')
+  <body style="background-color: #565C63;">
+    <div class="logo">
+        <a href="javascript:void(0);">Aplikasi <b>Agenda</b></a>
+    </div>
+    <div class="kartu">
+      <form id="kartu" action="{{url('/login')}}" method="post">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-o fa-fw fa-lg" aria-hidden="true"></i></span>
+          <input type="text" name="name"class="form-control" placeholder="Username"><br>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock fa-fw fa-lg" aria-hidden="true"></i></span>
+          <input type="password" name="pass" class="form-control" placeholder="Password"><br>
+        </div>
+        <div class="btn">
+        {{ csrf_field() }}
+        <input class="btn btn-success" type="submit" name="kirim" value="MASUK">
       </div>
+      </form>
+    </div>
 
-      @include('layouts.source-js')
+    <div class="logo">
+            <small>© Copyright 2017 | Created by DEKA magang Team</small>
+        </div>
   </body>
 @endsection

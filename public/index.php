@@ -35,6 +35,11 @@ require __DIR__.'/../bootstrap/autoload.php';
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
+// set the public path to this directory
+// $app-&gt;bind('path.public', function() {
+// return __DIR__;
+// });
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -46,6 +51,8 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 | and wonderful application we have prepared for them.
 |
 */
+
+
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
