@@ -1,7 +1,5 @@
 <?php
-// catatan dari haidi di master
-// catatan faizal
-//alfian
+// dar haidi bikin alfian
 Route::get('/',['middleware' => 'login' , function(){ return view('index.login'); }]);
 Route::post('login' , 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
