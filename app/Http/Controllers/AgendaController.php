@@ -32,7 +32,7 @@ class AgendaController extends Controller
                     ->FilterUser($id)
                     ->FilterProyek()
                     ->QueryAgenda()
-                    ->get();
+                    ->paginate(10);
     // dd(DB::getQueryLog());
     // dd($agenda);
     return view('index.agenda',[

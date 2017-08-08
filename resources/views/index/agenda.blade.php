@@ -82,35 +82,43 @@
           <table class="display nowrap" id='agenda' cellspacing="0" width="100%">
           <thead>
             <tr>
-              <th>User</th>
-              <th>Hari/Tanggal</th>
-              <th>Jam</th>
-              <th>Kegiatan</th>
-              <th>Nama Proyek</th>
-              <th>Keterangan</th>
-              <th>Action</th>
+              <th>Staf</th>
+              <th class="tabel">Hari/Tanggal</th>
+              <th class="tabel">Jam</th>
+              <th class="tabel">Kegiatan</th>
+              <th class="tabel">Nama Proyek</th>
+              <th class="tabel">Keterangan</th>
+              <th class="tabel">Action</th>
             </tr>
           </thead>
           <tbody>
+		  @php $a=1 @endphp
             @foreach ($agendaa as $agenda)
+			
               <tr>
-                  <td>{{$agenda->user->name}}</td>
-                  <td>{{$agenda->jam_mulai->format('Y-m-d')}}</td>
-                  <td>{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}</td>
-                  <td>{{$agenda->kegiatan}}</td>
-                  <td>{{$agenda->proyek->nm_proyek}}</td>
-                  <td>{{$agenda->keterangan}}</td>
-                  <td>
+                  <td id="nama_{{$a}}" data-idProyek="{{$agenda->proyek_id}}" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jam="{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-proyek="{{$agenda->proyek->nm_proyek}}" data-ket="{{$agenda->keterangan}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}">{{$agenda->user->name}}</td>
+                  <td class="tabel">{{$agenda->jam_mulai->format('Y-m-d')}}</td>
+                  <td class="tabel">{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}</td>
+                  <td class="tabel">{{$agenda->kegiatan}}</td>
+                  <td class="tabel">{{$agenda->proyek->nm_proyek}}</td>
+                  <td class="tabel">{{$agenda->keterangan}}</td>
+                  <td class="tabel" id="action_{{$a}}" data-status="@if ($agenda->user->id == Auth::id()) TRUE @endif">
                   @if ($agenda->user->id == Auth::id())
-                      <input type="submit" name="edit" class="btn btn-success edit_agenda" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-idProyek="{{$agenda->proyek_id}}" data-keterangan="{{$agenda->keterangan}}" value="edit" data-toggle="modal" data-target="#myModalEdit">
-                      <input type="submit" name="delete" class="btn btn-danger hapus_agenda" data-id="{{$agenda->id}}" data-kegiatan="{{$agenda->kegiatan}}" value="delete" data-toggle="modal" data-target="#myModaldelete">
-                      {{ csrf_field() }}
+                      <input type="submit" name="edit" class="btn btn-success btn-xs edit_agenda" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-idProyek="{{$agenda->proyek_id}}" data-keterangan="{{$agenda->keterangan}}" value="edit" data-toggle="modal" data-target="#myModalEdit">
+                      <input type="submit" name="delete" class="btn btn-danger btn-xs hapus_agenda" data-id="{{$agenda->id}}" data-kegiatan="{{$agenda->kegiatan}}" value="delete" data-toggle="modal" data-target="#myModaldelete">
+                     <div id="ambil_token"> {{ csrf_field() }} </div>
                   @endif
                   </td>
               </tr>
+		   @php $a++ @endphp  
             @endforeach
           </tbody>
       </table>
+	  
+	  <div class="jumlah_data_tabel" id="{{ $a-1 }}">
+	 
+	  </div>
+      {{$agendaa->links()}}
       <!-- Modal add agenda -->
       @include('index.add_agenda')
       <!-- Modal edit agenda -->

@@ -49,7 +49,7 @@
         </div>
         <div class="modal-footer">
           <a class="btn btn-danger" data-dismiss="modal">Kembali</a>
-          <input type="submit" class="btn btn-success kirim_agenda" value="kirim"></input>
+          <input type="submit" class="btn btn-success kirim_edit_agenda" value="kirim"></input>
         </div>
       </form>
     </div>
