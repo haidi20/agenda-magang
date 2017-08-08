@@ -11,14 +11,9 @@
           <div class="form-group row">
             <div class="form-control-wrapper">
               <label for="tgl">Tanggal</label>
-<<<<<<< HEAD
               <input style="margin:5px 0px;" type="text" id="date1_agenda" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
 			  <div class="alert-danger" id="error_modal_tanggal">*Tidak Boleh Kosong</div>
 			</div>
-=======
-              <input style="margin:5px 0px;" type="text" id="date1" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
-            </div>
->>>>>>> 603c47bb87a278ac7d4ee33e3afa6cb7cf46bf5d
           </div>
           <div class="form-group row">
             <label for="example-time-input" class="col-2 col-form-label">Waktu Mulai</label>
@@ -43,12 +38,8 @@
           </div>
           <div class="form-group row">
             <label for="usr">Proyek</label>
-<<<<<<< HEAD
             <select style="margin:5px 0px;" class="form-control show-tick proyek_agenda" name="proyek" id="nama_proyek">
               <option value=""></option>
-=======
-            <select style="margin:5px 0px;" class="form-control show-tick proyek_agenda" name="proyek">
->>>>>>> 603c47bb87a278ac7d4ee33e3afa6cb7cf46bf5d
               @foreach ($proyekk as $proyek)
                 <option value="{{$proyek->id}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
               @endforeach
