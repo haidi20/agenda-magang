@@ -1,3 +1,6 @@
+var a=0;
+var c=0;
+
 function ajax() {
 	$.ajaxSetup({
         headers: {
@@ -41,6 +44,14 @@ $(document).on('click','#tombol_filter2, #tombol_filter1',function(){
 
 $(document).ready(function()
 {
+	
+	$('#error_modal_proyek').hide();
+	$('#error_modal_tanggal').hide();
+	$('#error_modal_jamm').hide();
+	$('#error_modal_jams').hide();
+	$('#error_modal_kegiatan').hide();
+	$('#error_modal_nama_proyek').hide();
+	$('#error_modal_keterangan').hide();
 
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
@@ -55,6 +66,7 @@ $(document).ready(function()
 	});
 	var  lebar = $(window).width();
 	f_lebar(lebar);
+	//alert(lebar);
 
 });
 
@@ -67,15 +79,66 @@ $(window).resize(function()
 
 function f_lebar(lebar)
 {
+	var id = $('.jumlah_data_tabel').attr('id');
+	
 	if(lebar < 768 )
 	{
+		//tampila mobile
 		$('#kiri').css({'width' : '0%'});
 		$('#kanan').css({'width' : '100%'});
+		
+		$('.tabel').hide();
+				
+			
+		if(a==0)
+		{
+			for(var i=1; i<=id; i++)
+			{
+				id_user= nama = $('#nama_'+i).attr('data-id');
+				id_proyek= nama = $('#nama_'+i).attr('data-idProyek');
+				nama = $('#nama_'+i).attr('data-name');
+				tanggal = $('#nama_'+i).attr('data-tanggal');
+				jam = $('#nama_'+i).attr('data-jam');
+				jamMulai = $('#nama_'+i).attr('data-jamMulai');
+				jamSelesai = $('#nama_'+i).attr('data-jamSelesai');
+				kegiatan = $('#nama_'+i).attr('data-kegiatan');
+				proyek = $('#nama_'+i).attr('data-proyek');
+				ket = $('#nama_'+i).attr('data-ket');
+				action = $('#action_'+i).attr('data-status');
+				
+				if(action == '')
+				{
+					$('#nama_'+i).html('<div class="row"><div class="col-xs-4">Nama :</div><div class="col-xs-8">'+nama+'</div></div><div class="row"><div class="col-xs-4">Tanggal : </div><div class="col-xs-8">'+tanggal+'</div></div><div class="row"><div class="col-xs-12"><button class="tampil_data" id="'+i+'">Tampilkan</button></div></div><div id="nama_tabel_'+i+'"><div>Jam : '+jam+'</div><div>Kegiatan : '+kegiatan+'</div><div>Nama Proyek: '+proyek+'</div><div>Keterangan : '+ket+'</div><div>Action '+action+' </div></div><button class="sembunyi_data" id="'+i+'">Sembunyikan</button>');
+					//console.log('kosong');
+				}
+				else
+				{
+					html_action =  $('#action_'+i).html();
+					$('#nama_'+i).html('<div class="row"><div class="col-xs-4">Nama :</div><div class="col-xs-8">'+nama+'</div></div><div class="row"><div class="col-xs-4">Tanggal : </div><div class="col-xs-8">'+tanggal+'</div></div><div class="row"><div class="col-xs-12"><button class="tampil_data" id="'+i+'">Tampilkan</button></div></div><div id="nama_tabel_'+i+'"><div>Jam : '+jam+'</div><div>Kegiatan : '+kegiatan+'</div><div>Nama Proyek: '+proyek+'</div><div>Keterangan : '+ket+'</div><div>Action '+html_action+' </div></div><button class="sembunyi_data" id="'+i+'">Sembunyikan</button>');
+				}
+				
+				//token = $
+				$('#nama_tabel_'+i).hide();
+				$('.sembunyi_data').hide();
+	
+			}
+		}
+		
+		a=1;
 	}
 	else
 	{
 		$('#kiri').css({'width' : '15%'});
 		$('#kanan').css({'width' : '85%'});
+		
+		$('.tabel').show();
+		for(var i=1; i<=id; i++)
+		{
+			nama = $('#nama_'+i).attr('data-name');
+			$('#nama_tabel_'+i).remove();
+			$('#nama_'+i).text(nama);					
+		}				
+		a=0;
 	}
 }
 
@@ -144,15 +207,68 @@ $(document).on('click','.simpan', function(e)
 $(document).on('click','#menu_burger', function(e)
 {
 
-	if(a == 0)
+	if(c == 0)
 	{
-		a=1;
+		c=1;
+		$('#bs-example-navbar-collapse-1').addClass('in');
 	}
-	else if(a ==1)
+	else if(c ==1)
 	{
-		$('#bs-example-navbar-collapse-1').removeClass('.in');
-		a=0;
+		$('#bs-example-navbar-collapse-1').removeClass('in');
+		c=0;
 	}
 
 
+});
+
+$(document).on('click','.kirim_agenda', function(e)
+{
+	var tanggal = $('#date1_agenda').val();
+	var jam_mulai = $('#jam_mulai').val();
+	var jam_selesai = $('#jam_selesai').val();
+	var kegiatan = $('#kegiatan').val();
+	var nama_proyek = $('#nama_proyek').val();
+	var comment = $('#comment').val();
+	
+	
+	if(tanggal == ''){$('#error_modal_tanggal').show();e.preventDefault();}else{$('#error_modal_tanggal').hide();}
+	if(jam_mulai == ''){$('#error_modal_jamm').show();e.preventDefault();}else{$('#error_modal_jamm').hide();}
+	if(jam_selesai == ''){$('#error_modal_jams').show();e.preventDefault();}else{$('#error_modal_jams').hide();}
+	if(kegiatan == ''){$('#error_modal_kegiatan').show();e.preventDefault();}else{$('#error_modal_kegiatan').hide();}
+	if(nama_proyek == ''){$('#error_modal_nama_proyek').show();e.preventDefault();}else{$('#error_modal_nama_proyek').hide();}
+	if(comment == ''){$('#error_modal_keterangan').show();e.preventDefault();}else{$('#error_modal_keterangan').hide();}
+});
+
+$(document).on('click','.kirim_proyek', function(e)
+{
+	var nama = $('#nama_proyek_modal').val();
+	
+	if(nama == '')
+	{
+		$('#error_modal_proyek').show();
+		e.preventDefault();
+	}
+	else
+	{
+		$('#error_modal_proyek').hide();
+	}
+});
+
+$(document).on('click','.tampil_data',function()
+{
+	var id 	= $(this).attr('id');
+			
+	$('#nama_tabel_'+id).show();
+	$('button#'+id+'.sembunyi_data').show();
+	$(this).hide();
+});
+		
+$(document).on('click','.sembunyi_data',function()
+{
+	var id 	= $(this).attr('id');
+			
+	$('#nama_tabel_'+id).hide();
+	$('button.tampil_data#'+id).show();
+	$(this).hide();
+			
 });

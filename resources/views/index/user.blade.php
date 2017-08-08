@@ -27,7 +27,7 @@
 								  <table id="example" class="display nowrap" cellspacing="0" width="100%">
 								  <thead>
 									<tr>
-										<th>Name</th>
+										<th>Staf</th>
 										<th>Jabatan</th>
 										<th>Email</th>
 										<th>Action</th>
@@ -41,8 +41,8 @@
 										  <td>{{$user_s->email}}</td>
 										  <td>
 										  @if ($user_s->level != 'admin')
-											  <input type="submit" name="edit" class="btn btn-success edit_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" data-jabatan="{{$user_s->jabatan}}" data-email="{{$user_s->email}}" value="edit" data-toggle="modal" data-target="#myModal">
-											  <input type="submit" name="delete" class="btn btn-danger hapus_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" value="delete" data-toggle="modal" data-target="#myModaldelete">
+											  <input type="submit" name="edit" class="btn btn-success btn-xs edit_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" data-jabatan="{{$user_s->jabatan}}" data-email="{{$user_s->email}}" value="edit" data-toggle="modal" data-target="#myModal">
+											  <input type="submit" name="delete" class="btn btn-danger btn-xs hapus_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" value="hapus" data-toggle="modal" data-target="#myModaldelete">
 										  @endif
 										  </td>
 									  </tr>
@@ -64,8 +64,8 @@
                     	 <div class="modal-footer">
                     		<input name="id" type="hidden" class="form-control" id="id_delete_modal" >
                         <input type="hidden" name="_method" value="delete">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger ">Delete</button>
                     	 </form>
                          </div>
                     	</div>
@@ -106,7 +106,7 @@
                     		</div>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
                           </div>
                     	 </form>
