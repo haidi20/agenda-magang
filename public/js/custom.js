@@ -18,6 +18,7 @@ $(document).on('click','.edit_agenda',function()
 	$('.alert-danger#error_modal_kegiatan').hide();
 	$('.alert-danger#error_modal_nama_proyek').hide();
 	$('.alert-danger#error_modal_keterangan').hide();
+
 	
 	var id 					= $(this).attr('data-id');
 	var tanggal			= $(this).attr('data-tanggal');
@@ -54,7 +55,12 @@ $(document).on('click','#tombol_filter2, #tombol_filter1',function(){
 $(document).ready(function()
 {
 
-	
+	$('#error_modal_tanggal').hide();
+	$('#error_modal_jamm').hide();
+	$('#error_modal_jams').hide();
+	$('#error_modal_kegiatan').hide();
+	$('#error_modal_nama_proyek').hide();
+	$('#error_modal_keterangan').hide();
 
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
