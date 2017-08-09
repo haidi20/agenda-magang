@@ -38,7 +38,6 @@
           <div class="form-group row">
             <label for="usr">Proyek</label>
             <select style="margin:5px 0px;" class="form-control show-tick proyek_agenda" name="proyek" id="nama_proyek">
-              <option value=""></option>
               @foreach ($proyekk as $proyek)
                 <option value="{{$proyek->id}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
               @endforeach
