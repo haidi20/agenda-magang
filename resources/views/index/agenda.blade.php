@@ -12,6 +12,11 @@
   							<!-- Basic Examples -->
               <div class="row clearfix">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  @if(session('note'))
+				  <div class="alert alert-danger">
+				  {{session('note')}}
+				  </div>
+				  @endif
                     <!-- Bagian filtering -->
                     <div class="panel panel-default">
                         <div class="panel-heading">Panel Filter</div>

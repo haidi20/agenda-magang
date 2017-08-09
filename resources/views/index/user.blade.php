@@ -29,7 +29,7 @@
 									<tr>
 										<th>Staf</th>
 										<th>Jabatan</th>
-										<th class="tabel">Email</th>
+										<th>Email</th>
 										<th>Action</th>
 									</tr>
 								  </thead>
@@ -38,7 +38,7 @@
 									  <tr id="user_{{$user_s->id}}">
 										  <td>{{$user_s->name}}</td>
 										  <td>{{$user_s->jabatan}}</td>
-										  <td class="tabel">{{$user_s->email}}</td>
+										  <td>{{$user_s->email}}</td>
 										  <td>
 										  @if ($user_s->level != 'admin')
 											  <input style="margin: 4px;"type="submit" name="edit" class="btn btn-success btn-xs edit_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" data-jabatan="{{$user_s->jabatan}}" data-email="{{$user_s->email}}" value="edit" data-toggle="modal" data-target="#myModal">
