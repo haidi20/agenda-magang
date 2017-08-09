@@ -33,6 +33,7 @@ class AgendaController extends Controller
                     ->FilterProyek()
                     ->QueryAgenda()
                     ->paginate(10);
+    $aktif = 1 ;
     // dd(DB::getQueryLog());
     // dd($agenda);
     return view('index.agenda',[
@@ -44,6 +45,7 @@ class AgendaController extends Controller
                     'changeProyek'  =>$changeProyek,
                     'changeDate1'   =>$changeDate1,
                     'changeDate2'   =>$changeDate2,
+                    'aktif'         =>$aktif,
                                 ]);
   }
 

@@ -7,7 +7,7 @@
       </div>
 	  <div class="modal-body">
 		<p id="modal_detail_keterangan">
-		
+
 		</p>
 	  </div>
       <div class="modal-footer">
