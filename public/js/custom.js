@@ -1,6 +1,7 @@
 var a=0;
 var c=0;
 
+
 function ajax() {
 	$.ajaxSetup({
         headers: {
