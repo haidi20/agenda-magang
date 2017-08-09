@@ -245,7 +245,7 @@ $(document).on('click','#menu_burger', function(e)
 
 $(document).on('click','.kirim_agenda', function(e)
 {
-	var tanggal = $('#date1_agenda').val();
+	//var tanggal = $('input#date1').val();
 	var jam_mulai = $('#jam_mulai').val();
 	var jam_selesai = $('#jam_selesai').val();
 	var kegiatan = $('#kegiatan').val();
@@ -253,13 +253,14 @@ $(document).on('click','.kirim_agenda', function(e)
 	var comment = $('#comment').val();
 
 
-	if(tanggal == ''){$('#error_modal_tanggal').show();e.preventDefault();}else{$('#error_modal_tanggal').hide();}
+	//if(tanggal == ''){$('#error_modal_tanggal').show();e.preventDefault();}else{$('#error_modal_tanggal').hide();}
 	if(jam_mulai == ''){$('#error_modal_jamm').show();e.preventDefault();}else{$('#error_modal_jamm').hide();}
 	if(jam_selesai == ''){$('#error_modal_jams').show();e.preventDefault();}else{$('#error_modal_jams').hide();}
 	if(kegiatan == ''){$('#error_modal_kegiatan').show();e.preventDefault();}else{$('#error_modal_kegiatan').hide();}
 	if(nama_proyek == ''){$('#error_modal_nama_proyek').show();e.preventDefault();}else{$('#error_modal_nama_proyek').hide();}
 	if(comment == ''){$('#error_modal_keterangan').show();e.preventDefault();}else{$('#error_modal_keterangan').hide();}
-});
+
+	});
 
 $(document).on('click','.kirim_edit_agenda', function(e)
 {
