@@ -24,7 +24,7 @@
 												  <br>
 												  <div class="body">
 
-								  <table id="example" class="display nowrap" cellspacing="0" width="100%">
+								  <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 								  <thead>
 									<tr>
 										<th>Staf</th>
@@ -41,8 +41,8 @@
 										  <td>{{$user_s->email}}</td>
 										  <td>
 										  @if ($user_s->level != 'admin')
-											  <input type="submit" name="edit" class="btn btn-success btn-xs edit_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" data-jabatan="{{$user_s->jabatan}}" data-email="{{$user_s->email}}" value="edit" data-toggle="modal" data-target="#myModal">
-											  <input type="submit" name="delete" class="btn btn-danger btn-xs hapus_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" value="hapus" data-toggle="modal" data-target="#myModaldelete">
+											  <input style="margin: 4px;"type="submit" name="edit" class="btn btn-success btn-xs edit_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" data-jabatan="{{$user_s->jabatan}}" data-email="{{$user_s->email}}" value="edit" data-toggle="modal" data-target="#myModal">
+											  <input style="margin: 4px;"type="submit" name="delete" class="btn btn-danger btn-xs hapus_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" value="hapus" data-toggle="modal" data-target="#myModaldelete">
 										  @endif
 										  </td>
 									  </tr>
