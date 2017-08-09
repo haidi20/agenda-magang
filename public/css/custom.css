@@ -140,11 +140,11 @@ table.dataTable thead th, table.dataTable thead td {
 		border-radius: 10px;
 		background-color: #FC6E51;
 }
-th{
+/*th{
 	background-color: #565c63;
 	color: white;
 	font-family:sans-serif;
-}
+}*/
 #menu-utama{
     background-color: #d8e4e8;
     border: 1px solid #d8e4e8;
@@ -166,14 +166,18 @@ th{
 
 #kiri
 {
-	min-height:600px;
+	min-height:900px;
 	background-color:#d8e4e8;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
 	float:left;
 }
 #kanan
 {
-	height:600px;
+	height:900px;
 	background-color:#eff5f7;
 	float:right;
+}
+/*tampilan tabel*/
+.rtable{
+  padding: 10px;
 }

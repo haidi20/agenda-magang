@@ -11,38 +11,45 @@
           <div class="form-group row">
             <div class="form-control-wrapper">
               <label for="tgl">Tanggal</label>
-              <input style="margin:5px 0px;" type="text" id="date1" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
-            </div>
+              <input style="margin:5px 0px;" type="text" id="date1_agenda" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
+			  <div class="alert-danger" id="error_modal_tanggal">*Tidak Boleh Kosong</div>
+			</div>
           </div>
           <div class="form-group row">
             <label for="example-time-input" class="col-2 col-form-label">Waktu Mulai</label>
             <div class="col-10">
-              <input class="form-control" type="time" name="jam_mulai" id="example-time-input">
+              <input class="form-control" type="time" name="jam_mulai" id="jam_mulai">
+			  <div class="alert-danger" id="error_modal_jamm">*Tidak Boleh Kosong</div>
             </div>
           </div>
           <div class="form-group row">
             <label for="example-time-input" class="col-2 col-form-label">Waktu Selesai</label>
             <div class="col-10">
-              <input class="form-control" type="time" name="jam_selesai" id="example-time-input">
+              <input class="form-control" type="time" name="jam_selesai" id="jam_selesai">
+			  <div class="alert-danger" id="error_modal_jams">*Tidak Boleh Kosong</div>
             </div>
           </div>
           <div class="form-group row">
             <label for="example-text-input" class="col-2 col-form-label">Kegiatan</label>
             <div class="col-10">
-              <input class="form-control" type="text" value="" name="kegiatan" id="example-text-input">
+              <input class="form-control" type="text" value="" name="kegiatan" id="kegiatan">
+			  <div class="alert-danger" id="error_modal_kegiatan">*Tidak Boleh Kosong</div>
             </div>
           </div>
           <div class="form-group row">
             <label for="usr">Proyek</label>
-            <select style="margin:5px 0px;" class="form-control show-tick proyek_agenda" name="proyek">
+            <select style="margin:5px 0px;" class="form-control show-tick proyek_agenda" name="proyek" id="nama_proyek">
+              <option value=""></option>
               @foreach ($proyekk as $proyek)
                 <option value="{{$proyek->id}}" {{$changeProyek == $proyek->nm_proyek?'selected="select"':''}}>{{$proyek->nm_proyek}}</option>
               @endforeach
             </select>
+			<div class="alert-danger" id="error_modal_nama_proyek">*Tidak Boleh Kosong</div>
           </div>
             <div class="form-group row">
               <label for="comment">Keterangan</label>
               <input class="form-control" name="keterangan" id="comment"></input>
+			  <div class="alert-danger" id="error_modal_keterangan">*Tidak Boleh Kosong</div>
             </div>
         </div>
         <div class="modal-footer">

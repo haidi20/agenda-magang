@@ -4,7 +4,7 @@
   	<nav class="navbar navbar-default">
   		<div class="container-fluid">
   			<div class="navbar-header">
-  				<button id="menu_burger" type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  				<button id="menu_burger" type="button" class="pull-left navbar-toggle" >
   					<span class="sr-only">Toggle navigation</span>
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
@@ -16,7 +16,7 @@
   					</a>
   			</div>
 
-  			<div class="collapse " id="bs-example-navbar-collapse-1">
+  			<div class="collapse" id="bs-example-navbar-collapse-1">
   				<ul class="nav navbar-nav navbar-right">
   					<li><a class="href" href="{{route('agenda.index')}}">&nbsp; Home</a></li>
   					<li><a class="href" href="{{route('user.index')}}">&nbsp; User</a></li>

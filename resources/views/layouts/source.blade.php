@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
 	  <link href="{{asset('css/custom.css')}}" rel="stylesheet"> <!-- bentroknya di sini -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
 
