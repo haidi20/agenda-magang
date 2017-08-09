@@ -12,7 +12,7 @@
             <div class="form-control-wrapper">
               <label for="tgl">Proyek</label>
               <input id="nama_proyek_modal" style="margin:5px 0px;" type="text" name="proyek" class="form-control floating-label" placeholder="Nama Proyek">
-			  <div class="alert alert-danger" id="error_modal_proyek">Tidak Boleh Kosong</div>
+			  <div class="alert-danger" id="error_modal_proyek">Tidak Boleh Kosong</div>
 			</div>
           </div>
 
