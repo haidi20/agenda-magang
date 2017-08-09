@@ -61,7 +61,6 @@ $(document).ready(function()
 	$('#error_modal_kegiatan').hide();
 	$('#error_modal_nama_proyek').hide();
 	$('#error_modal_keterangan').hide();
-	$('#error_modal_proyek').hide();
 
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
