@@ -19,7 +19,7 @@ $(document).on('click','.edit_agenda',function()
 	$('.alert-danger#error_modal_nama_proyek').hide();
 	$('.alert-danger#error_modal_keterangan').hide();
 
-	
+
 	var id 					= $(this).attr('data-id');
 	var tanggal			= $(this).attr('data-tanggal');
 	var jam_mulai		= $(this).attr('data-jamMulai');
@@ -114,8 +114,8 @@ function f_lebar(lebar)
 				proyek = $('#nama_'+i).attr('data-proyek');
 				ket = $('#nama_'+i).attr('data-ket');
 				action = $('#action_'+i).attr('data-status');
-				
-				
+
+
 
 				if(action == '')
 				{
