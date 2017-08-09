@@ -1,0 +1,147 @@
+[33m42f599b[m update hari selasa
+[33m57c21e5[m Merge branch 'alfian' into faizal
+[33m7ba935b[m Merge branch 'alfian' of https://github.com/haidi20/agenda-magang into alfian
+[33mbacfd8b[m update composer
+[33m6566bc6[m Merge branch 'alfian' into faizal
+[33m88ae05f[m sayangku
+[33ma1ee51f[m baru
+[33ma5444d3[m te
+[33m07c29cd[m coba aja
+[33m603c47b[m update
+[33mc637713[m tes aja
+[33m7615ff7[m tes aja dlu
+[33m71f2b6c[m catatan baru
+[33m98569ad[m revisi mungkin final
+[33mb964199[m update
+[33mc2fdd25[m update
+[33mb88dc37[m update
+[33m6d7fc9b[m setting db
+[33m46004df[m setting db
+[33m4456587[m setting db
+[33m76a7d92[m heroku
+[33m1c5e8e8[m heroku
+[33m6e511f5[m heroku
+[33md3b3ca9[m update procfile
+[33mb326f84[m upload ke heroku
+[33mcd0faf1[m tambah procfile
+[33mf4189d0[m update
+[33madd08bf[m update
+[33mb5e1c02[m update
+[33m747c757[m perbaiki sedikit agenda controller
+[33m69cfae4[m update excel
+[33m134ace1[m tambah controller proyek dan tambah proyek
+[33m758f467[m update (dropdown user dan proyek), (edit, delete, dan add agenda), dan tombol filtering
+[33m32b8d44[m merubah sedikit struktur database
+[33m77f1830[m update
+[33m22ee275[m update
+[33md1f71ef[m update table user
+[33m7306605[m update table user
+[33m6b68c07[m update sedikit di custom.js
+[33ma0f7f7c[m update setting dan tampilan home
+[33m80efe75[m update setting dan tampilan home
+[33mc05a9a5[m add tampilan excel
+[33mbf574b5[m add tampilan excel
+[33mefbce35[m add tampilan excel
+[33me254b36[m add tampilan excel
+[33m5bc9d71[m add tampilan excel
+[33m0fe0a82[m export berdasarkan filtering
+[33m8645705[m export berdasarkan filtering
+[33mac9065f[m update
+[33m6a70b47[m update source
+[33mec4de2c[m sudah dengan login
+[33ma649b25[m sudah dengan login
+[33md4a2960[m filtering mantab
+[33mf554324[m filtering mantab
+[33mbf7ebda[m filtering mantab
+[33mea35027[m filtering mantab
+[33mf7146ac[m update lagi dah
+[33mcf6021c[m update lagi dah
+[33medb3419[m update lagi dah
+[33m83de1c7[m tanpa .env dan merapikan route
+[33m401d3b8[m tanpa .env dan merapikan route
+[33m4739b95[m update 404 dan perbaiki route
+[33macdf5f5[m update
+[33mad5b33a[m untuk upload ke heroku
+[33m0ddaf70[m untuk upload ke heroku
+[33m7241a15[m untuk upload ke heroku
+[33med6f311[m untuk upload ke heroku
+[33m4f0809e[m sampai edit html di controller
+[33mc34d0e0[m update
+[33m67cc2ce[m coba
+[33m8f987e3[m coba
+[33mac0700b[m coba
+[33m73b10f8[m coba
+[33m2057cc7[m coba
+[33mb55f5c9[m coba
+[33mb2d1e74[m update lagi
+[33m13791da[m update lagi
+[33m9151886[m hilangkan .env
+[33mcafdcc6[m kesalahan dikit
+[33m9dbfaff[m menyesuaikan postgreSQL
+[33m4f61560[m menyesuaikan postgreSQL
+[33md8ecdd6[m menyesuaikan postgreSQL
+[33m8e4fda2[m menyesuaikan postgreSQL
+[33m1d32fe1[m menyesuaikan postgreSQL
+[33me03223c[m menyesuaikan postgreSQL
+[33m461c5f8[m menyesuaikan postgreSQL
+[33m14989e5[m menyesuaikan postgreSQL
+[33m9d7352b[m sesuai postgreSQL
+[33meb316cb[m setting db
+[33m34bd67d[m setting db
+[33m46ba06b[m lagi
+[33m8e9b7cf[m lagi
+[33m923f674[m lagi
+[33m1abae1f[m lagi
+[33m0174ed5[m lagi
+[33mf6e208b[m lagi
+[33m71c3a5e[m coba
+[33mcaedbf8[m coba
+[33m01d5453[m coba
+[33m1b66421[m kdj
+[33mf3229dd[m Merge branch 'master' of https://github.com/haidi20/agenda-magang
+[33m4d5bbb9[m penting sekali pakai banget bagian source
+[33m33f96bc[m loginn
+[33mc71d8b9[m login
+[33m71c96f0[m login'
+[33m6500ddd[m config/database
+[33m4387d28[m secureee
+[33mecc2868[m securee
+[33mb86839d[m secure
+[33m6859f77[m Merge branch 'haidi'
+[33mb950de0[m coba lagi
+[33med3bcf8[m lagi
+[33m3d3d9fb[m baru
+[33mc00f7aa[m update lagi
+[33mb46c5f4[m ada procfile
+[33maa7b2cf[m kdsjf
+[33m98c5c69[m upload
+[33mb4e8a76[m harus bisa
+[33m094c250[m bisa
+[33mb08a057[m update
+[33mf515e5d[m update procfile
+[33m56d1833[m ExcelController di perbaiki
+[33m5e12240[m upload file
+[33m8ce988d[m pertama di heroku
+[33m468be8e[m Merge pull request #6 from haidi20/haidi
+[33mbce14d7[m bikin data seed
+[33m63ebe52[m Merge branch 'haidi' of https://github.com/haidi20/agenda-magang into haidi
+[33me5e9565[m date jadi angka
+[33m18d070f[m Merge pull request #5 from haidi20/coba
+[33m50a437f[m Merge pull request #4 from haidi20/coba
+[33m7ae1885[m Merge pull request #3 from haidi20/coba
+[33md8f10d6[m hapus haha
+[33m1fca849[m hahah
+[33m4ddb2dd[m tambah haha
+[33m6fc8a50[m Merge pull request #2 from haidi20/coba
+[33m6055b10[m Merge pull request #1 from haidi20/coba
+[33m21b6901[m edit dan delete table user by admin
+[33md852dd8[m merapikan controller
+[33me7614aa[m perbaiki date
+[33m36c7466[m tambah excel
+[33md904435[m sampai admin
+[33m323dd69[m input agenda bisa
+[33m4b0f9e6[m sampai form agenda
+[33m24a9fff[m bermasalah
+[33m01a5fa3[m migration
+[33m1592ecb[m pertamax
+[33m53ef0fe[m Initial commit
