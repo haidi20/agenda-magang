@@ -15,7 +15,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('index.setting');
+      $aktif = 3 ;
+        return view('index.setting')->with('aktif',$aktif);
     }
 
     /**
