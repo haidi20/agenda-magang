@@ -142,37 +142,43 @@
         <div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Nama</label>
 			<div class="col-sm-10">
-			  <input name="nama" type="text" class="form-control" placeholder="Nama">
+			  <input name="nama" type="text" class="form-control" placeholder="Nama" id="tambah_user_nama">
+			  <div class="alert-danger" id="error_modal_user_nama">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Jabatan</label>
 			<div class="col-sm-10">
-			  <input name="jabatan" type="text" class="form-control" placeholder="Jabatan">
+			  <input name="jabatan" type="text" class="form-control" placeholder="Jabatan" id="tambah_user_jabatan">
+			  <div class="alert-danger" id="error_modal_user_jabatan">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
 			<div class="col-sm-10">
-			  <input name="email" type="text" class="form-control" placeholder="Email">
+			  <input name="email" type="text" class="form-control" placeholder="Email" id="tambah_user_email">
+			  <div class="alert-danger" id="error_modal_user_email">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
 			<div class="col-sm-10">
-			  <input name="password" type="password" class="form-control" placeholder="Password" id="password">
+			  <input name="password" type="password" class="form-control" placeholder="Password" id="tambah_user_password">
+			  <div class="alert-danger" id="error_modal_user_password">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Ulangi Password</label>
 			<div class="col-sm-10">
-			  <input type="password" class="form-control" placeholder="Ulangi Password" id="repassword">
+			  <input type="password" class="form-control" placeholder="Ulangi Password" id="tambah_user_repassword">
+			  <div class="alert-danger" id="error_modal_user_repassword">*Tidak Boleh Kosong</div>
+			  <div class="alert-danger" id="error_modal_user_tida_sama">*Password Tidak Sama</div>
 			</div>
 		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary tambah_user">Save changes</button>
       </div>
 	 </form>
     </div>

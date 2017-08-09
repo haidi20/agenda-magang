@@ -62,6 +62,12 @@ $(document).ready(function()
 	$('#error_modal_nama_proyek').hide();
 	$('#error_modal_keterangan').hide();
 	$('#error_modal_proyek').hide();
+	$('#error_modal_user_nama').hide();
+	$('#error_modal_user_email').hide();
+	$('#error_modal_user_jabatan').hide();
+	$('#error_modal_user_password').hide();
+	$('#error_modal_user_repassword').hide();
+	$('#error_modal_user_tida_sama').hide();
 
 	$('#date1,#date2').bootstrapMaterialDatePicker
 	({
@@ -312,5 +318,35 @@ $(document).on('click','.detail',function()
 	var data 	= $(this).attr('data-ket');
 
 	$('#modal_detail_keterangan').text(data);
+
+});
+
+$(document).on('click','.tambah_user',function(e)
+{
+	
+	var nama 	= $('#tambah_user_nama').val();
+	var email 	= $('#tambah_user_email').val();
+	var jabatan = $('#tambah_user_jabatan').val();
+	var pass 	= $('#tambah_user_password').val();
+	var repass 	= $('#tambah_user_repassword').val();
+	
+
+	if(nama == ''){$('#error_modal_user_nama').show();e.preventDefault();}else{$('#error_modal_user_nama').hide();}
+	if(email == ''){$('#error_modal_user_email').show();e.preventDefault();}else{$('#error_modal_user_email').hide();}
+	if(jabatan == ''){$('#error_modal_user_jabatan').show();e.preventDefault();}else{$('#error_modal_user_jabatan').hide();}
+	if(pass == ''){$('#error_modal_user_password').show();e.preventDefault();}else{$('#error_modal_user_password').hide();}
+	if(repass == '')
+	{
+		$('#error_modal_user_repassword').show();
+		e.preventDefault();
+	}
+	else
+	{
+		$('#error_modal_user_repassword').hide();
+		if(pass != repass){$('#error_modal_user_tida_sama').show();e.preventDefault();}else{$('#error_modal_user_tida_sama').hide();}
+	}
+	
+	
+
 
 });
