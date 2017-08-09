@@ -50,23 +50,28 @@ class AgendaController extends Controller
   }
 
   public function store(Request $request){
-    $jam_mulai        = request('tanggal').' '.request('jam_mulai');
-    $jam_selesai      = request('tanggal').' '.request('jam_selesai');
-    $agenda = Agenda::insert([
-      'user_id'       => Auth::id(),
-      'proyek_id'     => request('proyek'),
-      'kegiatan'      => request('kegiatan'),
-      'jam_mulai'     => $jam_mulai,
-      'jam_selesai'   => $jam_selesai,
-      'keterangan'    => request('keterangan'),
-      'updated_at'   =>Carbon::now(),
-      'created_at'   =>Carbon::now(),
-    ]);
+    if (!request('tanggal') == '') {
+      $jam_mulai        = request('tanggal').' '.request('jam_mulai');
+      $jam_selesai      = request('tanggal').' '.request('jam_selesai');
+      $agenda = Agenda::insert([
+        'user_id'       => Auth::id(),
+        'proyek_id'     => request('proyek'),
+        'kegiatan'      => request('kegiatan'),
+        'jam_mulai'     => $jam_mulai,
+        'jam_selesai'   => $jam_selesai,
+        'keterangan'    => request('keterangan'),
+        'updated_at'   =>Carbon::now(),
+        'created_at'   =>Carbon::now(),
+      ]);
 
-    if($agenda){
-      return redirect('agenda');
+      if($agenda){
+        return redirect('agenda');
+      }else{
+        return redirect('agenda');
+      }
     }else{
-      return redirect('agenda');
+      // baru
+      return redirect('agenda')->with('note','gagal menyimpan agenda');
     }
   }
 
