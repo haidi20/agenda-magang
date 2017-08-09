@@ -10,7 +10,16 @@ function ajax() {
 }
 
 // untuk menampilkan data pada edit agenda
-$(document).on('click','.edit_agenda',function(){
+$(document).on('click','.edit_agenda',function()
+{
+	$('.alert-danger#error_modal_tanggal').hide();
+	$('.alert-danger#error_modal_jamm').hide();
+	$('.alert-danger#error_modal_jams').hide();
+	$('.alert-danger#error_modal_kegiatan').hide();
+	$('.alert-danger#error_modal_nama_proyek').hide();
+	$('.alert-danger#error_modal_keterangan').hide();
+
+
 	var id 					= $(this).attr('data-id');
 	var tanggal			= $(this).attr('data-tanggal');
 	var jam_mulai		= $(this).attr('data-jamMulai');
@@ -28,7 +37,8 @@ $(document).on('click','.edit_agenda',function(){
 	$('#form_agenda_edit').attr('action','agenda/'+id);
 });
 // untuk menampilkan data pada delete agenda
-$(document).on('click','.hapus_agenda',function(){
+$(document).on('click','.hapus_agenda',function()
+{
 	var id 					= $(this).attr('data-id');
 	var kegiatan 		= $(this).attr('data-kegiatan');
 	$('#agenda_delete_modal').html('"'+kegiatan+'"');
@@ -45,7 +55,6 @@ $(document).on('click','#tombol_filter2, #tombol_filter1',function(){
 $(document).ready(function()
 {
 
-	$('#error_modal_proyek').hide();
 	$('#error_modal_tanggal').hide();
 	$('#error_modal_jamm').hide();
 	$('#error_modal_jams').hide();
@@ -104,17 +113,23 @@ function f_lebar(lebar)
 				kegiatan = $('#nama_'+i).attr('data-kegiatan');
 				proyek = $('#nama_'+i).attr('data-proyek');
 				ket = $('#nama_'+i).attr('data-ket');
+				//ket-lim = $('#nama_'+i).attr('data-ket-lim');
 				action = $('#action_'+i).attr('data-status');
+
+				html_tabel_limit = $('#tabel_limit_'+i).html();
+
+
+
 
 				if(action == '')
 				{
-					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Tanggal</b></td><td style="padding:10px">'+tanggal+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+ket+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
+					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'&emsp;'+tanggal+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+html_tabel_limit+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
 					//console.log('kosong');
 				}
 				else
 				{
 					html_action =  $('#action_'+i).html();
-					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Tanggal</b></td><td style="padding:10px">'+tanggal+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+ket+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+html_action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
+					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'&emsp;'+tanggal+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+html_tabel_limit+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+html_action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
 				}
 
 				//token = $
@@ -239,6 +254,24 @@ $(document).on('click','.kirim_agenda', function(e)
 	if(comment == ''){$('#error_modal_keterangan').show();e.preventDefault();}else{$('#error_modal_keterangan').hide();}
 });
 
+$(document).on('click','.kirim_edit_agenda', function(e)
+{
+	var tanggal = $('#edit_date1_agenda').val();
+	var jam_mulai = $('#edit_jam_mulai').val();
+	var jam_selesai = $('#edit_jam_selesai').val();
+	var kegiatan = $('#edit_kegiatan').val();
+	var nama_proyek = $('#edit_nama_proyek').val();
+	var comment = $('#edit_comment').val();
+
+
+	if(tanggal == ''){$('.alert-danger#error_modal_tanggal').show();e.preventDefault();}else{$('.alert-danger#error_modal_tanggal').hide();}
+	if(jam_mulai == ''){$('.alert-danger#error_modal_jamm').show();e.preventDefault();}else{$('.alert-danger#error_modal_jamm').hide();}
+	if(jam_selesai == ''){$('.alert-danger#error_modal_jams').show();e.preventDefault();}else{$('.alert-danger#error_modal_jams').hide();}
+	if(kegiatan == ''){$('.alert-danger#error_modal_kegiatan').show();e.preventDefault();}else{$('.alert-danger#error_modal_kegiatan').hide();}
+	if(nama_proyek == ''){$('.alert-danger#error_modal_nama_proyek').show();e.preventDefault();}else{$('.alert-danger#error_modal_nama_proyek').hide();}
+	if(comment == ''){$('.alert-danger#error_modal_keterangan').show();e.preventDefault();}else{$('.alert-danger#error_modal_keterangan').hide();}
+});
+
 $(document).on('click','.kirim_proyek', function(e)
 {
 	var nama = $('#nama_proyek_modal').val();
@@ -270,5 +303,13 @@ $(document).on('click','.sembunyi_data',function()
 	$('#nama_tabel_'+id).hide();
 	$('button.tampil_data#'+id).show();
 	$(this).hide();
+
+});
+
+$(document).on('click','.detail',function()
+{
+	var data 	= $(this).attr('data-ket');
+
+	$('#modal_detail_keterangan').text(data);
 
 });

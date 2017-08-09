@@ -11,9 +11,8 @@
           <div class="form-group row">
             <div class="form-control-wrapper">
               <label for="tgl">Tanggal</label>
-              <input style="margin:5px 0px;" type="text" id="date1_agenda" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
-			  <div class="alert-danger" id="error_modal_tanggal">*Tidak Boleh Kosong</div>
-			</div>
+              <input style="margin:5px 0px;" type="text" id="date1" name="tanggal" class="form-control floating-label" placeholder="Hari/Tanggal">
+			      </div>
           </div>
           <div class="form-group row">
             <label for="example-time-input" class="col-2 col-form-label">Waktu Mulai</label>
