@@ -50,7 +50,7 @@
           </div>
             <div class="form-group row">
               <label for="comment">Keterangan</label>
-              <textarea class="form-control keterangan_agenda" rows="5" name="keterangan" id="edit_comment"></textarea>
+              <input class="form-control keterangan_agenda" name="keterangan" id="edit_comment"></input>
               <div class="alert-danger" id="error_modal_keterangan">*Tidak Boleh Kosong</div>
 			</div>
         </div>
