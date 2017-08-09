@@ -113,19 +113,23 @@ function f_lebar(lebar)
 				kegiatan = $('#nama_'+i).attr('data-kegiatan');
 				proyek = $('#nama_'+i).attr('data-proyek');
 				ket = $('#nama_'+i).attr('data-ket');
+				//ket-lim = $('#nama_'+i).attr('data-ket-lim');
 				action = $('#action_'+i).attr('data-status');
+				
+				html_tabel_limit = $('#tabel_limit_'+i).html();
+				
 				
 				
 
 				if(action == '')
 				{
-					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'&emsp;'+tanggal+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+ket+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
+					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'&emsp;'+tanggal+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+html_tabel_limit+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;"class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
 					//console.log('kosong');
 				}
 				else
 				{
 					html_action =  $('#action_'+i).html();
-					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'&emsp;'+tanggal+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+ket+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+html_action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
+					$('#nama_'+i).html('<table id="example" class="table table-striped table-bordered dt-responsive nowrap"><tr><td><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="tampil_data" id="'+i+'"><i class="fa fa-plus"></i></button>&nbsp'+nama+'&emsp;'+tanggal+'</td></tr></table><table id="nama_tabel_'+i+'"><tr><td style="padding:10px"><b>Jam</b></td><td style="padding:10px">'+jam+'</td></tr><tr><td style="padding:10px"><b>Kegiatan</b></td><td style="padding:10px">'+kegiatan+'</td></tr><tr><td style="padding:10px"><b>Nama Proyek</b></td><td style="padding:10px">'+proyek+'</td></tr><tr><td style="padding:10px"><b>Keterangan</b></td><td style="padding:10px">'+html_tabel_limit+'</td></tr><tr><td style="padding:10px"><b>Action</b></td><td style="padding:10px">'+html_action+'</td></tr></table><button style="color:white;background-color:#337ab7;border-radius:5px;border:1px solid transparent;" class="sembunyi_data" id="'+i+'"><i class="fa fa-caret-up"></i></button>');
 				}
 
 				//token = $
