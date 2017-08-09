@@ -11,14 +11,15 @@
           <div class="form-group row">
             <div class="form-control-wrapper">
               <label for="tgl">Proyek</label>
-              <input style="margin:5px 0px;" type="text" name="proyek" class="form-control floating-label" placeholder="Nama Proyek">
-            </div>
+              <input id="nama_proyek_modal" style="margin:5px 0px;" type="text" name="proyek" class="form-control floating-label" placeholder="Nama Proyek">
+			  <div class="alert alert-danger" id="error_modal_proyek">Tidak Boleh Kosong</div>
+			</div>
           </div>
 
         </div>
         <div class="modal-footer">
           <a class="btn btn-danger" data-dismiss="modal">Kembali</a>
-          <input type="submit" class="btn btn-success kirim_agenda" value="kirim"></input>
+          <input type="submit" class="btn btn-success kirim_proyek" value="kirim"></input>
         </div>
       </form>
     </div>

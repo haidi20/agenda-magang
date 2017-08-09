@@ -28,28 +28,39 @@ class AgendaController extends Controller
     $users          = User::select('name')->where('level' , '!=' , 'admin')->get();
     $proyek         = Proyek::all();
     //filtering data
-    $agenda = Agenda::FilterDate()->FilterUser($id)->FilterProyek()->QueryAgenda()->paginate(10);
+    $agenda = Agenda::FilterDate()
+                    ->FilterUser($id)
+                    ->FilterProyek()
+                    ->QueryAgenda()
+                    ->paginate(10);
+    $aktif = 1 ;
     // dd(DB::getQueryLog());
     // dd($agenda);
     return view('index.agenda',[
-      'agendaa'     =>$agenda,      'user'          =>$user,       'users'         =>$users,
-      'proyekk'     =>$proyek,      'changeUser'    =>$changeUser, 'changeProyek'  =>$changeProyek,
-      'changeDate1' =>$changeDate1, 'changeDate2'   =>$changeDate2,
-                              ]);
+                    'agendaa'       =>$agenda,
+                    'user'          =>$user,
+                    'users'         =>$users,
+                    'proyekk'       =>$proyek ,
+                    'changeUser'    =>$changeUser,
+                    'changeProyek'  =>$changeProyek,
+                    'changeDate1'   =>$changeDate1,
+                    'changeDate2'   =>$changeDate2,
+                    'aktif'         =>$aktif,
+                                ]);
   }
 
   public function store(Request $request){
-    $jam_mulai      = request('tanggal').' '.request('jam_mulai');
-    $jam_selesai    = request('tanggal').' '.request('jam_selesai');
+    $jam_mulai        = request('tanggal').' '.request('jam_mulai');
+    $jam_selesai      = request('tanggal').' '.request('jam_selesai');
     $agenda = Agenda::insert([
-      'user_id'     => Auth::id(),
-      'proyek_id'   => request('proyek'),
-      'kegiatan'    => request('kegiatan'),
-      'jam_mulai'   => $jam_mulai,
-      'jam_selesai' => $jam_selesai,
-      'keterangan'  => request('keterangan'),
-      'updated_at'  => Carbon::now(),
-      'created_at'  => Carbon::now(),
+      'user_id'       => Auth::id(),
+      'proyek_id'     => request('proyek'),
+      'kegiatan'      => request('kegiatan'),
+      'jam_mulai'     => $jam_mulai,
+      'jam_selesai'   => $jam_selesai,
+      'keterangan'    => request('keterangan'),
+      'updated_at'   =>Carbon::now(),
+      'created_at'   =>Carbon::now(),
     ]);
 
     if($agenda){
@@ -59,7 +70,7 @@ class AgendaController extends Controller
     }
   }
 
-  public function update(Request $request)
+  public function update(Request $request, $id)
   {
     \DB::enableQueryLog();
     // dd($request->all());

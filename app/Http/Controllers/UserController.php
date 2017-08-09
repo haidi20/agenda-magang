@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth ;
 use App\User ;
 use Excel ;
-use Auth ;
-
 
 class UserController extends Controller
 {
@@ -14,7 +13,8 @@ class UserController extends Controller
     $id        = Auth::id();
     $users     = User::orderBy('name','asc')->get(); // untuk menampilkan semua user pada admin
     $user      = User::find($id);  // untuk identifikasi user
-    return view('index.user',['users' => $users, 'user'=>$user]);
+    $aktif     = 2 ;
+    return view('index.user',['users' => $users, 'user'=>$user, 'aktif'=>$aktif]);
   }
 
   public function store(Request $request){
