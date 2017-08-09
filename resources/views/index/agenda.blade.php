@@ -103,7 +103,7 @@
                   <td class="tabel">{{$agenda->kegiatan}}</td>
                   <td class="tabel">{{$agenda->proyek->nm_proyek}}</td>
                   @php $keterangan_limit = str_limit($agenda->keterangan,10) @endphp
-                  <td class="tabel">{{$keterangan_limit}}</td>
+                  <td class="tabel">{{$keterangan_limit}} <button class="btn btn-primary btn-xs detail"  data-ket="{{$agenda->keterangan}}" data-toggle="modal" data-target="#myModalket"> Lihat</button></td>
                   <td class="tabel" id="action_{{$a}}" data-status="@if ($agenda->user->id == Auth::id()) TRUE @endif">
                   @if ($agenda->user->id == Auth::id())
                       <input type="submit" name="edit" class="btn btn-success btn-xs edit_agenda" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-idProyek="{{$agenda->proyek_id}}" data-keterangan="{{$agenda->keterangan}}" value="edit" data-toggle="modal" data-target="#myModalEdit">

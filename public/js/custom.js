@@ -301,3 +301,11 @@ $(document).on('click','.sembunyi_data',function()
 	$(this).hide();
 
 });
+
+$(document).on('click','.detail',function()
+{
+	var data 	= $(this).attr('data-ket');
+
+	$('#modal_detail_keterangan').text(data);
+
+});
