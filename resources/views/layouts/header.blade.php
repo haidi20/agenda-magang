@@ -32,14 +32,10 @@
     	<div class="row" id="ungu">
     		<div id="ungu"></div>
     	</div>
-      <div class="row">
-        <div id="menu">
-          <a id="menu-utama"class="list-group-item"><b>DASHBOARD</b></a>
-        </div>
-      </div>
+
       <!-- MENU SAMPING -->
       <div class="row">
-        <a id="menu_home" class="list-group-item href" href="{{route('agenda.index')}}"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Home</a>
+        <a id="menu_home" class="list-group-item href" href="{{route('agenda.index')}}"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i>&nbsp; Dashboard</a>
         @if (Auth::user()->level == 'admin')
         <a id="menu_user" class="list-group-item href" href="{{route('user.index')}}"><i class="fa fa-user-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; User</a>
         @endif
