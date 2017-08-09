@@ -121,6 +121,8 @@
 
 	  </div>
       {{$agendaa->links()}}
+      <!-- Modal detail keterangan -->
+      @include('index.detail_keterangan')
       <!-- Modal add agenda -->
       @include('index.add_agenda')
       <!-- Modal edit agenda -->
