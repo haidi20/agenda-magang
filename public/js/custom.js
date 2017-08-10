@@ -352,3 +352,27 @@ $(document).on('click','.tambah_user',function(e)
 
 
 });
+
+$(document).on('click','.tutup',function()
+{
+	$('#error_modal_tanggal').hide();
+	$('#error_modal_jamm').hide();
+	$('#error_modal_jams').hide();
+	$('#error_modal_kegiatan').hide();
+	$('#error_modal_nama_proyek').hide();
+	$('#error_modal_keterangan').hide();
+	$('#error_modal_proyek').hide();
+	$('#error_modal_user_nama').hide();
+	$('#error_modal_user_email').hide();
+	$('#error_modal_user_jabatan').hide();
+	$('#error_modal_user_password').hide();
+	$('#error_modal_user_repassword').hide();
+	$('#error_modal_user_tida_sama').hide();
+	$('.alert-danger#error_modal_tanggal').hide();
+	$('.alert-danger#error_modal_jamm').hide();
+	$('.alert-danger#error_modal_jams').hide();
+	$('.alert-danger#error_modal_kegiatan').hide();
+	$('.alert-danger#error_modal_nama_proyek').hide();
+	$('.alert-danger#error_modal_keterangan').hide();
+
+});

@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close tutup" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Tambah Agenda</h4>
       </div>
       <form action="{{route('agenda.store')}}" method="post">
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <a class="btn btn-danger" data-dismiss="modal">Kembali</a>
+          <a class="btn btn-danger tutup" data-dismiss="modal">Kembali</a>
           <input type="submit" class="btn btn-success kirim_agenda" value="kirim"></input>
         </div>
       </form>
