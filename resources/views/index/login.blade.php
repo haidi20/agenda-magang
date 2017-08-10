@@ -23,6 +23,6 @@
 
     <div class="logo">
             <small>© Copyright 2017 | Created by DEKA magang Team</small>
-        </div>
+    </div>
   </body>
 @endsection

@@ -157,5 +157,15 @@
   			</div>
   		</div>
 	   </section>
+	   
   </div>
+  
+  <footer style="background-color:#eff5f7;">
+  <br>
+	<center>
+		© Copyright 2017 | Created by DEKA magang Team
+	</center>
+	  <br>
+  </footer>
+
 @endsection
