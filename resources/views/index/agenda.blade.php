@@ -12,6 +12,11 @@
   							<!-- Basic Examples -->
               <div class="row clearfix">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  @if(session('note'))
+				  <div class="alert alert-danger">
+				  {{session('note')}}
+				  </div>
+				  @endif
                     <!-- Bagian filtering -->
                     <div class="panel panel-default">
                         <div class="panel-heading">Panel Filter</div>
@@ -97,13 +102,13 @@
             @foreach ($agendaa as $agenda)
 
               <tr>
-                  <td id="nama_{{$a}}" data-idProyek="{{$agenda->proyek_id}}" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jam="{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-proyek="{{$agenda->proyek->nm_proyek}}" data-ket="{{$agenda->keterangan}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}">{{$agenda->user->name}}</td>
+                  @php $keterangan_limit = str_limit($agenda->keterangan,10) @endphp
+                  <td id="nama_{{$a}}" data-idProyek="{{$agenda->proyek_id}}" data-ket-lim="{{$keterangan_limit}}" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jam="{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-proyek="{{$agenda->proyek->nm_proyek}}" data-ket="{{$agenda->keterangan}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}">{{$agenda->user->name}}</td>
                   <td class="tabel">{{$agenda->jam_mulai->format('Y-m-d')}}</td>
                   <td class="tabel">{{$agenda->jam_mulai->format('h:i')}} s/d {{$agenda->jam_selesai->format('h:i')}}</td>
                   <td class="tabel">{{$agenda->kegiatan}}</td>
                   <td class="tabel">{{$agenda->proyek->nm_proyek}}</td>
-                  @php $keterangan_limit = str_limit($agenda->keterangan,10) @endphp
-                  <td class="tabel">{{$keterangan_limit}} <button class="btn btn-primary btn-xs detail"  data-ket="{{$agenda->keterangan}}" data-toggle="modal" data-target="#myModalket"> Lihat</button></td>
+                  <td class="tabel" id="tabel_limit_{{$a}}">{{$keterangan_limit}} <button class="btn btn-primary btn-xs detail"  data-ket="{{$agenda->keterangan}}" data-toggle="modal" data-target="#myModalket"> Lihat</button></td>
                   <td class="tabel" id="action_{{$a}}" data-status="@if ($agenda->user->id == Auth::id()) TRUE @endif">
                   @if ($agenda->user->id == Auth::id())
                       <input type="submit" name="edit" class="btn btn-success btn-xs edit_agenda" data-id="{{$agenda->id}}" data-name="{{$agenda->user->name}}" data-tanggal="{{$agenda->jam_mulai->format('Y-m-d')}}" data-jamMulai="{{$agenda->jam_mulai->format('h:i')}}" data-jamSelesai="{{$agenda->jam_selesai->format('h:i')}}" data-kegiatan="{{$agenda->kegiatan}}" data-idProyek="{{$agenda->proyek_id}}" data-keterangan="{{$agenda->keterangan}}" value="edit" data-toggle="modal" data-target="#myModalEdit">

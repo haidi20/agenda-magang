@@ -24,7 +24,7 @@
 												  <br>
 												  <div class="body">
 
-								  <table id="example" class="display nowrap" cellspacing="0" width="100%">
+								  <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 								  <thead>
 									<tr>
 										<th>Staf</th>
@@ -41,8 +41,8 @@
 										  <td>{{$user_s->email}}</td>
 										  <td>
 										  @if ($user_s->level != 'admin')
-											  <input type="submit" name="edit" class="btn btn-success btn-xs edit_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" data-jabatan="{{$user_s->jabatan}}" data-email="{{$user_s->email}}" value="edit" data-toggle="modal" data-target="#myModal">
-											  <input type="submit" name="delete" class="btn btn-danger btn-xs hapus_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" value="hapus" data-toggle="modal" data-target="#myModaldelete">
+											  <input style="margin: 4px;"type="submit" name="edit" class="btn btn-success btn-xs edit_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" data-jabatan="{{$user_s->jabatan}}" data-email="{{$user_s->email}}" value="edit" data-toggle="modal" data-target="#myModal">
+											  <input style="margin: 4px;"type="submit" name="delete" class="btn btn-danger btn-xs hapus_user" data-id="{{$user_s->id}}" data-name="{{$user_s->name}}" value="hapus" data-toggle="modal" data-target="#myModaldelete">
 										  @endif
 										  </td>
 									  </tr>
@@ -142,37 +142,43 @@
         <div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Nama</label>
 			<div class="col-sm-10">
-			  <input name="nama" type="text" class="form-control" placeholder="Nama">
+			  <input name="nama" type="text" class="form-control" placeholder="Nama" id="tambah_user_nama">
+			  <div class="alert-danger" id="error_modal_user_nama">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Jabatan</label>
 			<div class="col-sm-10">
-			  <input name="jabatan" type="text" class="form-control" placeholder="Jabatan">
+			  <input name="jabatan" type="text" class="form-control" placeholder="Jabatan" id="tambah_user_jabatan">
+			  <div class="alert-danger" id="error_modal_user_jabatan">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
 			<div class="col-sm-10">
-			  <input name="email" type="text" class="form-control" placeholder="Email">
+			  <input name="email" type="text" class="form-control" placeholder="Email" id="tambah_user_email">
+			  <div class="alert-danger" id="error_modal_user_email">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
 			<div class="col-sm-10">
-			  <input name="password" type="password" class="form-control" placeholder="Password" id="password">
+			  <input name="password" type="password" class="form-control" placeholder="Password" id="tambah_user_password">
+			  <div class="alert-danger" id="error_modal_user_password">*Tidak Boleh Kosong</div>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">Ulangi Password</label>
 			<div class="col-sm-10">
-			  <input type="password" class="form-control" placeholder="Ulangi Password" id="repassword">
+			  <input type="password" class="form-control" placeholder="Ulangi Password" id="tambah_user_repassword">
+			  <div class="alert-danger" id="error_modal_user_repassword">*Tidak Boleh Kosong</div>
+			  <div class="alert-danger" id="error_modal_user_tida_sama">*Password Tidak Sama</div>
 			</div>
 		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary tambah_user">Save changes</button>
       </div>
 	 </form>
     </div>

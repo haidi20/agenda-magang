@@ -7,7 +7,11 @@
       <div class="panel panel-default">
           <div class="panel-heading">Panel Setting</div>
           <div class="panel-body">
-            <h2>{{Session::get('note')}}</h2>
+				 @if(session('note'))
+				  <div class="alert alert-danger">
+				  {{session('note')}}
+				  </div>
+				  @endif
             <form action="{{route('setting.store')}}" method="post">
               {{ csrf_field() }}
           <div class="form-group row">
